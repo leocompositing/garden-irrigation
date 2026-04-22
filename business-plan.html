@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerdantIQ — Smart Garden Services Business Plan (Surrey, UK)</title>
+<style>
+  :root {
+    --green-900: #1b3a2b;
+    --green-700: #2f6b47;
+    --green-500: #4a9b6b;
+    --green-100: #e8f3ec;
+    --amber: #d99a2b;
+    --ink: #1a1f1c;
+    --muted: #5a6b60;
+    --bg: #fafaf7;
+    --card: #ffffff;
+    --border: #e0e3dd;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header.hero {
+    background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+    color: white;
+    padding: 72px 0 56px;
+    border-bottom: 4px solid var(--amber);
+  }
+  header.hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    margin: 0 0 12px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header.hero .tagline {
+    font-size: 1.15rem;
+    opacity: 0.92;
+    margin: 0 0 24px;
+    font-weight: 300;
+  }
+  header.hero .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.9rem;
+    opacity: 0.88;
+  }
+  header.hero .meta span {
+    background: rgba(255,255,255,0.12);
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 28px;
+    margin: -28px auto 40px;
+    max-width: 980px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 2;
+  }
+  nav.toc h2 {
+    margin: 0 0 12px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 28px;
+    font-size: 0.95rem;
+  }
+  nav.toc a {
+    color: var(--green-700);
+    text-decoration: none;
+  }
+  nav.toc a:hover { text-decoration: underline; }
+
+  main { padding-bottom: 80px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  section h2 {
+    font-size: 1.65rem;
+    color: var(--green-900);
+    margin: 0 0 6px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-bottom: 2px solid var(--green-500);
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  section h3 {
+    color: var(--green-700);
+    font-size: 1.15rem;
+    margin: 28px 0 10px;
+  }
+  section h4 {
+    color: var(--ink);
+    font-size: 1rem;
+    margin: 20px 0 8px;
+  }
+  p { margin: 10px 0; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { color: var(--green-900); }
+
+  .callout {
+    background: var(--green-100);
+    border-left: 4px solid var(--green-500);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 0.96rem;
+  }
+  .callout.amber {
+    background: #fdf6e8;
+    border-left-color: var(--amber);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 0.94rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  thead {
+    background: var(--green-700);
+    color: white;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) { background: #fbfcfa; }
+  tbody tr:hover { background: var(--green-100); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .kpi {
+    background: var(--green-100);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .kpi .label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .kpi .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green-900);
+  }
+
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .pkg {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    background: #fff;
+    position: relative;
+  }
+  .pkg.featured {
+    border-color: var(--green-500);
+    border-width: 2px;
+    background: linear-gradient(180deg, #fff 0%, var(--green-100) 100%);
+  }
+  .pkg.featured::before {
+    content: "PROOF OF CONCEPT";
+    position: absolute;
+    top: -10px; left: 20px;
+    background: var(--amber);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .pkg h4 { margin-top: 0; color: var(--green-700); }
+  .pkg .price { font-size: 1.35rem; font-weight: 700; color: var(--green-900); margin: 10px 0; }
+
+  .timeline {
+    border-left: 3px solid var(--green-500);
+    padding-left: 22px;
+    margin: 20px 0;
+  }
+  .timeline-item { margin-bottom: 18px; }
+  .timeline-item h4 {
+    margin: 0 0 6px;
+    color: var(--green-700);
+    font-size: 1.02rem;
+  }
+
+  .risk-high { color: #a8322a; font-weight: 600; }
+  .risk-med { color: #b77a11; font-weight: 600; }
+  .risk-low { color: var(--green-700); font-weight: 600; }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 640px) {
+    nav.toc ol { columns: 1; }
+    section { padding: 24px 22px; }
+    header.hero { padding: 48px 0 40px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+
+  @media print {
+    body { background: white; }
+    nav.toc, header.hero { page-break-after: avoid; }
+    section { box-shadow: none; border: none; page-break-inside: avoid; padding: 20px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <h1>VerdantIQ</h1>
+    <p class="tagline">Smart Garden Services — Business Plan &nbsp;·&nbsp; Surrey, UK</p>
+    <div class="meta">
+      <span>Prepared 2026</span>
+      <span>Coulsdon · Reigate · Chipstead · Purley</span>
+      <span>Irrigation · Lighting · Robot Mower · Security</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#executive-summary">Executive Summary</a></li>
+    <li><a href="#market">Market Opportunity</a></li>
+    <li><a href="#services">Services &amp; Pricing</a></li>
+    <li><a href="#operations">Operations Plan</a></li>
+    <li><a href="#projections">Revenue Projections</a></li>
+    <li><a href="#marketing">Marketing &amp; Sales</a></li>
+    <li><a href="#finance">Financial Requirements</a></li>
+    <li><a href="#risks">Risks &amp; Mitigations</a></li>
+    <li><a href="#next-steps">90-Day Action Plan</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="executive-summary">
+  <h2>1 · Executive Summary</h2>
+
+  <p><strong>Proposed name:</strong> VerdantIQ <em>(alternatives: SmartTurf, Garden Circuit, Hydralux Gardens)</em></p>
+
+  <p><strong>Mission:</strong> To bring the convenience, efficiency and aesthetics of smart-home technology into the British garden — designing and installing integrated systems that water, light, mow and secure outdoor spaces automatically.</p>
+
+  <h3>Services</h3>
+  <p>Smart irrigation, smart garden lighting, robotic mowers and outdoor security cameras — sold as individual projects or as a full integrated <em>Smart Garden</em> package, with ongoing maintenance contracts.</p>
+
+  <h3>Target Market</h3>
+  <p>Owner-occupied detached and large semi-detached homes across Surrey. Initial focus: Coulsdon, Reigate, Chipstead, Purley, Caterham, Banstead. Typical customer: professional household, income £100k+, garden 100–500 m², already invested in indoor smart-home tech.</p>
+
+  <h3>Revenue Model</h3>
+  <ul>
+    <li>Project revenue (design, supply, install): ~80% of Year 1 turnover</li>
+    <li>Recurring revenue (commissioning, winterisation, call-outs, monitoring): grows from 5% → 30%+ by Year 3</li>
+    <li>Modest margin on hardware supply via trade accounts</li>
+  </ul>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Start-up Capital</div>
+      <div class="value">£12–22k</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Year 1 Turnover</div>
+      <div class="value">£69k</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Year 3 Turnover</div>
+      <div class="value">£245k</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Year 3 Margin</div>
+      <div class="value">~35%</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Funding:</strong> Bootstrappable by a founder with £20k personal capital, or £25k Start Up Loan. No equity dilution required — margins and growth profile suit a lifestyle-to-SME business, not a venture-scale play.
+  </div>
+
+  <h3>Founder Credibility</h3>
+  <p>The founder has personally designed and self-installed a full smart garden at a residential property in Coulsdon, Surrey:</p>
+  <ul>
+    <li><strong>Property:</strong> Two-section garden (~229 m² irrigable), 1 m height difference, retaining wall</li>
+    <li><strong>Irrigation:</strong> 5-zone system, Hunter Pro-HC Hydrawise controller, 16 Pro-S PRS40 heads with MP Rotators, Grundfos SB 3-45 AW pump, 1,000 L Enduramaxx tank — ~£2,668 materials</li>
+    <li><strong>Lighting:</strong> Philips Hue outdoor (spotlights, LightStrip, Neon, Festavia) across upper and lower zones</li>
+    <li><strong>Mower &amp; security:</strong> Integrated in the design with IP65/66 outdoor power infrastructure</li>
+  </ul>
+  <p>This hands-on expertise — gradient pressure compensation, mixed nozzle precipitation, tank sizing, pipe sleeves through retaining walls, WiFi scheduling — is the credibility foundation that competitors cannot fake or acquire quickly.</p>
+</section>
+
+<section id="market">
+  <h2>2 · Market Opportunity</h2>
+
+  <h3>Market Context</h3>
+  <p>The UK smart garden segment sits at the intersection of three growing markets:</p>
+  <ul>
+    <li><strong>UK smart home market</strong> — estimated c. £5–6bn in 2025, forecast to grow ~9–11% annually <em>(Statista, IBISWorld — approximate)</em></li>
+    <li><strong>UK domestic irrigation market</strong> — small but expanding post-2022 hosepipe bans and warmer summers</li>
+    <li><strong>Outdoor security cameras</strong> — one of the fastest-growing smart home categories in the UK</li>
+  </ul>
+  <div class="callout amber">
+    There is no reliable standalone figure for "UK smart garden services" — the category is so new it is not yet broken out by market research firms. <strong>That is itself the opportunity.</strong>
+  </div>
+
+  <h3>Target Customer Profile</h3>
+  <table>
+    <tbody>
+      <tr><th style="width:30%">Geography</th><td>Surrey (CR, RH, GU, KT, SM postcodes initially)</td></tr>
+      <tr><th>Property type</th><td>Detached or large semi-detached, garden 100–500 m²</td></tr>
+      <tr><th>Household income</th><td>£75k–£250k+</td></tr>
+      <tr><th>Age</th><td>35–65</td></tr>
+      <tr><th>Psychographic</th><td>Time-poor, tech-positive, sustainability-conscious; already owns Hue, robotic vac, or smart thermostat; frequent traveller wanting remote monitoring</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Competitive Landscape</h3>
+  <table>
+    <thead>
+      <tr><th>Competitor Type</th><th>Strengths</th><th>Weaknesses</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Traditional Surrey landscapers</td><td>Established, trusted, plant knowledge</td><td>No smart-tech competence; irrigation is a plumbing afterthought</td></tr>
+      <tr><td>National irrigation firms</td><td>Technically strong</td><td>Expensive, corporate, no lighting/mower/security crossover</td></tr>
+      <tr><td>CEDIA smart-home installers</td><td>Strong on tech/networking</td><td>No horticultural knowledge, no outdoor irrigation capability</td></tr>
+      <tr><td>DIY retail (Homebase, Amazon, Wickes)</td><td>Cheap DIY kit</td><td>No design, no install, no service</td></tr>
+      <tr style="background: var(--green-100); font-weight: 600;"><td>VerdantIQ</td><td>The only integrated specialist</td><td>New brand, no track record (yet)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Unique Selling Proposition</h3>
+  <div class="callout">
+    <strong>"One company. One visit. One app."</strong> A single point of contact for a garden that waters itself, lights itself, mows itself and watches itself — designed and installed by someone who has actually lived with the system.
+  </div>
+</section>
+
+<section id="services">
+  <h2>3 · Services &amp; Pricing</h2>
+  <p style="color: var(--muted); font-size: 0.92rem;">All pricing is illustrative, ex-VAT, reflecting Surrey labour rates (£350–£450/day) and typical supplier margins (20–35%).</p>
+
+  <h3>3.1 Smart Irrigation</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
+    <tbody>
+      <tr><td>Site survey + written design</td><td class="num">£200 (credited against install)</td></tr>
+      <tr><td>Sprinkler zone, supply + install</td><td class="num">£450–£650/zone</td></tr>
+      <tr><td>Drip zone, supply + install</td><td class="num">£350–£500/zone</td></tr>
+      <tr><td>Pump + tank (Grundfos/Enduramaxx)</td><td class="num">£1,400–£1,900</td></tr>
+      <tr><td>Hydrawise / BHyve controller + app commissioning</td><td class="num">£350–£500</td></tr>
+      <tr><td>Backflow preventer (WaterSafe plumber)</td><td class="num">£180–£280</td></tr>
+      <tr><td><strong>Annual maintenance</strong> (commission + winterise)</td><td class="num"><strong>£180–£280/yr</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.2 Smart Garden Lighting</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
+    <tbody>
+      <tr><td>Design consultation (mood, zones, control plan)</td><td class="num">£150 (credited)</td></tr>
+      <tr><td>Philips Hue outdoor spotlight, supplied + installed</td><td class="num">£110–£160/fitting</td></tr>
+      <tr><td>Hue LightStrip / Neon / Festavia run, per metre</td><td class="num">£35–£55/m</td></tr>
+      <tr><td>Hue Bridge + power + Zigbee commissioning</td><td class="num">£220–£320</td></tr>
+      <tr><td>IP65/66 outlet + SWA cable run (Part P)</td><td class="num">£180–£340/outlet</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.3 Robotic Mower</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
+    <tbody>
+      <tr><td>Supply + install, Husqvarna 305 / 310E Nera</td><td class="num">£1,400–£1,900</td></tr>
+      <tr><td>Supply + install, 405X / Stihl iMow premium</td><td class="num">£2,600–£3,600</td></tr>
+      <tr><td>EPOS / wire-free boundary mapping + app setup</td><td class="num">Included</td></tr>
+      <tr><td>Charging dock + weatherproof enclosure</td><td class="num">£120–£280</td></tr>
+      <tr><td><strong>Annual service</strong> (blades, software, winter storage)</td><td class="num"><strong>£90–£140/yr</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.4 Outdoor Security Cameras</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
+    <tbody>
+      <tr><td>Reolink / eufy / UniFi IP camera, supply + install</td><td class="num">£220–£360/camera</td></tr>
+      <tr><td>NVR or local storage box</td><td class="num">£280–£450</td></tr>
+      <tr><td>PoE switch + SWA/Cat6 outdoor cable run</td><td class="num">£60–£120/m installed</td></tr>
+      <tr><td>Smart-home integration (Alexa, HomeKit, Home Assistant)</td><td class="num">£150–£250</td></tr>
+      <tr><td>GDPR signage + privacy docs</td><td class="num">Included</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.5 Bundled Packages</h3>
+  <div class="pkg-grid">
+    <div class="pkg">
+      <h4>Starter Smart Garden</h4>
+      <p><em>80–150 m²</em></p>
+      <p>2-zone mains irrigation · 6 Hue spotlights · 2 cameras · entry-level robot mower</p>
+      <div class="price">£3,500 – £5,500</div>
+    </div>
+    <div class="pkg featured">
+      <h4>Founder-Spec Smart Garden</h4>
+      <p><em>150–300 m²</em></p>
+      <p>5-zone pump+tank irrigation · 15+ Hue fittings · 3–4 cameras · mid-range robot mower · full app integration</p>
+      <div class="price">£6,500 – £9,500</div>
+    </div>
+    <div class="pkg">
+      <h4>Premium Smart Garden</h4>
+      <p><em>300+ m², multi-level</em></p>
+      <p>6–8 zones with redundancy · bespoke lighting · Automower 450X / Stihl · UniFi camera system · dedicated garden network</p>
+      <div class="price">£12,000 – £22,000+</div>
+    </div>
+  </div>
+  <p><strong>Bundling discount:</strong> 8–12% off list when three or more categories are combined — reflects efficiency of single-visit cable runs and shared infrastructure.</p>
+</section>
+
+<section id="operations">
+  <h2>4 · Operations Plan</h2>
+
+  <h3>Year 1 — Solo Founder</h3>
+  <p><strong>Founder handles:</strong> enquiries, surveys, design, quoting, all irrigation install, low-voltage lighting, robot mower setup, camera mounting &amp; cable runs, commissioning, customer training.</p>
+  <p><strong>Subcontracted:</strong></p>
+  <ul>
+    <li>Part P electrical (mains outlets, fuse-board mods) — local electrician @ £320–£400/day</li>
+    <li>WaterSafe plumber for backflow + mains connection — £180–£280/job</li>
+    <li>Groundworks (long trenches, retaining wall penetrations) — £150–£180/day</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Realistic capacity:</strong> one small install per week + one medium install per fortnight ≈ 35 install-weeks × £4,500 avg = revenue ceiling ~£150k at full booking. Year 1 plan targets conservative ~£85k.
+  </div>
+
+  <h3>Tools &amp; Equipment (One-off)</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Used Transit Connect / Berlingo-class van</td><td class="num">£8,000–£10,000</td></tr>
+      <tr><td>Van racking, signage, security</td><td class="num">£700</td></tr>
+      <tr><td>Trenching &amp; pipe tools (spade, mattock, crimpers, cutters)</td><td class="num">£400</td></tr>
+      <tr><td>Power tools (impact, SDS, multi-tool)</td><td class="num">£500</td></tr>
+      <tr><td>Cable pullers, fish tape, ladders</td><td class="num">£250</td></tr>
+      <tr><td>Laptop + iPad for on-site design &amp; app commissioning</td><td class="num">£900</td></tr>
+      <tr><td>Demo kit (Hydrawise / BHyve)</td><td class="num">£250</td></tr>
+      <tr><td>PPE, first aid, site protection</td><td class="num">£200</td></tr>
+      <tr style="font-weight:700; background: var(--green-100);"><td>Total tooling</td><td class="num">~£11,200</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Certifications &amp; Compliance</h3>
+  <ul>
+    <li>Public Liability Insurance (£2m min, £5m preferred) — ~£600/yr</li>
+    <li>Professional Indemnity — ~£350/yr</li>
+    <li>Tool/Van insurance — ~£700/yr</li>
+    <li>WaterSafe approval (Year 2 goal) — £200 + training</li>
+    <li>British Irrigation Association membership — £300/yr</li>
+    <li>ICO registration (camera customers) — £40/yr</li>
+  </ul>
+
+  <h3>Key Suppliers</h3>
+  <table>
+    <thead><tr><th>Supplier</th><th>Product</th><th>Terms</th></tr></thead>
+    <tbody>
+      <tr><td>Reesink Turfcare / Irritech</td><td>Hunter irrigation trade</td><td>28-day, trade discount</td></tr>
+      <tr><td>Anchor Pumps / DirectWaterPumps</td><td>Grundfos pumps</td><td>Trade account</td></tr>
+      <tr><td>Enduramaxx / Tank Shop</td><td>Water tanks</td><td>Direct trade</td></tr>
+      <tr><td>LightingDirect / Smart Home Sounds</td><td>Philips Hue outdoor</td><td>Reseller</td></tr>
+      <tr><td>Husqvarna approved dealers</td><td>Automower</td><td>Partner programme</td></tr>
+      <tr><td>Reolink / UniFi / eufy distributors</td><td>Cameras &amp; networking</td><td>Trade/reseller</td></tr>
+      <tr><td>CEF / Screwfix Trade</td><td>Consumables, cable, conduit</td><td>Weekly account</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Geographic Roll-out</h3>
+  <ul>
+    <li><strong>Year 1:</strong> CR3 / CR5 / CR8 / RH1 / RH2 / SM7 — within ~25 minutes of base</li>
+    <li><strong>Year 2:</strong> Extend into GU1–GU7 (Guildford), KT18–KT23 (Epsom/Leatherhead)</li>
+    <li><strong>Year 3:</strong> County-wide Surrey + premium West London (Richmond, Kingston, Chiswick)</li>
+  </ul>
+</section>
+
+<section id="projections">
+  <h2>5 · Revenue Projections (3-Year)</h2>
+  <p style="color: var(--muted); font-size: 0.92rem;">All figures ex-VAT, realistic ranges, based on a single founder scaling carefully.</p>
+
+  <table>
+    <thead>
+      <tr><th>Metric</th><th class="num">Year 1</th><th class="num">Year 2</th><th class="num">Year 3</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Installs completed</td><td class="num">14</td><td class="num">26</td><td class="num">40+</td></tr>
+      <tr><td>Avg. project value</td><td class="num">£4,800</td><td class="num">£5,300</td><td class="num">£5,800</td></tr>
+      <tr><td>Project revenue</td><td class="num">£67,200</td><td class="num">£138,000</td><td class="num">£232,000</td></tr>
+      <tr><td>Maintenance contracts</td><td class="num">~5</td><td class="num">~25</td><td class="num">~55</td></tr>
+      <tr><td>Recurring revenue</td><td class="num">£1,800</td><td class="num">£5,500</td><td class="num">£15,000+</td></tr>
+      <tr style="font-weight:700; background: var(--green-100);"><td>Total turnover</td><td class="num">£69,000</td><td class="num">£143,000</td><td class="num">£245,000</td></tr>
+      <tr><td>Gross margin</td><td class="num">~30%</td><td class="num">~33%</td><td class="num">~35%</td></tr>
+      <tr><td>Net margin target</td><td class="num">Near break-even</td><td class="num">7–10%</td><td class="num">12–15%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Seasonality</h3>
+  <table>
+    <thead><tr><th>Period</th><th>Demand</th><th>Primary Activity</th></tr></thead>
+    <tbody>
+      <tr><td>Jan–Feb</td><td>Low</td><td>Quoting, winter servicing, design work, marketing</td></tr>
+      <tr><td>Mar–Apr</td><td><strong>Peak</strong></td><td>Spring commissioning, new installs begin</td></tr>
+      <tr><td>May–Jul</td><td><strong>Peak</strong></td><td>Install backlog, enquiries at maximum</td></tr>
+      <tr><td>Aug–Sep</td><td>High</td><td>Continued installs, urgency during dry spells</td></tr>
+      <tr><td>Oct–Nov</td><td>Medium</td><td>Lighting projects sell well, winterisations</td></tr>
+      <tr><td>Dec</td><td>Low</td><td>Festive Festavia installs, year-end admin</td></tr>
+    </tbody>
+  </table>
+  <div class="callout amber">
+    <strong>Cash-flow implication:</strong> Aggressive provisioning during peak months, disciplined saving for the Jan–Feb trough. Maintenance contracts are priced to fall in Q1 to smooth the dip.
+  </div>
+</section>
+
+<section id="marketing">
+  <h2>6 · Marketing &amp; Sales</h2>
+
+  <h3>Channel Priorities</h3>
+  <ol>
+    <li><strong>Google Business Profile + local SEO</strong> — "smart irrigation Surrey", "robot mower installer Reigate", "garden lighting Coulsdon". Budget: ~£80/month.</li>
+    <li><strong>Instagram &amp; TikTok</strong> — before/after reels, time-lapse installs, "what's inside a valve box" explainers. Tech-adjacent audience consumes this heavily.</li>
+    <li><strong>YouTube long-form</strong> — founder documents the proof-of-concept install. Ranks on "Hunter Pro-HC setup", "Grundfos SB install". Durable inbound moat competitors can't replicate quickly.</li>
+    <li><strong>Nextdoor &amp; community Facebook groups</strong> — high conversion in Surrey commuter belt; word-of-mouth capital.</li>
+    <li><strong>Partnerships</strong> with:
+      <ul>
+        <li>Garden designers (want smart tech but can't install)</li>
+        <li>Landscapers (hard landscaping but not irrigation)</li>
+        <li>Builders / renovation firms (new-build integration)</li>
+        <li>Smart-home AV installers (they own the house; you own the garden)</li>
+      </ul>
+      Referral fee: 7–10% of net project value.
+    </li>
+    <li><strong>Hero case study</strong> — fully documented founder's garden (123 Downs, Coulsdon): schematic, component list, time-lapse, 6-month results. Landing-page centrepiece.</li>
+    <li><strong>Referral incentive:</strong> £150 John Lewis voucher per converting referral.</li>
+  </ol>
+
+  <h3>Sales Process</h3>
+  <p style="font-family: monospace; background: #f4f6f2; padding: 14px; border-radius: 6px; font-size: 0.9rem;">
+    Enquiry → Qualifying call → Paid site survey (credited) → Written design + quote → 40% deposit → Install window booked → Commissioning + training → 12-month soft review for maintenance upsell
+  </p>
+</section>
+
+<section id="finance">
+  <h2>7 · Financial Requirements</h2>
+
+  <h3>Start-up Capital</h3>
+  <table>
+    <thead><tr><th>Item</th><th class="num">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Used van</td><td class="num">£9,000</td></tr>
+      <tr><td>Tools + consumables</td><td class="num">£2,200</td></tr>
+      <tr><td>Insurance (Year 1)</td><td class="num">£1,650</td></tr>
+      <tr><td>Certifications + memberships</td><td class="num">£650</td></tr>
+      <tr><td>Website + GBP + initial SEO</td><td class="num">£1,800</td></tr>
+      <tr><td>Initial stock float (fittings, spare heads, pump, tank)</td><td class="num">£2,500</td></tr>
+      <tr><td>Company formation, accountant Year 1 retainer</td><td class="num">£900</td></tr>
+      <tr><td>Working capital buffer</td><td class="num">£3,000</td></tr>
+      <tr style="font-weight:700; background: var(--green-100);"><td>Total start-up</td><td class="num">~£21,700</td></tr>
+    </tbody>
+  </table>
+  <p><em>A leaner £12–15k variant is possible (cheaper van, no stock float) but slows the first 6 months.</em></p>
+
+  <h3>Break-even</h3>
+  <div class="callout">
+    At ~35% gross margin and fixed monthly overheads of ~£1,800 (van, insurance, software, SEO, phone, accountant), break-even = <strong>~£5,100/month revenue ≈ one £5k install per month.</strong> Achievable from month 3 with basic marketing.
+  </div>
+
+  <h3>Funding Strategy</h3>
+  <ul>
+    <li>Bootstrappable by founder with £20k personal capital</li>
+    <li>Alternative: Start Up Loans Company (£25k @ c. 6.2% APR, 5-year term)</li>
+    <li><strong>No equity investment needed</strong> — margins and growth profile don't warrant VC. Rejecting dilution is the right call.</li>
+  </ul>
+</section>
+
+<section id="risks">
+  <h2>8 · Risks &amp; Mitigations</h2>
+  <table>
+    <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Seasonality cash-flow crunch (Jan–Feb)</td>
+        <td class="risk-high">High</td>
+        <td class="risk-med">Medium</td>
+        <td>Price maintenance contracts to fall in Q1; sell Festavia/lighting Oct–Dec; hold 3 months overhead reserve</td>
+      </tr>
+      <tr>
+        <td>Water Regulations non-compliance (fluid-cat-5 backflow)</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-high">High</td>
+        <td>Always subcontract backflow to WaterSafe plumber until founder gains own certification</td>
+      </tr>
+      <tr>
+        <td>Part P electrical breach (DIY mains work)</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-high">High</td>
+        <td>Never touch consumer-unit / new-circuit work without Part P sign-off; document every job</td>
+      </tr>
+      <tr>
+        <td>GDPR/ICO breaches on camera installs</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-med">Medium</td>
+        <td>Standard privacy pack per customer; ICO registered; signage templates; never aim at neighbour property or public highway</td>
+      </tr>
+      <tr>
+        <td>Competitor entry (landscaper adds smart-tech division)</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-med">Medium</td>
+        <td>Build content + brand moat; lock in repeat customers with maintenance contracts</td>
+      </tr>
+      <tr>
+        <td>Supply chain (Hunter/Grundfos lead times)</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-med">Medium</td>
+        <td>Diversify 2–3 trade suppliers; hold critical-part stock float</td>
+      </tr>
+      <tr>
+        <td>Injury / illness (sole-trader single point of failure)</td>
+        <td class="risk-med">Medium</td>
+        <td class="risk-high">High</td>
+        <td>Income protection insurance; documented processes for subcontractor cover</td>
+      </tr>
+      <tr>
+        <td>Customer non-payment</td>
+        <td class="risk-low">Low</td>
+        <td class="risk-med">Medium</td>
+        <td>40% deposit, 40% on install day, 20% on completion; on-site card payment</td>
+      </tr>
+      <tr>
+        <td>Hardware warranty claim costs</td>
+        <td class="risk-low">Low</td>
+        <td class="risk-med">Medium</td>
+        <td>Install only products with robust UK trade warranties; pass to customer where possible</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="next-steps">
+  <h2>9 · 90-Day Action Plan</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>Days 1–30 · Foundation</h4>
+      <ul>
+        <li>Register limited company (Companies House, ~£50)</li>
+        <li>Open business bank account (Starling / Tide / Mettle)</li>
+        <li>Quote and purchase insurance (PL, PI, Tools, Van)</li>
+        <li>Register with ICO (£40)</li>
+        <li>Apply for BIA membership</li>
+        <li>Meet 2 Part P electricians + 1 WaterSafe plumber</li>
+        <li>Buy used van; fit out basic racking</li>
+        <li>Finalise brand name, logo, domain, website wireframe</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>Days 31–60 · Build</h4>
+      <ul>
+        <li>Website live (services + founder case study)</li>
+        <li>Google Business Profile live with proof-of-concept photography</li>
+        <li>Instagram + YouTube launched — 5 posts, 2 videos minimum</li>
+        <li>Open trade accounts with 3 key suppliers</li>
+        <li>Price list &amp; written design-proposal template finalised</li>
+        <li>Standard contracts drafted (quote acceptance, maintenance, GDPR)</li>
+        <li>First 3 pilot customers lined up — 15–20% discount for case-study rights</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>Days 61–90 · Trade</h4>
+      <ul>
+        <li>Complete pilot install #1 (small package, low-risk, fast)</li>
+        <li>Publish first case-study content from pilot</li>
+        <li>Complete pilot install #2 (medium package)</li>
+        <li>Build paid-customer pipeline for spring peak (Mar–Apr)</li>
+        <li>Review unit economics — adjust pricing if margins tight</li>
+        <li>Book spring marketing push (local press, Nextdoor, Instagram ads)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Closing note:</strong> This plan intentionally models a <em>sustainable lifestyle-SME</em>, not a venture rocket ship. The business is defensible because it sits at a genuine under-served intersection; it's cash-generative from Year 1; and its founder has rare hands-on credibility that competitors cannot fake. The proof-of-concept garden at 123 Downs, Coulsdon is not just a home — it's the most cost-effective marketing asset this business will ever own.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Figures and projections are grounded estimates for an early-stage operation in Surrey, UK, as of 2026.<br>
+  Market statistics cited are best-available public estimates; re-verify against current reports before any external submission.
+</footer>
+
+</div>
+</body>
+</html>

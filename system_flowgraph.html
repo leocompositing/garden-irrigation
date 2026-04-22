@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irrigation System Flow Diagram - 123 Downs</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; color: #222; }
+h1 { text-align: center; color: #1565C0; font-size: 20px; margin-bottom: 4px; }
+.subtitle { text-align: center; color: #888; font-size: 12px; margin-bottom: 24px; }
+
+/* Pump comparison banner */
+.pump-compare { background: white; border-radius: 10px; padding: 20px; margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid #1565C0; }
+.pump-compare h2 { color: #1565C0; font-size: 16px; margin-bottom: 14px; }
+.pump-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pump-card { border: 2px solid #ddd; border-radius: 8px; padding: 14px; position: relative; }
+.pump-card.recommended { border-color: #4CAF50; }
+.pump-card.recommended::before { content: "RECOMMENDED"; position: absolute; top: -10px; left: 12px;
+  background: #4CAF50; color: white; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 3px; }
+.pump-name { font-weight: bold; font-size: 13px; margin-bottom: 6px; }
+.pump-price { font-size: 20px; font-weight: bold; color: #1565C0; margin-bottom: 8px; }
+.pump-feature { font-size: 11px; padding: 2px 0; color: #555; }
+.pump-feature span { display: inline-block; width: 14px; }
+.verdict { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 12px 16px; border-radius: 4px; margin-top: 14px; font-size: 13px; }
+.verdict strong { color: #2E7D32; }
+
+/* Main diagram layout */
+.diagram-wrap { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.diagram-title { color: #1565C0; font-size: 15px; font-weight: bold; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #E3F2FD; }
+
+/* Two-column layout: fill path | pump output path */
+.flow-outer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: start; }
+
+/* Column headers */
+.col-header { text-align: center; font-size: 11px; font-weight: bold; padding: 6px 12px; border-radius: 6px 6px 0 0; margin-bottom: 0; }
+.col-fill { background: #1565C0; color: white; }
+.col-pump { background: #E65100; color: white; }
+
+/* Component card */
+.comp { border-radius: 8px; padding: 10px 12px; margin: 0 auto 0 auto; position: relative;
+  width: 100%; max-width: 280px; font-size: 11px; }
+.comp-fill { background: #E3F2FD; border: 1.5px solid #90CAF9; }
+.comp-pump { background: #FFF3E0; border: 1.5px solid #FFCC80; }
+.comp-tank { background: #F3E5F5; border: 2px solid #AB47BC; }
+.comp-manifold { background: #E8F5E9; border: 2px solid #66BB6A; }
+.comp-meter { background: #E0F7FA; border: 1.5px solid #4DD0E1; }
+.comp-winter { background: #FFF8E1; border: 1.5px solid #FFD54F; }
+.comp-title { font-weight: bold; font-size: 12px; margin-bottom: 4px; }
+.comp-fill .comp-title { color: #1565C0; }
+.comp-pump .comp-title { color: #E65100; }
+.comp-tank .comp-title { color: #7B1FA2; }
+.comp-manifold .comp-title { color: #2E7D32; }
+.comp-meter .comp-title { color: #00838F; }
+.comp-winter .comp-title { color: #F57F17; }
+.comp-spec { color: #555; margin: 1px 0; font-size: 10.5px; }
+.comp-price { display: inline-block; background: #1565C0; color: white; border-radius: 3px;
+  padding: 1px 6px; font-size: 10px; font-weight: bold; margin: 4px 0 2px; }
+.comp-pump .comp-price { background: #E65100; }
+.comp-tank .comp-price { background: #7B1FA2; }
+.comp-manifold .comp-price { background: #2E7D32; }
+.comp-meter .comp-price { background: #00838F; }
+.comp-winter .comp-price { background: #F57F17; }
+.comp-price.tbc { background: #9E9E9E; }
+.buy-link { display: inline-block; margin-top: 4px; font-size: 10px; color: #1565C0;
+  text-decoration: none; border-bottom: 1px dotted #1565C0; }
+.buy-link:hover { color: #E65100; }
+.by-plumber { display: inline-block; background: #E53935; color: white; border-radius: 3px;
+  padding: 1px 6px; font-size: 10px; font-weight: bold; margin: 4px 0 2px; }
+.from-mike { display: inline-block; background: #FF9800; color: white; border-radius: 3px;
+  padding: 1px 6px; font-size: 10px; font-weight: bold; margin: 4px 0 2px; }
+
+/* Arrows */
+.arrow-down { text-align: center; font-size: 22px; color: #1565C0; line-height: 1; padding: 2px 0; }
+.arrow-down.pump { color: #E65100; }
+.arrow-down.tank { color: #7B1FA2; }
+.arrow-down.manifold { color: #2E7D32; }
+.arrow-down.meter { color: #00838F; }
+.arrow-down.winter { color: #F57F17; }
+.arrow-label { font-size: 9.5px; color: #888; display: block; text-align: center; margin-top: -2px; }
+
+/* Tank centre column */
+.tank-col { display: flex; flex-direction: column; align-items: center; padding: 0 16px; }
+.tank-box { border: 3px solid #7B1FA2; background: #F9F0FF; border-radius: 12px;
+  padding: 16px; width: 200px; text-align: center; position: relative; margin: 8px 0; }
+.tank-box-title { color: #7B1FA2; font-weight: bold; font-size: 12px; margin-bottom: 8px; }
+.tank-detail { font-size: 10px; color: #555; margin: 2px 0; }
+.pump-inside { background: #FFF3E0; border: 1.5px dashed #E65100; border-radius: 6px;
+  padding: 8px; margin: 8px 0 4px; }
+.pump-inside-title { color: #E65100; font-weight: bold; font-size: 10.5px; }
+.float-label { font-size: 9px; color: #7B1FA2; font-style: italic; margin-top: 4px; }
+
+/* Horizontal entry arrows into tank */
+.h-arrow-right { font-size: 18px; color: #1565C0; }
+.h-arrow-left { font-size: 18px; color: #E65100; }
+
+/* Section connecting fills to tank (horizontal row) */
+.fill-to-tank { display: flex; align-items: center; justify-content: center;
+  gap: 6px; margin: 12px 0; font-size: 10px; color: #888; }
+.tank-connection { background: #E3F2FD; border: 1px solid #90CAF9; border-radius: 4px;
+  padding: 3px 8px; font-size: 10px; color: #1565C0; font-weight: bold; }
+
+/* Connector side labels */
+.side-label { font-size: 9px; color: #aaa; text-align: center; font-style: italic; margin: 1px 0; }
+
+/* Zone colours at manifold */
+.zone-list { margin-top: 8px; }
+.zone-item { display: flex; align-items: center; gap: 6px; margin: 3px 0; font-size: 10px; }
+.zone-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* Legend */
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; padding-top: 16px;
+  border-top: 1px solid #eee; font-size: 11px; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-swatch { width: 14px; height: 14px; border-radius: 3px; }
+
+/* Pipe size callouts */
+.pipe-size { display: inline-block; background: white; border: 1px solid #bbb;
+  border-radius: 10px; padding: 0 6px; font-size: 9px; color: #666; margin: 0 2px; }
+
+/* Notes box */
+.notes { background: #FFFDE7; border-left: 4px solid #FBC02D; border-radius: 4px;
+  padding: 12px 16px; margin-top: 20px; font-size: 12px; line-height: 1.7; }
+.notes strong { color: #F57F17; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .flow-outer { grid-template-columns: 1fr; }
+  .pump-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<h1>Irrigation System Flow Diagram</h1>
+<p class="subtitle">123 Downs, Coulsdon, Surrey &mdash; Complete part-by-part assembly from mains supply through manifold to sprinklers &amp; drip</p>
+
+<div style="background:#f0f9ff;border:2px solid #1e40af;border-radius:8px;padding:14px 18px;margin:16px 0 20px 0;max-width:1100px;">
+  <div style="font-weight:bold;color:#1e40af;font-size:15px;margin-bottom:8px;">📦 Multi-Box Layout — see <code>valve_box_layout.svg</code> for plan view</div>
+  <table style="font-size:12px;border-collapse:collapse;width:100%;">
+    <tr style="background:#dbeafe;">
+      <th style="padding:6px 10px;text-align:left;border:1px solid #93c5fd;">Box</th>
+      <th style="padding:6px 10px;text-align:left;border:1px solid #93c5fd;">Contents</th>
+      <th style="padding:6px 10px;text-align:left;border:1px solid #93c5fd;">Box spec</th>
+      <th style="padding:6px 10px;text-align:left;border:1px solid #93c5fd;">Source</th>
+    </tr>
+    <tr>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;font-weight:bold;">BOX A</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">HYFM25 flow meter + 2× PM Female Adaptor 25mm×1" (Pipestock #355403)</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">14" Jumbo (~560 × 400 mm)</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">Self-sourced ~£50</td>
+    </tr>
+    <tr style="background:#fafafa;">
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;font-weight:bold;">BOX B</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">PGV-101 master valve + 2× PM Male Adaptor 25mm×1" (Pipestock #355293) + blow-out tee (PM Female Tee #355338) + Oumuik ½" M×F BSP ball valve + Euro male quick-plug</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">14" Jumbo (~560 × 400 mm)</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">Self-sourced ~£50</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;font-weight:bold;">BOX C</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">ISM-3zone manifold (25mm compression inlet pre-fitted) + 3× PGV zone valves</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">Irritec 12" Jumbo (~485 × 355 mm)</td>
+      <td style="padding:6px 10px;border:1px solid #cbd5e1;">Mike's kit (already shipped)</td>
+    </tr>
+  </table>
+  <div style="font-size:11px;color:#555;margin-top:8px;line-height:1.4;">
+    <strong>Straight-pipe rule:</strong> ≥250 mm straight MDPE upstream of Box A (10× Ø); ≥125 mm straight MDPE between Box A outlet and Box B inlet (5× Ø). Straight runs live in <em>buried MDPE between boxes</em>, not inside them.<br>
+    <strong>Winterisation:</strong> blow-out tee is downstream of the meter (in Box B) — compressed air never passes through the HYFM25 turbine.
+  </div>
+</div>
+
+<!-- FLOW DIAGRAM -->
+<div class="diagram-wrap">
+  <div class="diagram-title">System Flow Diagram &mdash; Mains Supply to Manifold</div>
+
+  <div class="flow-outer">
+
+    <!-- ========== LEFT: MAINS FILL PATH ========== -->
+    <div>
+      <div class="col-header col-fill">MAINS FILL PATH &mdash; 20mm</div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;padding-top:8px;">
+
+        <!-- 1. Mains tap -->
+        <div class="comp comp-fill">
+          <div class="comp-title">Mains Water Tap</div>
+          <div class="comp-spec">Existing outside tap / stopcock</div>
+          <div class="comp-spec">½" or ¾" BSP male outlet</div>
+        </div>
+        <div class="arrow-down">↓</div>
+
+        <!-- 2. Backflow preventer -->
+        <div class="comp comp-fill">
+          <div class="comp-title">Backflow Preventer (Type BA)</div>
+          <div class="comp-spec">Double check valve assembly</div>
+          <div class="comp-spec">Required by Water Regs 1999</div>
+          <div class="comp-spec">Fitted on mains tap by plumber</div>
+          <span class="by-plumber">Plumber installs &amp; supplies</span>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label"><span class="pipe-size">20mm MDPE</span></span>
+
+        <!-- 2a. Fill-line blow-out tee at TAP END (low point) -->
+        <div class="comp comp-fill" style="border-left:4px solid #F57F17;background:#FFF8E1;">
+          <div class="comp-title">❄ Fill-Line Blow-out Tee (TAP END — LOW POINT)</div>
+          <div class="comp-spec"><strong>PM Compression Tee 20 × 20 × ½"F</strong> (Philmac PM range, Pipestock — confirm SKU) — inline on fill line, branch rises vertically into small access box</div>
+          <div class="comp-spec">Branch fitted with <strong>Oumuik ½" M×F BSP ball valve</strong> (2nd unit) + <strong>Euro male quick-plug</strong> (spare from row-16 3-pack)</div>
+          <div class="comp-spec"><strong>Why at tap end:</strong> tap is LOW, tank is HIGH. Water gravity-drains out the tee when opened; compressor then sweeps residual water UP the pipe, out the open float valve into the tank. Tee at tank end would NOT work — air would short-circuit straight to the float valve without clearing the uphill run.</div>
+          <div class="comp-spec">Keep ball valve CLOSED in normal operation. Euro plug acts as a self-sealing cap.</div>
+          <span class="comp-price">£11.00 (tee) + £9.99 (ball valve)</span>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label"><span class="pipe-size">20mm MDPE</span></span>
+
+        <!-- 2b. 20mm MDPE fill pipe -->
+        <div class="comp comp-fill">
+          <div class="comp-title">20mm Blue MDPE Pipe (fill line)</div>
+          <div class="comp-spec">Blue MDPE, 12.5 bar rated, Made in Britain</div>
+          <div class="comp-spec">25m coil — mains tap to tank</div>
+          <div class="comp-spec"><strong>Shared trench with 25mm mainline + laterals (Option B)</strong>: 300mm wide × 400mm deep, 300mm bucket on mini digger. Frost-shallow — mitigated by fill-line blow-out tee at tap end (drains + blows the uphill run in winterisation). Yellow "Water" warning tape 250mm above.</div>
+          <div class="comp-spec">Route turns 5× 90° corners → add 5× PM 20mm comp×comp elbows (~£7 ea, ~£35 total). MDPE min bend radius ~200mm, cannot sweep tight corners without kinking.</div>
+          <div class="comp-spec"><strong>Pipestock #354901</strong></div>
+          <span class="comp-price">£14.41</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/mdpe-pipe-blue-12-5-bar-25m-x-20mm-354901" target="_blank">Buy → Pipestock #354901</a>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label"><span class="pipe-size">20mm MDPE</span></span>
+
+        <!-- 3. MDPE isolation ball valve -->
+        <div class="comp comp-fill">
+          <div class="comp-title">MDPE Ball Valve 20mm</div>
+          <div class="comp-spec">Compression × Compression</div>
+          <div class="comp-spec">Manual isolation of fill line — in accessible position (near tank or at stopcock side)</div>
+          <div class="comp-spec">Use 2× 20mm pipe liners (Pipestock #352816) — one per compression end</div>
+          <div class="comp-spec"><strong>Pipestock #350724</strong></div>
+          <span class="comp-price">£13.97</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/mdpe-ball-valve-compression-x-compression-20mm-350724" target="_blank">Buy → Pipestock #350724</a>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label"><span class="pipe-size">20mm MDPE</span></span>
+
+        <!-- 4. PM Female Elbow 20mm x 1/2" -->
+        <div class="comp comp-fill">
+          <div class="comp-title">PM Female Elbow 20mm × ½"</div>
+          <div class="comp-spec">20mm compression × ½" BSP female</div>
+          <div class="comp-spec">Transitions 20mm MDPE → float valve ½" BSP male</div>
+          <div class="comp-spec">Install rules: 2–3 wraps PTFE on the ½" male thread, hand-tight +1 turn (plastic female — do not over-torque)</div>
+          <div class="comp-spec"><strong>Pipestock #355373</strong></div>
+          <span class="comp-price">£6.03</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-female-elbow-20mm-x-thread-1-2-355373" target="_blank">Buy → Pipestock #355373</a>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label">½" BSP male</span>
+
+        <!-- 5. Float fill valve -->
+        <div class="comp comp-fill">
+          <div class="comp-title">Flomasta Float Fill Valve</div>
+          <div class="comp-spec">½" BSP brass, side-entry</div>
+          <div class="comp-spec">0.1–10 bar working pressure</div>
+          <div class="comp-spec">Mounts through tank wall, back-nut inside</div>
+          <span class="comp-price">£9.19</span><br>
+          <a class="buy-link" href="https://www.screwfix.com/p/flomasta-brass-part-1-float-fill-valve-1-2-/134JN" target="_blank">Buy → Screwfix</a>
+        </div>
+        <div class="arrow-down">↓</div>
+        <span class="arrow-label">connected to float arm →</span>
+
+        <!-- 6. Ball float -->
+        <div class="comp comp-fill">
+          <div class="comp-title">Flomasta Cylindrical Ball Float</div>
+          <div class="comp-spec">90mm, fits Flomasta valves</div>
+          <div class="comp-spec">Controls water level in tank</div>
+          <div class="comp-spec">Sits inside tank on float arm</div>
+          <span class="comp-price">£3.99</span><br>
+          <a class="buy-link" href="https://www.screwfix.com/p/flomasta-cylindrical-ball-float-90mm/681pw" target="_blank">Buy → Screwfix</a>
+        </div>
+
+        <div style="margin-top:10px;text-align:center;font-size:10px;color:#1565C0;">
+          <span style="font-size:18px;">→</span> INTO TANK (top or side inlet)
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========== CENTRE: TANK ========== -->
+    <div class="tank-col" style="padding-top:8px;">
+      <div style="font-size:10px;color:#7B1FA2;font-weight:bold;text-align:center;margin-bottom:6px;">STORAGE TANK</div>
+
+      <div class="tank-box">
+        <div class="tank-box-title">Enduramaxx 1000L Slimline</div>
+        <div class="tank-detail">Non-potable rainwater harvesting</div>
+        <div class="tank-detail">(OK for garden irrigation — no mains contact)</div>
+        <div class="tank-detail">1350 × 760 × 1300mm</div>
+        <div class="tank-detail">2 × 455mm lids</div>
+        <div class="tank-detail" style="color:#F57F17;font-weight:bold;">1" BSP pre-drilled outlet (low, winter drain only)</div>
+        <span class="comp-price" style="background:#7B1FA2;">£408.00</span><br>
+        <a class="buy-link" href="https://www.tanksforeverything.co.uk/enduramaxx-17131201-1000-litre-slimline-rainwater-harvesting-tank-with-2-lids" target="_blank" style="font-size:9.5px;">Buy → Tanks for Everything</a>
+
+        <div class="pump-inside">
+          <div class="pump-inside-title">Grundfos SB 3-45AW</div>
+          <div style="font-size:9.5px;color:#555;margin:2px 0;">Submersible, 240V, float switch</div>
+          <div style="font-size:9.5px;color:#555;margin:2px 0;">1" BSP female outlet</div>
+          <div style="font-size:9.5px;color:#555;margin:2px 0;">Max flow: 3 m³/h (50 L/min)</div>
+          <div style="font-size:9.5px;color:#555;margin:2px 0;">Max head: 45m (4.5 bar)</div>
+          <span class="comp-price" style="background:#E65100;">£584</span><br>
+          <a class="buy-link" href="https://www.anchorpumps.com/grundfos-sb-3-45aw-submersible-pump-240v-with-floating-suction-strainer-and-float-switch" target="_blank" style="font-size:9.5px;">Buy → Anchor Pumps</a>
+          <div class="float-label">▲ floating suction strainer<br>draws from water surface</div>
+        </div>
+
+        <div style="font-size:9px;color:#7B1FA2;margin-top:6px;">← Fill inlet (from float valve)<br>→ Pump outlet (to bulkhead)<br>↓ Winter drain (1" BSP low outlet)</div>
+      </div>
+
+      <!-- Winter drain assembly -->
+      <div class="comp comp-winter" style="margin-top:10px;max-width:220px;">
+        <div class="comp-title">❄ Tank Winter Drain</div>
+        <div class="comp-spec">Factory 1" BSP male boss (low on tank side wall, ~100–150mm from base)</div>
+        <div class="comp-spec">Drains tank by gravity in late Oct</div>
+        <div style="margin-top:6px;padding:6px;background:#FFFDE7;border-left:3px solid #F57F17;border-radius:3px;">
+          <div style="font-size:10px;font-weight:bold;color:#F57F17;margin-bottom:3px;">Assembly (from tank outward):</div>
+          <div class="comp-spec">① Enduramaxx 1" F×F union ball valve — £18.00 <a class="buy-link" href="https://www.tanksforeverything.co.uk/enduramaxx-17131201-1000-litre-slimline-rainwater-harvesting-tank-with-2-lids" target="_blank">Tanks for Everything</a></div>
+          <div class="comp-spec">② 1" BSP male × garden hose tail — £4.99 <a class="buy-link" href="https://www.screwfix.com/c/plumbing/hose-fittings/cat820708" target="_blank">Screwfix</a></div>
+          <div class="comp-spec">Normally-closed. Open once a year to drain.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========== RIGHT: PUMP OUTPUT PATH ========== -->
+    <div>
+      <div class="col-header col-pump">PUMP OUTPUT PATH &mdash; 25mm</div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;padding-top:8px;">
+
+        <!-- Pump outlet -->
+        <div class="comp comp-pump">
+          <div class="comp-title">Pump Outlet</div>
+          <div class="comp-spec">1" BSP female on pump body</div>
+          <div class="comp-spec">Located inside tank</div>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">1" BSP male thread</span>
+
+        <!-- 1" male hose tail #1 -->
+        <div class="comp comp-pump">
+          <div class="comp-title">1" Male BSP Hose Tail #1 ✓ ORDERED</div>
+          <div class="comp-spec">Josaton brass, 1" BSP male × 25mm barb</div>
+          <div class="comp-spec">Screws into pump outlet</div>
+          <div class="comp-spec">Secure with 2× stainless jubilee clips (double-clamp)</div>
+          <span class="comp-price" style="background:#2E7D32;">£13.99 (4-pack, use 2)</span><br>
+          <a class="buy-link" href="https://amzn.eu/d/0ah7GujE" target="_blank">Buy → Amazon</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">25mm barb + jubilee clip</span>
+
+        <!-- Flex hose -->
+        <div class="comp comp-pump">
+          <div class="comp-title">AP Automotive 25mm Clear Braided PVC Hose ✓ ORDERED</div>
+          <div class="comp-spec">3m length (pump discharge flex — covers tank-bottom pump to top bulkhead with slack)</div>
+          <div class="comp-spec">13.5 bar rated, -15 °C to +60 °C, 4mm wall</div>
+          <div class="comp-spec">Double-clamp at each barb (2× stainless jubilee clips per joint) — braided PVC creeps under pressure</div>
+          <div class="comp-spec"><strong>ASIN B0BG6Z16F4</strong> — Amazon's Choice</div>
+          <span class="comp-price" style="background:#2E7D32;">£15.75</span><br>
+          <a class="buy-link" href="https://www.amazon.co.uk/dp/B0BG6Z16F4" target="_blank">Buy → Amazon</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">25mm barb + jubilee clip</span>
+
+        <!-- 1" male hose tail #2 -->
+        <div class="comp comp-pump">
+          <div class="comp-title">1" Male BSP Hose Tail #2</div>
+          <div class="comp-spec">Brass, 25mm barb × 1" BSP male</div>
+          <div class="comp-spec">Screws into bulkhead (female side)</div>
+          <div class="comp-spec">From same 4-pack as #1</div>
+          <span class="comp-price" style="background:#E65100;">Included in 4-pack above</span>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">1" BSP male → bulkhead female</span>
+
+        <!-- Bulkhead -->
+        <div class="comp comp-pump">
+          <div class="comp-title">ERGAOBOY 1" BSP Brass Bulkhead ✓ ORDERED</div>
+          <div class="comp-spec">Female inside tank | Male outside</div>
+          <div class="comp-spec">2 × rubber sealing washers</div>
+          <div class="comp-spec">10 bar (145 PSI) rated — confirmed adequate for 4 bar pump</div>
+          <span class="comp-price" style="background:#2E7D32;">£12.99</span><br>
+          <a class="buy-link" href="https://amzn.eu/d/00c0ceU2" target="_blank">Buy → Amazon</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">═══ TANK WALL ═══</span>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label">1" BSP male outside</span>
+
+        <!-- Philmac 25mm x 1" elbow -->
+        <div class="comp comp-pump">
+          <div class="comp-title">Philmac Female Elbow</div>
+          <div class="comp-spec">25mm compression × 1" BSP female</div>
+          <div class="comp-spec">Threads onto bulkhead 1" male</div>
+          <div class="comp-spec">Transitions to 25mm MDPE</div>
+          <span class="comp-price" style="background:#E65100;">£12.24</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/female-elbow" target="_blank">Buy → Pipestock</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span></span>
+
+        <!-- 25mm MDPE pump output ball valve -->
+        <div class="comp comp-pump">
+          <div class="comp-title">🔴 25mm MDPE Ball Valve (pump output)</div>
+          <div class="comp-spec">Compression × compression, 25mm</div>
+          <div class="comp-spec">Positioned just outside tank wall</div>
+          <div class="comp-spec">Manual isolation for pump servicing,</div>
+          <div class="comp-spec">flow meter access &amp; emergencies</div>
+          <span class="comp-price tbc">TBC ~£18</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/mdpe/valves/mv-mdpe-ball-valve" target="_blank">Buy → Pipestock</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span></span>
+
+        <!-- 25mm MDPE main pipe -->
+        <div class="comp comp-pump">
+          <div class="comp-title">25mm MDPE Main Supply Pipe — Pipestock #354917</div>
+          <div class="comp-spec">Blue MDPE, <strong>12.5 bar rated</strong>, WRAS approved, Made in Britain</div>
+          <div class="comp-spec">100 m coil (replacing Mike's LDPE — self-sourced MDPE is better for buried mains runs)</div>
+          <div class="comp-spec">Buried 200mm min below ground; lay water warning tape (#396477) ~300mm above the pipe</div>
+          <div class="comp-spec">Route: tank → BOX A (flow meter) → BOX B (master + blow-out) → BOX C (manifold)</div>
+          <div class="comp-spec">Cut with plastic pipe cutter (Pipestock #388806). Insert PL liner (#352817) in every compression joint before tightening.</div>
+          <span class="comp-price">£75.18</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/mdpe-pipe-blue-12-5-bar-100m-x-25mm-354917" target="_blank">Buy → Pipestock #354917</a>
+        </div>
+        <div class="arrow-down pump">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span> enters <strong>BOX A (Flow Meter)</strong> — ≥250 mm straight run upstream (in buried MDPE)</span>
+
+        <!-- Flow meter inlet coupling -->
+        <div class="comp comp-meter">
+          <div class="comp-title">PM Female Adaptor 25mm × 1" (inlet) — Pipestock #355403</div>
+          <div class="comp-spec">25mm compression × 1" BSP <strong>female</strong> (POM-C acetal body, Philmac 3G equivalent)</div>
+          <div class="comp-spec">Mates with meter's 25mm BSP-M coupling tail</div>
+          <div class="comp-spec" style="color:#B71C1C;"><strong>⚠ INSTALL RULES (plastic-F × brass-M joint):</strong></div>
+          <div class="comp-spec" style="color:#B71C1C;">• <strong>2–3 wraps PTFE tape only</strong> (not 10+ — over-wrap jacks the plastic boss apart)</div>
+          <div class="comp-spec" style="color:#B71C1C;">• <strong>Hand-tight + 1 turn</strong> with Boa strap wrench (#353956) — no slogging</div>
+          <div class="comp-spec" style="color:#B71C1C;">• No liquid thread sealants (PTFE tape only — some dopes attack acetal)</div>
+          <div class="comp-spec" style="color:#B71C1C;">• Support the meter weight — don't let brass body hang off plastic boss</div>
+          <div class="comp-spec" style="color:#1B5E20;"><strong>✓ Accessible in BOX A (Flow Meter Jumbo)</strong> — any weep visible on inspection, replaceable without excavation</div>
+          <span class="comp-price">£7.82</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-female-adaptor-25mm-x-1-355403" target="_blank">Buy → Pipestock #355403</a>
+        </div>
+        <div class="arrow-down meter">↓</div>
+        <span class="arrow-label">1" BSP-F (plastic) → 25mm BSP-M (brass) — PTFE 2–3 wraps, hand-tight +1 turn — PERMANENT joint</span>
+
+        <!-- Hunter HC Flow Meter — built-in captive swivel-nut unions on both coupling tails -->
+        <div class="comp comp-meter" style="border-width:2px;">
+          <div class="comp-title">⚙ Hunter HC Flow Meter (HYFM25 / HC-100-FLOW-B)</div>
+          <div class="comp-spec">1" (25mm) brass body — UK BSP variant</div>
+          <div class="comp-spec">Ships with <strong>two coupling tails</strong>: 25mm BSP male outward, captive brass swivel-nut union against the meter body (flat gasket seal)</div>
+          <div class="comp-spec">⚠ Do NOT substitute the US HC-100-FLOW (NPT thread, incompatible)</div>
+          <div class="comp-spec">Flow: min 1.16 L/min · max recommended 110 L/min · absolute max 130 L/min</div>
+          <div class="comp-spec">Pulse: 1 per 10 litres · Max pressure: 16 bar</div>
+          <div class="comp-spec">Mount <strong>arrow in flow direction</strong>, horizontal preferred</div>
+          <div class="comp-spec">Min 10× Ø straight pipe upstream, 5× Ø downstream</div>
+          <div class="comp-spec" style="color:#00838F;"><strong>Wires to Pro-HC Sensor inputs (SEN terminals)</strong> — use 2 spare cores in valve wire</div>
+          <div class="comp-spec" style="color:#B71C1C;"><strong>🔧 SERVICE JOINT:</strong> undo the two brass swivel nuts on the meter body (~50mm AF) to drop meter out without disturbing MDPE pipework</div>
+          <span class="comp-price">£212.71</span><br>
+          <a class="buy-link" href="https://sprinkler-irrigation.co.uk/products/hydrawise-flow-meters.html?setCurrencyId=1&sku=HYFM25" target="_blank">Buy → Sprinkler-Irrigation</a>
+        </div>
+        <div class="arrow-down meter">↓</div>
+        <span class="arrow-label">25mm BSP male (meter outlet coupling) → 1" BSP female (PTFE tape, spanner tight — permanent joint)</span>
+
+        <!-- Flow meter outlet coupling -->
+        <div class="comp comp-meter">
+          <div class="comp-title">PM Female Adaptor 25mm × 1" (outlet) — Pipestock #355403</div>
+          <div class="comp-spec">1" BSP <strong>female</strong> × 25mm compression (POM-C acetal body, Philmac 3G equivalent)</div>
+          <div class="comp-spec">Mates with meter's 25mm BSP-M coupling tail — same install rules as inlet (2–3 PTFE wraps, hand-tight +1 turn, no liquid sealant)</div>
+          <div class="comp-spec" style="color:#1B5E20;"><strong>✓ Accessible in BOX A (Flow Meter Jumbo)</strong> for inspection/replacement without excavation</div>
+          <div class="comp-spec" style="color:#555;">Ordered qty: 3 (2 installed + 1 spare)</div>
+          <span class="comp-price">£7.82</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-female-adaptor-25mm-x-1-355403" target="_blank">Buy → Pipestock #355403</a>
+        </div>
+        <div class="arrow-down meter">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span> exits <strong>BOX A</strong>, ≥125 mm straight buried run, enters <strong>BOX B (Master + Blow-out)</strong></span>
+
+        <!-- Master Valve inlet adapter -->
+        <div class="comp comp-manifold">
+          <div class="comp-title">PM Male Adaptor 25mm × 1" (inlet) — Pipestock #355293</div>
+          <div class="comp-spec">25mm compression × 1" BSP <strong>male</strong> (POM-C acetal body)</div>
+          <div class="comp-spec">Screws into PGV-101 inlet port (1" FPT) — 2–3 PTFE wraps, hand-tight +1 turn (plastic-on-plastic thread, do not over-torque)</div>
+          <span class="comp-price">£9.13</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-male-adaptor-25mm-x-1-355293" target="_blank">Buy → Pipestock #355293</a>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+        <span class="arrow-label">1" BSP into PGV</span>
+
+        <!-- Master Valve -->
+        <div class="comp comp-manifold" style="border-width:3px;">
+          <div class="comp-title">🔒 Master Valve — Hunter PGV-101 Solenoid</div>
+          <div class="comp-spec">1" PGV-101G (1" FPT × 1" FPT), 24VAC normally-closed</div>
+          <div class="comp-spec"><strong>Installed INLINE (series)</strong> in BOX B, upstream of blow-out tee</div>
+          <div class="comp-spec">Protects mainline when no zone is active</div>
+          <div class="comp-spec" style="color:#2E7D32;"><strong>Wires to Pro-HC "P/MV" terminal</strong> — opens automatically whenever any zone runs</div>
+          <span class="from-mike">From Mike's kit — separate PGV-101 (confirmed on packing slip #29603)</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+        <span class="arrow-label">1" BSP out of PGV</span>
+
+        <!-- Master Valve outlet adapter -->
+        <div class="comp comp-manifold">
+          <div class="comp-title">PM Male Adaptor 25mm × 1" (outlet) — Pipestock #355293</div>
+          <div class="comp-spec">1" BSP male × 25mm compression (POM-C acetal body)</div>
+          <div class="comp-spec">Back to 25mm MDPE within BOX B → blow-out tee</div>
+          <div class="comp-spec" style="color:#555;">Ordered qty: 3 (2 installed + 1 spare). Manifold inlet is 25mm compression direct — no male adaptor needed at BOX C.</div>
+          <span class="comp-price">£9.13</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-male-adaptor-25mm-x-1-355293" target="_blank">Buy → Pipestock #355293</a>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span> short run inside BOX B — <strong>cut stub at ~110 mm</strong> (45 mm insertion into Philmac + 45 mm into tee + ~20 mm visible gap). Keep it tight — BOX B inline is ~504 mm which leaves ~56 mm margin in the 560 mm HRC-16 Jumbo. Longer stubs eat margin.</span>
+
+        <!-- Winterisation Blow-out Tee (now downstream of master valve, inside BOX B) -->
+        <div class="comp comp-winter">
+          <div class="comp-title">❄ Winterisation Blow-out Tee (BOX B) — Pipestock #355338</div>
+          <div class="comp-spec"><strong>PM Female Tee 25mm × 25mm × ½" BSP-F branch</strong> (POM-C acetal body)</div>
+          <div class="comp-spec">Branch rises up inside BOX B to blow-out port</div>
+          <div class="comp-spec" style="color:#B71C1C;"><strong>⚠ Positioned DOWNSTREAM of meter</strong> — air bypasses meter during winterisation, protects turbine from reverse pressurised air</div>
+          <span class="comp-price">£13.79</span><br>
+          <a class="buy-link" href="https://www.pipestock.com/pm-female-tee-25mm-x-branch-thread-1-2-355338" target="_blank">Buy → Pipestock #355338</a>
+          <div style="margin-top:8px;padding:6px;background:#FFFDE7;border-left:3px solid #F57F17;border-radius:3px;">
+            <div style="font-size:10px;font-weight:bold;color:#F57F17;margin-bottom:3px;">Branch assembly (bottom → top):</div>
+            <div class="comp-spec">① <strong>✓ ORDERED</strong> — Oumuik ½" Brass Ball Valve, M × F BSP (G1/2 parallel), red T-handle, PN16 — male end threads into tee ½"F branch, female end receives quick-plug — £9.99 <a class="buy-link" href="https://www.amazon.co.uk/s?k=oumuik+1%2F2+brass+ball+valve+bsp" target="_blank">Amazon</a></div>
+            <div class="comp-spec">② <strong>✓ ORDERED</strong> — Euro-profile Air Quick-Plug, ½" BSP male base (3-pack — 1 used here, 1 used at fill-line blow-out, 1 spare) — threads into ball valve ½"F end; compressor hose female coupler clips onto the Euro plug head — £8.00 <a class="buy-link" href="https://www.amazon.co.uk/s?k=euro+air+quick+plug+1%2F2+bsp+male" target="_blank">Amazon</a></div>
+            <div class="comp-spec">Install rules: PTFE 2–3 wraps on both male threads, hand-tight +1 turn. Confirmed BSP (G1/2 parallel) on both parts — NOT NPT. Euro profile matches UK compressor standard.</div>
+          </div>
+        </div>
+        <div class="arrow-down winter">↓</div>
+        <span class="arrow-label"><span class="pipe-size">25mm MDPE</span> exits <strong>BOX B</strong>, buried run to <strong>BOX C (Manifold)</strong></span>
+
+        <!-- Manifold -->
+        <div class="comp comp-manifold">
+          <div class="comp-title">Hunter 3-Zone Manifold (ISM-3zone)</div>
+          <div class="comp-spec">3 × Hunter PGV-101 solenoid valves (zones 1–3)</div>
+          <div class="comp-spec"><strong>Inlet: 25mm compression</strong> (Mike's manifold arrives with the 25mm inlet connector fitted) — 25mm MDPE from BOX B pushes straight in, no male adaptor needed</div>
+          <div class="comp-spec"><strong>Shipped disassembled</strong> — use Mike's PTFE on every joint</div>
+          <div class="comp-spec">Jumbo valve box (BOX C, underground, near shed — Irritec Jumbo from Mike's kit)</div>
+          <div class="comp-spec">Wired to Hunter Pro-HC (stations 1–3)</div>
+          <span class="from-mike">From Mike's kit — 3-zone manifold (ISM-3zone)</span>
+          <div class="zone-list">
+            <div class="zone-item"><div class="zone-dot" style="background:#FF9800;"></div> Zone 1 – Top Lawn spray (orange)</div>
+            <div class="zone-item"><div class="zone-dot" style="background:#E91E63;"></div> Zone 2 – Lower top-lawn spray (pink)</div>
+            <div class="zone-item"><div class="zone-dot" style="background:#2196F3;"></div> Zone 3 – Drip Irrigation (blue)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end flow-outer -->
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#E3F2FD;border:1.5px solid #90CAF9;"></div> Mains fill path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FFF3E0;border:1.5px solid #FFCC80;"></div> Pump output path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#F3E5F5;border:2px solid #AB47BC;"></div> Tank</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E8F5E9;border:2px solid #66BB6A;"></div> Manifold</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E0F7FA;border:1.5px solid #4DD0E1;"></div> Flow meter</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FFF8E1;border:1.5px solid #FFD54F;"></div> Winterisation</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#E53935;"></div> Plumber supplies</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FF9800;"></div> From Mike's kit</div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes">
+    <strong>Key assembly notes:</strong><br>
+    &bull; Use <strong>PTFE tape</strong> on all BSP threaded connections (2–3 wraps, clockwise).<br>
+    &bull; Use <strong>stainless jubilee clips</strong> doubled up on both ends of the flex hose barbs.<br>
+    &bull; The <strong>bulkhead fitting</strong> (pump discharge) requires a clean drilled hole through the tank wall at pump-outlet height – use a hole saw sized to the fitting's body diameter, then seal with both rubber washers (one each side).<br>
+    &bull; The <strong>tank winter drain</strong> uses the factory-moulded 1" BSP outlet (low on the side wall, pre-drilled at point of order) – factory-sealed thread, no DIY drilling required. Fit the Enduramaxx union ball valve directly onto the male thread with PTFE tape.<br>
+    &bull; The <strong>float fill valve</strong> mounts through the tank lid or side wall – keep the outlet above the max water level to maintain the air gap for backflow protection.<br>
+    &bull; The <strong>pump float switch</strong> must be set so the pump cuts off before the tank runs dry – typically 50–100mm above the pump base.<br>
+    &bull; <strong>Trench spec (Option B — shared trench):</strong> 300 mm wide × 400 mm deep, 300 mm bucket on mini digger. Carries all 4 buried pipes side-by-side with ~40 mm spacing: 25 mm mainline (blue), 25 mm zone lateral (orange), 25 mm zone lateral (purple), 20 mm fill line. Total cross-section ~95 mm fits with margin. <strong>Depth capped at 400 mm</strong> by the Hunter SJ-512 swing joints (~300 mm long) — any deeper and pop-up can't reach grade on the right-hand run. <strong>Fill-line frost risk mitigated</strong> by the tap-end blow-out tee (see procedure step 3). Profile: 50 mm sharp-sand bed → pipes → 100 mm sand surround → backfill to 250 mm → blue "Water" warning tape → screened soil backfill in 150 mm lifts.<br>
+    &bull; <strong>Swing-joint geometry (SJ-512):</strong> articulated link between buried lateral and pop-up. Reaches ~150–200 mm horizontal + full vertical adjustment. <strong>Trench does NOT need to follow the lawn edge</strong> — route it ~150–200 mm inside the bed/path edge, and swing joints reach OUT to perimeter sprinklers. At each sprinkler: fit tee on lateral in trench → dig a 150 mm-diameter vertical pocket offset to the sprinkler position → snake the SJ-512 in a gentle S-shape (tee horizontal → angle up → across → vertical into pop-up base) → pack pocket with screened soil (no sharp stones). Purpose: absorbs mower/foot shock, allows post-turfing height adjustment, reach-offset lets you trench through friendly soil instead of the lawn perimeter.<br>
+    &bull; <strong>Awkward heads (>200 mm off trench line):</strong> either dogleg the trench closer, use SJ-712 (longer reach), or accept a buried compression elbow + stub for that single head (trade-off: loses flexibility).<br>
+    &bull; <strong>Trench routing priorities:</strong> ① through flower beds wherever possible — easier digging, no lawn damage, ② along path edges under the first 200 mm of adjacent soil, ③ avoid lawn crossings (each one = a soft strip that settles differently), ④ detour around tree roots rather than under.<br>
+    &bull; <strong>Trench dimensions by section type:</strong>
+    <table style="border-collapse:collapse;margin:8px 0 8px 16px;font-size:11px;">
+      <tr style="background:#E3F2FD;color:#1565C0;font-weight:bold;">
+        <td style="padding:5px 10px;border:1px solid #90CAF9;">Section</td>
+        <td style="padding:5px 10px;border:1px solid #90CAF9;">Width</td>
+        <td style="padding:5px 10px;border:1px solid #90CAF9;">Depth</td>
+        <td style="padding:5px 10px;border:1px solid #90CAF9;">Bucket</td>
+        <td style="padding:5px 10px;border:1px solid #90CAF9;">Notes</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;"><strong>Shared trench</strong> (main + 2 laterals + fill line)</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">300 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">400 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">300 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">All 4 pipes side-by-side, ~40 mm spacing. Depth capped by SJ-512.</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;"><strong>Solo lateral with sprinklers</strong> (orange or purple run alone)</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">150 mm preferred (300 mm fine)</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">300 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">150 mm trenching bucket</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">Swing-joint ceiling still governs. Narrower trench = less lawn scar.</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;"><strong>Pure transit lateral</strong> (no heads tapping off)</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">150 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">250 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">150 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">No swing joint → can go shallower. Protection from spade/aerator only.</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;"><strong>Under path / driveway</strong></td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">300 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">400 mm + protective sleeve</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">300 mm</td>
+        <td style="padding:5px 10px;border:1px solid #cbd5e1;">Mechanical load zone. Use split-duct conduit sleeve over pipe through the crossing.</td>
+      </tr>
+    </table>
+    &bull; <strong>Solo-lateral backfill</strong> (simpler than shared): 30 mm sharp-sand bed → pipe → 50 mm sand surround → screened soil to 200 mm → warning tape (optional — laterals are drained in winter) → screened soil backfill in 150 mm lifts.<br>
+    &bull; <strong>Rule of thumb:</strong> default all lateral runs to 300 mm depth. Only drop to 250 mm for sections confirmed as pure transit (no sprinkler tees). Not worth the mental overhead for a 50 mm gain on short runs.<br>
+    &bull; Install the <strong>pipe sleeve through the retaining wall</strong> before the wall is finished.<br>
+    &bull; <strong>Flow meter orientation:</strong> arrow on body must point toward manifold; mount horizontal with dial face up; allow 10×Ø (~25cm) straight pipe upstream and 5×Ø (~13cm) downstream.<br>
+    &bull; <strong>Flow meter wiring:</strong> 2-core signal cable from meter's pulse output → SEN terminals on Hunter Pro-HC controller. Use 2 spare cores of the 7-core valve wire (no need for a separate cable).<br>
+    &bull; <strong>Master valve:</strong> a separate Hunter PGV-101 (supplied by Mike in addition to the 3-zone manifold) is plumbed INLINE between the flow meter and the manifold, in Box A. Its solenoid wires to the Pro-HC's <strong>P/MV</strong> terminal (common + MV). It opens automatically whenever any zone runs — no separate programming needed.<br>
+    &bull; <strong>Winterisation with master valve:</strong> manual zone runs from the controller will open the master valve automatically, so air can reach the zones. No manual override needed. Keep the ½" blow-out ball valve CLOSED during normal operation (the Euro male plug acts as a self-sealing cap when nothing is clipped on).
+  </div>
+
+</div><!-- end diagram-wrap -->
+
+<!-- =============================================== -->
+<!-- AFTER THE MANIFOLD: ZONE DISTRIBUTION (Mike's kit) -->
+<!-- =============================================== -->
+<div class="diagram-wrap" style="margin-top:28px;">
+  <div class="diagram-title">After the Manifold — Zone Distribution (Mike's Kit)</div>
+  <p style="font-size:12px;color:#666;margin-bottom:18px;">Each manifold outlet feeds a 25mm MDPE PN12.5 blue lateral (self-sourced — replacing Mike's LDPE) that branches into the zone components below. All other items come from Mike's packing slip #29603. Pipe inserts required in every compression joint.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start;">
+
+    <!-- ==================== ZONE 1 ==================== -->
+    <div>
+      <div class="col-header" style="background:#FF9800;color:white;">ZONE 1 — Top Lawn spray</div>
+      <div style="background:#FFF3E0;border:1.5px solid #FFCC80;border-radius:0 0 8px 8px;padding:12px;">
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Manifold outlet → 25mm MDPE lateral</div>
+          <div class="comp-spec"><span class="pipe-size">25mm MDPE</span> exits PGV-101 on station 1</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Mid-lateral drop tees (× ~9)</div>
+          <div class="comp-spec">Tavlit 25 × ½"F × 25mm compression tee (SKU 373002501m)</div>
+          <div class="comp-spec">One per inline sprinkler — ½" BSP female points up to riser</div>
+          <span class="from-mike">Mike's kit — 14 total shared across Z1+Z2</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">End-lateral drop elbows (× ~2)</div>
+          <div class="comp-spec">Tavlit Elysee 25 × ½"M elbow (SKU 0703840)</div>
+          <div class="comp-spec">Terminates each lateral at the last sprinkler</div>
+          <span class="from-mike">Mike's kit — 3 total shared across Z1+Z2</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Hunter SJ-512 Swing Joint × 11</div>
+          <div class="comp-spec">½" BSP × ½" BSP × 12" long (SKU 5359)</div>
+          <div class="comp-spec">Flexible riser — absorbs ground movement, allows ±100 mm head adjustment</div>
+          <span class="from-mike">Mike's kit — 17 total (11 Z1 + 6 Z2)</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Hunter Pro-S 04 PRS-40 × 11</div>
+          <div class="comp-spec">4" pop-up body, pressure regulated to 2.8 bar, check valve</div>
+          <div class="comp-spec">½" BSP female inlet from swing joint</div>
+          <span class="from-mike">Mike's kit — 17 total</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">MP Rotator Nozzles × 11</div>
+          <div class="comp-spec">• 5 × Hunter <strong>MP2000</strong> 90–210° (4.0–6.4 m) — long throws</div>
+          <div class="comp-spec">• 2 × Hunter <strong>MP1000</strong> 90–210° (2.5–4.6 m) — near structures</div>
+          <div class="comp-spec">• 4 × Hunter <strong>MP800SR</strong> 90–210° (1.8–3.5 m) — upper lawn / patio edge</div>
+          <span class="from-mike">Mike's kit (spares available to self-source: ~£25 for 3 extras)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ZONE 2 ==================== -->
+    <div>
+      <div class="col-header" style="background:#E91E63;color:white;">ZONE 2 — Lower top-lawn spray</div>
+      <div style="background:#FCE4EC;border:1.5px solid #F48FB1;border-radius:0 0 8px 8px;padding:12px;">
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Manifold outlet → 25mm MDPE lateral</div>
+          <div class="comp-spec"><span class="pipe-size">25mm MDPE</span> exits PGV-101 on station 2</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Mid-lateral drop tees (× ~5)</div>
+          <div class="comp-spec">Tavlit 25 × ½"F × 25mm compression tee (SKU 373002501m)</div>
+          <div class="comp-spec">One per inline sprinkler</div>
+          <span class="from-mike">Mike's kit — 14 total shared with Z1</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">End-lateral drop elbow (× ~1)</div>
+          <div class="comp-spec">Tavlit Elysee 25 × ½"M elbow (SKU 0703840)</div>
+          <div class="comp-spec">Terminates the lateral at the last sprinkler</div>
+          <span class="from-mike">Mike's kit — 3 total shared with Z1</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Hunter SJ-512 Swing Joint × 6</div>
+          <div class="comp-spec">½" BSP × ½" BSP × 12" long (SKU 5359)</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Hunter Pro-S 04 PRS-40 × 6</div>
+          <div class="comp-spec">4" pop-up body, PR 2.8 bar, check valve</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">MP Rotator Nozzles × 6</div>
+          <div class="comp-spec">• 6 × Hunter <strong>MP800SR</strong> 90–210° (1.8–3.5 m)</div>
+          <div class="comp-spec" style="color:#E91E63;">Lower top-lawn — matched precipitation to Z1</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ZONE 3 ==================== -->
+    <div>
+      <div class="col-header" style="background:#2196F3;color:white;">ZONE 3 — Drip irrigation</div>
+      <div style="background:#E3F2FD;border:1.5px solid #90CAF9;border-radius:0 0 8px 8px;padding:12px;">
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Manifold outlet → 25mm MDPE lateral</div>
+          <div class="comp-spec"><span class="pipe-size">25mm MDPE</span> exits PGV-101 on station 3</div>
+          <div class="comp-spec">Routes through 50mm DWV sleeve in retaining wall to bottom section</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Eitan Plastic Disc Filter 1" M-M × 1</div>
+          <div class="comp-spec">1" BSP male-male, disc filter (SKU F1D)</div>
+          <div class="comp-spec">Protects drip emitters from sediment</div>
+          <div class="comp-spec" style="color:#1565C0;"><strong>No pressure regulator needed</strong> — PC700AS is pressure-compensating (1–4 bar)</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Reducer 25 → 16mm × 2</div>
+          <div class="comp-spec">Plas-Fit Tavlit reducing straight 25-16 (SKU 25025D0016)</div>
+          <div class="comp-spec">Steps from 25mm lateral down to 16mm drip</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Nutlock branch tees &amp; fittings</div>
+          <div class="comp-spec">• 2 × Nutlock Tee 25 × 16 × 25 (NLT2516) — drip tap-offs</div>
+          <div class="comp-spec">• 7 × Nutlock Elbow 16 × 16 (NLE16) — corners</div>
+          <div class="comp-spec">• 2 × 16mm compression tees (25016T1016) — Y-branches</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">CAUDAL PC700AS Drip Line — 100m</div>
+          <div class="comp-spec">16mm ND, 1.10mm wall, 2.2 L/h emitters @ 33 cm spacing</div>
+          <div class="comp-spec"><strong>Pressure-compensating</strong> — even flow along entire run length</div>
+          <div class="comp-spec">Pinned every 500 mm with 16mm hose stakes (200 × in kit)</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+        <div class="arrow-down manifold">↓</div>
+
+        <div class="comp comp-manifold" style="margin-bottom:0;">
+          <div class="comp-title">Line-end Flush / Anti-syphon Valves × 2</div>
+          <div class="comp-spec">Nutlock Dripline Valve 16 × 16 (SKU V16NL)</div>
+          <div class="comp-spec">End-of-line drain — self-purges at start/end of each run</div>
+          <div class="comp-spec">Covers winterisation on drip zone</div>
+          <span class="from-mike">Mike's kit</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end 3-column grid -->
+
+  <!-- Zone totals summary -->
+  <div style="margin-top:20px;padding:14px 18px;background:#F5F5F5;border-radius:6px;font-size:12px;line-height:1.7;">
+    <strong style="color:#1565C0;">Flow totals per zone (for controller programming):</strong><br>
+    • <span style="color:#FF9800;font-weight:bold;">Z1</span> – 11 sprinklers, ~26 L/min combined. Est. 20 min runtime @ 2.8 bar.<br>
+    • <span style="color:#E91E63;font-weight:bold;">Z2</span> – 6 sprinklers (all MP800), ~14 L/min combined. Est. 20 min runtime.<br>
+    • <span style="color:#2196F3;font-weight:bold;">Z3</span> – ~100m drip @ 2.2 L/h/emitter, ~660 L/h total ≈ 11 L/min. Est. 30 min runtime.<br>
+    <em style="color:#666;">Only one zone runs at a time — total peak demand = highest single zone (Z1: 26 L/min).</em>
+  </div>
+
+  <!-- Install notes -->
+  <div class="notes" style="margin-top:18px;">
+    <strong>Zone distribution install notes:</strong><br>
+    &bull; <strong>Lateral pipe burial:</strong> all 25mm MDPE laterals minimum <strong>200 mm deep</strong>. Dig trenches before pinning drip.<br>
+    &bull; <strong>Sprinkler drop tees:</strong> 14 mid-lateral tees + 3 end-lateral elbows = 17 exits, one per PRS-40. Zone split is approximate (Z1 ≈ 9 tees + 2 elbows, Z2 ≈ 5 tees + 1 elbow) — adjust on site based on actual head layout.<br>
+    &bull; <strong>Swing joint fitting:</strong> thread SJ-512 onto the drop tee/elbow with PTFE first, then rotate to point up; thread PRS-40 body onto the upper end of SJ-512. Adjust body height so pop-up cap is flush with finished lawn surface.<br>
+    &bull; <strong>Drip layout:</strong> route PC700AS in a <strong>grid or snake pattern</strong> through beds with ~30 cm between rows. Aim for 1–2 line-end flush valves per loop (Mike supplies 2 total). Pin every 500 mm to stop the line walking in wind/rain.<br>
+    &bull; <strong>Pipe inserts:</strong> install one in every 25mm MDPE compression joint before tightening the fitting. MDPE is stiffer than LDPE but inserts are still best-practice and specified by Plas-Fit/Philmac/Tavlit for a guaranteed seal.<br>
+    &bull; <strong>MP nozzle installation:</strong> nozzles screw into PRS-40 body with a nozzle wrench. Tighten until the reference mark aligns with the arc indicator. Radius adjusted with a small flat-head on the radius screw.<br>
+    &bull; <strong>Commissioning:</strong> run each zone at full flow with all pop-ups up. Check throw pattern, adjust arcs/radii. Order 1 spare of each nozzle size (MP800, MP1000, MP2000) from MB Irrigation for tuning — ~£25 total.
+  </div>
+</div>
+<!-- =============================================== -->
+
+<!-- Parts Shopping List -->
+<div style="background:white;border-radius:10px;padding:20px;margin-top:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+  <div style="color:#1565C0;font-size:15px;font-weight:bold;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #E3F2FD;">
+    Parts Shopping List – Self-Sourced (Mains to Manifold)
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;">
+    <thead>
+      <tr style="background:#1565C0;color:white;">
+        <th style="padding:8px;text-align:left;">Part</th>
+        <th style="padding:8px;text-align:left;">Spec</th>
+        <th style="padding:8px;text-align:right;">Price</th>
+        <th style="padding:8px;text-align:left;">Supplier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#E3F2FD;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#1565C0;">Mains Fill Path</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Backflow Preventer (Type BA)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Fitted by plumber on mains tap</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#E53935;font-weight:bold;">TBC (plumber)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Local plumber</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">MDPE Ball Valve 20mm</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Compression × compression, isolation valve</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£13.97</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.pipestock.com/mdpe/valves/mv-mdpe-ball-valve" target="_blank" style="color:#1565C0;">Pipestock</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Philmac Female Elbow 20mm × ½"</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">20mm compression × ½" BSP female (9621)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£7.90</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://heatingpartswarehouse.co.uk/product/philmac-20mm-1-2-x-1-2-female-elbow/" target="_blank" style="color:#1565C0;">Heating Parts W/house</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Flomasta Float Fill Valve ½"</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Brass, side-entry, 0.1–10 bar</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£9.19</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.screwfix.com/p/flomasta-brass-part-1-float-fill-valve-1-2-/134JN" target="_blank" style="color:#1565C0;">Screwfix</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Flomasta 90mm Cylindrical Ball Float</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Fits Flomasta valves, inside tank</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£3.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.screwfix.com/p/flomasta-cylindrical-ball-float-90mm/681pw" target="_blank" style="color:#1565C0;">Screwfix</a></td>
+      </tr>
+      <tr style="background:#F3E5F5;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#7B1FA2;">Tank</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Enduramaxx 1000L Slimline Tank</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Non-potable rainwater harvesting, 2 × 455mm lids, <strong>1" BSP pre-drilled outlet</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£408.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.tanksforeverything.co.uk/enduramaxx-17131201-1000-litre-slimline-rainwater-harvesting-tank-with-2-lids" target="_blank" style="color:#1565C0;">Tanks for Everything</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Enduramaxx 1" F×F Union Ball Valve</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Poly tank outlet valve, UV-stable — winter drain isolation (add-on with tank)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£18.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.tanksforeverything.co.uk/enduramaxx-17131201-1000-litre-slimline-rainwater-harvesting-tank-with-2-lids" target="_blank" style="color:#1565C0;">Tanks for Everything</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">1" BSP Male × Garden Hose Tail</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Brass, attaches garden hose to drain valve for winter drain-down</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£4.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.screwfix.com/c/plumbing/hose-fittings/cat820708" target="_blank" style="color:#1565C0;">Screwfix</a></td>
+      </tr>
+      <tr style="background:#FFF3E0;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#E65100;">Pump Output Path</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Grundfos SB 3-45AW Pump</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Submersible, 240V, floating strainer, float switch, 1" BSP outlet</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;font-weight:bold;">£584.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.anchorpumps.com/grundfos-sb-3-45aw-submersible-pump-240v-with-floating-suction-strainer-and-float-switch" target="_blank" style="color:#1565C0;">Anchor Pumps</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Josaton 1" BSP Brass Hose Tails (4-pack) <strong style="color:#2E7D32;">✓ ORDERED</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">1" BSP male × 25mm barb — use 2 (pump + bulkhead), double-clamp each joint</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#2E7D32;font-weight:bold;">£13.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://amzn.eu/d/0ah7GujE" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">AP Automotive 25mm Clear Braided PVC Hose (3m) <strong style="color:#2E7D32;">✓ ORDERED</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">13.5 bar, -15 to +60 °C, 4mm wall — ASIN B0BG6Z16F4 (Amazon's Choice)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#2E7D32;font-weight:bold;">£15.75</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/dp/B0BG6Z16F4" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">ERGAOBOY 1" BSP Brass Bulkhead <strong style="color:#2E7D32;">✓ ORDERED</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Female inside / male outside, 2 × rubber washers, 10 bar rated</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#2E7D32;font-weight:bold;">£12.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://amzn.eu/d/00c0ceU2" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Philmac Female Elbow 25mm × 1"</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">25mm compression × 1" BSP female — onto bulkhead</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£12.24</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.pipestock.com/female-elbow" target="_blank" style="color:#1565C0;">Pipestock</a></td>
+      </tr>
+      <tr style="background:#E0F7FA;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#00838F;">Flow Meter Assembly (before manifold) — meter's own captive swivel-nut couplings + Philmac</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Hunter HC-100-FLOW Flow Meter (HYFM25)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">1" male BSP both ends, stainless, wired to Pro-HC</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;font-weight:bold;">£212.71</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://sprinkler-irrigation.co.uk/products/hydrawise-flow-meters.html?setCurrencyId=1&sku=HYFM25" target="_blank" style="color:#1565C0;">Sprinkler-Irrigation</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Philmac 25mm × 1" Female Coupling ×2</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">25mm compression × 1" BSP female — threads directly onto meter's 25mm BSP-M coupling tails with PTFE tape (permanent joint). Service disconnect = two captive swivel nuts on meter body (~50mm AF)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£22.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.pipestock.com/mdpe/compression-fittings/female-coupler" target="_blank" style="color:#1565C0;">Pipestock</a></td>
+      </tr>
+      <tr style="background:#FFF8E1;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#F57F17;">Winterisation Blow-out Port (permanent, in valve box)</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">PM Female Tee 25 × 25 × ½" BSP-F (Pipestock #355338)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">POM-C acetal, compression run × female BSP branch</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£13.79</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.pipestock.com/pm-female-tee-25mm-x-branch-thread-1-2-355338" target="_blank" style="color:#1565C0;">Pipestock</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Oumuik ½" Brass Ball Valve (M × F BSP, red T-handle, PN16/DN15) <strong style="color:#2E7D32;">✓ ORDERED</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Isolates blow-out port. BSP (G1/2) parallel — verified, not NPT</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#2E7D32;font-weight:bold;">£9.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/s?k=oumuik+1%2F2+brass+ball+valve+bsp" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Euro-profile Air Quick-Plug, ½" BSP male base (3-pack) <strong style="color:#2E7D32;">✓ ORDERED</strong></td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">3-pack — 1 at BOX B blow-out, 1 at fill-line blow-out (tap end), 1 spare. BSP (G1/2) parallel.</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#2E7D32;font-weight:bold;">£8.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/s?k=euro+air+quick+plug+1%2F2+bsp+male" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr style="background:#E8F5E9;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#2E7D32;">From Mike's Kit</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">25mm MDPE Main Supply Pipe</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">100m, PN16, blue stripe</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#FF9800;font-weight:bold;">In kit</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Mike</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;">Hunter 4-Zone Manifold</td>
+        <td style="padding:7px 8px;color:#555;">4 × PGV solenoid valves, disc filter, ball valve, valve box</td>
+        <td style="padding:7px 8px;text-align:right;color:#FF9800;font-weight:bold;">In kit</td>
+        <td style="padding:7px 8px;">Mike</td>
+      </tr>
+      <tr style="background:#FFF9C4;font-weight:bold;">
+        <td style="padding:8px;">SELF-SOURCED TOTAL (Mains → Manifold inc. flow meter, blow-out port & tank drain)</td>
+        <td></td>
+        <td style="padding:8px;text-align:right;">£1,391.51 + TBC</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Winterisation Kit Panel -->
+<div style="background:white;border-radius:10px;padding:20px;margin-top:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:4px solid #F57F17;">
+  <div style="color:#F57F17;font-size:15px;font-weight:bold;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #FFF8E1;">
+    ❄ Winterisation Kit &mdash; Annual Blow-out (used once a year, late October)
+  </div>
+
+  <div style="background:#FFFDE7;border-left:4px solid #F57F17;padding:12px 16px;border-radius:4px;margin-bottom:16px;font-size:12px;line-height:1.6;">
+    <strong style="color:#F57F17;">Procedure:</strong><br>
+    <strong>1.</strong> Close the house mains stopcock (isolates the fill line from mains pressure).<br>
+    <strong>2.</strong> Unplug the Grundfos pump from power (so it can't cycle).<br>
+    <strong>3.</strong> <strong>Fill-line blow-out (tap end):</strong> open the ½" ball valve on the fill-line blow-out tee — water gravity-drains out the Euro port onto surrounding ground (~5L). Clip compressor Euro female coupler on, blow air UP the fill line at ≤ 50 PSI for ~30s — air sweeps the 5 elbow crowns and exits the open float valve into the tank. Disconnect, close valve.<br>
+    <strong>4.</strong> Drain the tank: attach garden hose to the 1" BSP drain port, open the Enduramaxx ball valve, let 1000L gravity-drain to a safe spot (lawn/drain). Close valve when empty.<br>
+    <strong>5.</strong> In <strong>BOX B</strong> (master + irrigation blow-out): open the ½" ball valve on the blow-out port.<br>
+    <strong>6.</strong> Clip the compressor hose's Euro female coupler onto the ½" male quick-plug at the blow-out port.<br>
+    <strong>7.</strong> Set compressor regulator to <strong>≤ 50 PSI (3.5 bar)</strong> — never exceed this, or you risk damaging the flow meter turbine and sprinkler seals.<br>
+    <strong>8.</strong> On the Hunter Pro-HC controller, manually run Zone 1 — the master valve opens automatically, and air will blow water out of the sprinklers. Run each zone until only air (no spray) is visible, typically 2–3 minutes.<br>
+    <strong>9.</strong> Repeat for Zones 2 and 3. Drip line (Z3) needs longer — run until no more mist at emitters.<br>
+    <strong>10.</strong> Let compressor fully depressurise before disconnecting, then close the blow-out ball valve.<br>
+    <strong>11.</strong> Leave the tank empty; pump is unplugged. System is safe down to about −10 °C.
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;font-size:12px;">
+    <thead>
+      <tr style="background:#F57F17;color:white;">
+        <th style="padding:8px;text-align:left;">Item</th>
+        <th style="padding:8px;text-align:left;">Spec</th>
+        <th style="padding:8px;text-align:right;">Price</th>
+        <th style="padding:8px;text-align:left;">Supplier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#FFF8E1;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#F57F17;">Compressor — Option A (Hire)</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Air compressor hire (1 day)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">HSS Hire or Jewson — any 10+ CFM unit at 40–50 PSI output</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">~£40/day</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.hss.com/hire/tools/compressors-air-tools" target="_blank" style="color:#1565C0;">HSS Hire</a></td>
+      </tr>
+      <tr style="background:#FFF8E1;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#F57F17;">Compressor — Option B (Buy)</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Silverline 50L / 9 CFM Compressor</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">2.5 hp, 8 bar max — pump in bursts, tank recovers between zones</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">~£229.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/s?k=silverline+50L+air+compressor" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Sealey SAC2203B (for better coverage)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">200L tank, 14.5 CFM — comfortable blow-out, paid back in ~8 years of hire</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;color:#888;">~£550</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.sealey.co.uk" target="_blank" style="color:#1565C0;">Sealey</a></td>
+      </tr>
+      <tr style="background:#FFF8E1;">
+        <td colspan="4" style="padding:6px 8px;font-weight:bold;color:#F57F17;">Airline accessories (needed regardless of compressor)</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">10m recoil air hose, Euro-profile female couplers both ends</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Rubber or PU. Female coupler at compressor side clips onto compressor's Euro male plug; female at tool side clips onto blow-out port's male plug</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£17.99</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/s?k=10m+recoil+air+hose+euro" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;">Euro male plug (compressor side — only if compressor outlet lacks one)</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;color:#555;">Usually included in the 3-pack above; check compressor before buying</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;text-align:right;">£3.00</td>
+        <td style="padding:7px 8px;border-bottom:1px solid #eee;"><a href="https://www.amazon.co.uk/s?k=euro+air+male+plug+1%2F4" target="_blank" style="color:#1565C0;">Amazon</a></td>
+      </tr>
+      <tr style="background:#FFF9C4;font-weight:bold;">
+        <td style="padding:8px;">WINTERISATION KIT TOTAL (Option A – Hire)</td>
+        <td></td>
+        <td style="padding:8px;text-align:right;">£20.99 + ~£40/yr hire</td>
+        <td></td>
+      </tr>
+      <tr style="background:#FFF9C4;font-weight:bold;">
+        <td style="padding:8px;">WINTERISATION KIT TOTAL (Option B – Buy Silverline)</td>
+        <td></td>
+        <td style="padding:8px;text-align:right;">£249.99 one-off</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:14px;font-size:11px;color:#666;line-height:1.5;">
+    <strong style="color:#F57F17;">Note on compressor sizing:</strong> Hunter recommends 10+ CFM continuous for reliable blow-out. A 50L 9 CFM unit works if you run each zone in 30-second bursts and let the tank recover between bursts. If you expand to more zones in future, a 100L+ tank is worth the upgrade. Hiring for one day a year is genuinely cheaper for 5+ years before buying starts paying off — unless you'll use the compressor for other DIY jobs.
+  </div>
+</div>
+
+</body>
+</html>

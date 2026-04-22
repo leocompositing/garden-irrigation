@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>123 Downs — Garden Irrigation Project</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #E3F2FD 0%, #F5F9FF 100%);
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrap {
+    max-width: 720px;
+    width: 100%;
+    padding: 40px 24px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  h1 {
+    font-size: 28px;
+    color: #1565C0;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .sub {
+    color: #555;
+    font-size: 15px;
+    margin: 0;
+  }
+  .cards {
+    display: grid;
+    gap: 16px;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(21, 101, 192, 0.06);
+    border-left: 4px solid #1565C0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(21, 101, 192, 0.14);
+  }
+  .card.flow { border-left-color: #1565C0; }
+  .card.costs { border-left-color: #2E7D32; }
+  .card.trench { border-left-color: #F57F17; }
+  .card.valve { border-left-color: #6A1B9A; }
+  .icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+  .flow .icon { background: #1565C0; }
+  .costs .icon { background: #2E7D32; }
+  .trench .icon { background: #F57F17; }
+  .valve .icon { background: #6A1B9A; }
+  .meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+  }
+  .desc {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.45;
+  }
+  .arrow {
+    color: #999;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #888;
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    .card { padding: 16px 18px; gap: 14px; }
+    .icon { width: 38px; height: 38px; font-size: 18px; }
+    .title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>123 Downs — Garden Irrigation</h1>
+    <p class="sub">Project documentation · Coulsdon, Surrey</p>
+  </header>
+
+  <div class="cards">
+
+    <a class="card flow" href="system_flowgraph.html">
+      <div class="icon">⚙</div>
+      <div class="meta">
+        <div class="title">System Flowgraph</div>
+        <p class="desc">End-to-end system schematic — mains → tank → pump → manifold → zones. Parts, dimensions, install notes, winterisation procedure.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="card costs" href="irrigation_project_costs.html">
+      <div class="icon">£</div>
+      <div class="meta">
+        <div class="title">Project Cost Sheet</div>
+        <p class="desc">Full itemised bill of materials across all suppliers — Mike's kit, tank, pump, self-sourced MDPE, tooling. Order status per row.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="card trench" href="builder_trench_spec.html">
+      <div class="icon">⛏</div>
+      <div class="meta">
+        <div class="title">Builder Trench Spec</div>
+        <p class="desc">One-page reference for the mini-digger contractor — dimensions, backfill profile, hand-dig zones, scope split. Print-friendly (A4).</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="card valve" href="valve_box_layout.svg">
+      <div class="icon">◎</div>
+      <div class="meta">
+        <div class="title">Valve Box Layout</div>
+        <p class="desc">Box A / Box B / Box C internal plumbing arrangement — flow meter, master valve, blow-out tee, manifold.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+  <footer>
+    Private project docs · Leo Costa
+  </footer>
+
+</div>
+</body>
+</html>
