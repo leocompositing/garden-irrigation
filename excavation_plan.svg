@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1300" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="13">
+  <!-- Definitions -->
+  <defs>
+    <pattern id="trenchHatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#FFF8E1"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#FFB300" stroke-width="1"/>
+    </pattern>
+    <pattern id="pitHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#F3E5F5"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#9C27B0" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1565C0"/>
+    </marker>
+    <marker id="dimArrowL" markerWidth="10" markerHeight="10" refX="2" refY="3" orient="auto">
+      <path d="M8,0 L8,6 L2,3 z" fill="#666"/>
+    </marker>
+    <marker id="dimArrowR" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#1565C0">Excavation Plan — Tank + Manifold Pit</text>
+  <text x="550" y="58" text-anchor="middle" font-size="13" fill="#666">Top-down view · 123 Downs · 10×D upstream / 5×D downstream flow-meter rule annotated</text>
+
+  <!-- North arrow -->
+  <g transform="translate(1010, 90)">
+    <circle cx="0" cy="0" r="22" fill="white" stroke="#999" stroke-width="1"/>
+    <path d="M0,-15 L7,8 L0,3 L-7,8 z" fill="#333"/>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">N</text>
+  </g>
+
+  <!-- Scale -->
+  <g transform="translate(60, 90)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#333" stroke-width="2"/>
+    <line x1="200" y1="-5" x2="200" y2="5" stroke="#333" stroke-width="2"/>
+    <text x="0" y="20" font-size="11" fill="#666">0</text>
+    <text x="100" y="20" text-anchor="middle" font-size="11" fill="#666">0.5 m</text>
+    <text x="200" y="20" text-anchor="end" font-size="11" fill="#666">1 m</text>
+    <text x="100" y="-12" text-anchor="middle" font-size="11" fill="#666" font-weight="600">Scale (1 m = 200 px)</text>
+  </g>
+
+  <!-- ========================== -->
+  <!-- TANK (1350 mm × 760 mm)    -->
+  <!-- ========================== -->
+  <g transform="translate(380, 140)">
+    <rect x="0" y="0" width="270" height="152" fill="#E3F2FD" stroke="#1565C0" stroke-width="2.5" rx="6"/>
+    <text x="135" y="60" text-anchor="middle" font-weight="700" fill="#1565C0" font-size="16">ENDURAMAXX</text>
+    <text x="135" y="80" text-anchor="middle" fill="#1565C0" font-size="14">1000 L Tank</text>
+    <text x="135" y="100" text-anchor="middle" fill="#666" font-size="11">1350 × 760 mm footprint</text>
+    <text x="135" y="118" text-anchor="middle" fill="#666" font-size="11">on concrete pad</text>
+
+    <!-- bulkhead position -->
+    <circle cx="135" cy="152" r="6" fill="#FF6F00" stroke="#E65100" stroke-width="1.5"/>
+    <text x="155" y="156" font-size="11" fill="#E65100" font-weight="600">1" BSP bulkhead (pump discharge)</text>
+  </g>
+
+  <!-- Tank dimension lines -->
+  <g stroke="#666" stroke-width="1" fill="none">
+    <line x1="380" y1="120" x2="650" y2="120" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="515" y="113" text-anchor="middle" font-size="11" fill="#666">1.35 m (tank length)</text>
+    <line x1="668" y1="140" x2="668" y2="292" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="673" y="220" font-size="11" fill="#666">0.76 m</text>
+  </g>
+
+  <!-- ========================== -->
+  <!-- TRENCH from tank to pit    -->
+  <!-- ========================== -->
+  <g>
+    <!-- trench rectangle (1m long, 300mm wide) -->
+    <rect x="485" y="292" width="60" height="200" fill="url(#trenchHatch)" stroke="#FF9800" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="515" y="395" text-anchor="middle" font-size="13" fill="#E65100" font-weight="600">TRENCH</text>
+    <text x="515" y="412" text-anchor="middle" font-size="11" fill="#E65100">300 mm wide</text>
+    <text x="515" y="427" text-anchor="middle" font-size="11" fill="#E65100">400 mm deep</text>
+
+    <!-- pipe inside trench -->
+    <line x1="515" y1="292" x2="515" y2="492" stroke="#1565C0" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="430" y="345" font-size="11" fill="#1565C0" font-weight="600">25 mm MDPE</text>
+    <text x="430" y="360" font-size="11" fill="#1565C0">(straight pipe)</text>
+
+    <!-- Tank exit elbow -->
+    <circle cx="515" cy="298" r="9" fill="#FF6F00" stroke="#333" stroke-width="1.5"/>
+    <text x="555" y="280" font-size="11" fill="#E65100" font-weight="600">PM Female Elbow 25 × 1" #355377</text>
+    <text x="555" y="295" font-size="10" fill="#666">(disturbance — 10×D rule starts here)</text>
+
+    <!-- Trench dimensions -->
+    <line x1="430" y1="292" x2="430" y2="492" stroke="#666" stroke-width="1" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="395" y="395" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90 395 395)">1.0 m (length)</text>
+
+    <line x1="485" y1="510" x2="545" y2="510" stroke="#666" stroke-width="1" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="515" y="525" text-anchor="middle" font-size="11" fill="#666">0.3 m</text>
+  </g>
+
+  <!-- ========================== -->
+  <!-- PIT (2.2 m × 0.74 m)        -->
+  <!-- ========================== -->
+  <g transform="translate(225, 540)">
+    <!-- pit outline -->
+    <rect x="0" y="0" width="660" height="222" fill="url(#pitHatch)" stroke="#6A1B9A" stroke-width="2.5" stroke-dasharray="8,4"/>
+    <text x="330" y="-12" text-anchor="middle" font-size="14" fill="#6A1B9A" font-weight="700">MANIFOLD PIT — 2.2 m × 0.74 m × 0.5 m deep</text>
+
+    <!-- Pit dimension lines -->
+    <line x1="0" y1="240" x2="660" y2="240" stroke="#666" stroke-width="1" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="330" y="256" text-anchor="middle" font-size="11" fill="#666">2.2 m (pit length)</text>
+
+    <line x1="-22" y1="0" x2="-22" y2="222" stroke="#666" stroke-width="1" marker-start="url(#dimArrowL)" marker-end="url(#dimArrowR)"/>
+    <text x="-30" y="115" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90 -30 115)">0.74 m</text>
+
+    <!-- Working margin shaded -->
+    <text x="60" y="14" font-size="10" fill="#888" font-style="italic">150 mm margin all round</text>
+
+    <!-- BOX A (flow meter) -->
+    <g transform="translate(60, 47)">
+      <rect x="0" y="0" width="120" height="88" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" rx="3"/>
+      <text x="60" y="22" text-anchor="middle" font-weight="700" fill="#1565C0" font-size="13">BOX A</text>
+      <text x="60" y="38" text-anchor="middle" font-size="10" fill="#1565C0">14" Jumbo</text>
+      <text x="60" y="58" text-anchor="middle" font-size="11" fill="#333" font-weight="600">HYFM25</text>
+      <text x="60" y="74" text-anchor="middle" font-size="10" fill="#666">flow meter</text>
+      <!-- meter symbol -->
+      <circle cx="60" cy="44" r="4" fill="white" stroke="#1565C0" stroke-width="1"/>
+    </g>
+
+    <!-- BOX B (master valve + blow-out) -->
+    <g transform="translate(220, 47)">
+      <rect x="0" y="0" width="180" height="88" fill="#FFEBEE" stroke="#C62828" stroke-width="2" rx="3"/>
+      <text x="90" y="22" text-anchor="middle" font-weight="700" fill="#C62828" font-size="13">BOX B</text>
+      <text x="90" y="38" text-anchor="middle" font-size="10" fill="#C62828">14" Jumbo</text>
+      <text x="90" y="58" text-anchor="middle" font-size="11" fill="#333" font-weight="600">PGV-101 + tee</text>
+      <text x="90" y="74" text-anchor="middle" font-size="10" fill="#666">master valve + blow-out</text>
+    </g>
+
+    <!-- BOX C (manifold + filter) -->
+    <g transform="translate(440, 47)">
+      <rect x="0" y="0" width="160" height="88" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" rx="3"/>
+      <text x="80" y="22" text-anchor="middle" font-weight="700" fill="#2E7D32" font-size="13">BOX C</text>
+      <text x="80" y="38" text-anchor="middle" font-size="10" fill="#2E7D32">14" Jumbo</text>
+      <text x="80" y="58" text-anchor="middle" font-size="11" fill="#333" font-weight="600">ISM-3zone</text>
+      <text x="80" y="74" text-anchor="middle" font-size="10" fill="#666">manifold + filter</text>
+    </g>
+
+    <!-- Pipe between boxes (inside pit) -->
+    <line x1="180" y1="91" x2="220" y2="91" stroke="#1565C0" stroke-width="3"/>
+    <line x1="400" y1="91" x2="440" y2="91" stroke="#1565C0" stroke-width="3"/>
+
+    <!-- Box gap callouts -->
+    <text x="200" y="106" text-anchor="middle" font-size="10" fill="#1565C0">~50 mm</text>
+    <text x="420" y="106" text-anchor="middle" font-size="10" fill="#1565C0">~50 mm</text>
+  </g>
+
+  <!-- Pipe entry from trench into BOX A -->
+  <line x1="515" y1="492" x2="515" y2="587" stroke="#1565C0" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- enters at left side of BOX A — let me add arrow into Box A -->
+
+  <!-- Outflow arrows from Box C -->
+  <g transform="translate(885, 631)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#FF9800" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="30" y="-10" font-size="11" fill="#E65100" font-weight="600">→ Z1 (orange)</text>
+    <line x1="0" y1="20" x2="60" y2="20" stroke="#E91E63" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="30" y="40" font-size="11" fill="#AD1457" font-weight="600">→ Z2 (pink)</text>
+    <line x1="0" y1="50" x2="60" y2="50" stroke="#2196F3" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="30" y="68" font-size="11" fill="#1976D2" font-weight="600">→ Z3 (drip)</text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- 10×D / 5×D ANNOTATIONS                         -->
+  <!-- ============================================== -->
+
+  <!-- 10×D upstream callout -->
+  <g>
+    <rect x="60" y="290" width="320" height="100" fill="#FFF8E1" stroke="#F57C00" stroke-width="2" rx="6"/>
+    <text x="220" y="312" text-anchor="middle" font-size="13" font-weight="700" fill="#E65100">⚠ 10×D Upstream Rule</text>
+    <text x="78" y="332" font-size="11" fill="#333">Min straight pipe before meter:</text>
+    <text x="78" y="350" font-size="11" fill="#333" font-weight="600">10 × 25 mm = <tspan fill="#E65100">250 mm</tspan></text>
+    <text x="78" y="368" font-size="11" fill="#2E7D32">Available: ~1.3 m (1 m trench + meter pos in BOX A)</text>
+    <text x="78" y="384" font-size="11" fill="#2E7D32" font-weight="600">✓ 5× over-margin</text>
+
+    <!-- arrow pointing to trench -->
+    <path d="M380,340 Q450,340 470,360" fill="none" stroke="#F57C00" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- 5×D downstream callout -->
+  <g>
+    <rect x="720" y="780" width="350" height="100" fill="#FFF8E1" stroke="#F57C00" stroke-width="2" rx="6"/>
+    <text x="895" y="802" text-anchor="middle" font-size="13" font-weight="700" fill="#E65100">⚠ 5×D Downstream Rule</text>
+    <text x="738" y="822" font-size="11" fill="#333">Min straight pipe after meter (before master valve):</text>
+    <text x="738" y="840" font-size="11" fill="#333" font-weight="600">5 × 25 mm = <tspan fill="#E65100">125 mm</tspan></text>
+    <text x="738" y="858" font-size="11" fill="#2E7D32">Available: ~500 mm (BOX A → gap → BOX B inlet)</text>
+    <text x="738" y="874" font-size="11" fill="#2E7D32" font-weight="600">✓ 4× over-margin</text>
+
+    <!-- arrow pointing to gap between A and B -->
+    <path d="M740,790 Q620,750 460,640" fill="none" stroke="#F57C00" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- VOLUME SUMMARY TABLE                           -->
+  <!-- ============================================== -->
+  <g transform="translate(60, 940)">
+    <rect x="0" y="0" width="980" height="320" fill="white" stroke="#1565C0" stroke-width="2" rx="8"/>
+    <text x="490" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#1565C0">Excavation Summary</text>
+
+    <!-- Header row -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="940" height="28" fill="#E3F2FD"/>
+      <text x="10" y="19" font-size="12" font-weight="700" fill="#1565C0">Element</text>
+      <text x="320" y="19" font-size="12" font-weight="700" fill="#1565C0">Length</text>
+      <text x="460" y="19" font-size="12" font-weight="700" fill="#1565C0">Width</text>
+      <text x="580" y="19" font-size="12" font-weight="700" fill="#1565C0">Depth</text>
+      <text x="700" y="19" font-size="12" font-weight="700" fill="#1565C0">Volume</text>
+      <text x="810" y="19" font-size="12" font-weight="700" fill="#1565C0">Notes</text>
+    </g>
+
+    <!-- Pit row -->
+    <g transform="translate(20, 78)" font-size="12">
+      <rect x="0" y="0" width="940" height="32" fill="#F3E5F5" opacity="0.4"/>
+      <text x="10" y="20" font-weight="600">Manifold Pit (Boxes A+B+C)</text>
+      <text x="320" y="20">2.20 m</text>
+      <text x="460" y="20">0.74 m</text>
+      <text x="580" y="20">0.50 m</text>
+      <text x="700" y="20" font-weight="700" fill="#6A1B9A">0.81 m³</text>
+      <text x="810" y="20" font-size="10" fill="#666">3× 14" Jumbo + 150 mm margin</text>
+    </g>
+
+    <!-- Trench row -->
+    <g transform="translate(20, 110)" font-size="12">
+      <rect x="0" y="0" width="940" height="32" fill="#FFF8E1" opacity="0.4"/>
+      <text x="10" y="20" font-weight="600">Tank → Pit Trench</text>
+      <text x="320" y="20">1.00 m</text>
+      <text x="460" y="20">0.30 m</text>
+      <text x="580" y="20">0.40 m</text>
+      <text x="700" y="20" font-weight="700" fill="#E65100">0.12 m³</text>
+      <text x="810" y="20" font-size="10" fill="#666">Carries 25 mm MDPE only</text>
+    </g>
+
+    <!-- Total row -->
+    <g transform="translate(20, 142)" font-size="12">
+      <rect x="0" y="0" width="940" height="32" fill="#E3F2FD"/>
+      <text x="10" y="20" font-weight="700" fill="#1565C0">TOTAL EXCAVATION (in-situ volume)</text>
+      <text x="700" y="20" font-weight="700" fill="#1565C0">0.93 m³</text>
+      <text x="810" y="20" font-size="10" fill="#666">≈ 1 m³ — about 1 hour mini-digger work</text>
+    </g>
+
+    <!-- Loose / heap row -->
+    <g transform="translate(20, 174)" font-size="12">
+      <rect x="0" y="0" width="940" height="32" fill="#FFEBEE"/>
+      <text x="10" y="20" font-weight="700" fill="#C62828">⚠ Spoil heap (after 30% bulking)</text>
+      <text x="700" y="20" font-weight="700" fill="#C62828">~1.21 m³</text>
+      <text x="810" y="20" font-size="10" fill="#666">~ 8–10 wheelbarrow loads</text>
+    </g>
+
+    <!-- Backfill profile -->
+    <g transform="translate(20, 218)" font-size="11">
+      <text x="0" y="0" font-weight="700" fill="#1565C0">Backfill profile (pit + trench):</text>
+      <text x="0" y="20" fill="#333">1. <tspan font-weight="600">Base:</tspan> 100 mm sharp sand, compacted &amp; levelled (in pit) / 50 mm sand bed (in trench)</text>
+      <text x="0" y="38" fill="#333">2. <tspan font-weight="600">Set boxes/pipe:</tspan> position boxes on prepared base; lay pipe centred in trench on sand</text>
+      <text x="0" y="56" fill="#333">3. <tspan font-weight="600">Sand surround:</tspan> 100 mm sand around pipe and up box sides — protects from stones</text>
+      <text x="0" y="74" fill="#333">4. <tspan font-weight="600">Subsoil backfill:</tspan> screened soil in 150 mm lifts, foot-tamped between lifts</text>
+      <text x="0" y="92" fill="#333">5. <tspan font-weight="600">Warning tape:</tspan> blue water tape at ~250 mm above pipe (in trench only)</text>
+    </g>
+  </g>
+
+</svg>
