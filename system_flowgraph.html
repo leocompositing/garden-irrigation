@@ -661,7 +661,25 @@ h1 { text-align: center; color: #1565C0; font-size: 20px; margin-bottom: 4px; }
     &bull; <strong>Controller wiring at the house:</strong> Hunter Pro-HC inside garage/outbuilding. Terminals used (from the 7-core): <strong>C</strong> (white, common), <strong>P/MV</strong> (yellow, master), <strong>1</strong> (red, Z1 Top Lawn North), <strong>2</strong> (blue, Z2 Top Lawn South), <strong>3</strong> (green, Z3 Bottom Section). Black + brown cores of the 7-core are capped as spares. <strong>SEN1</strong> (+/−) accepts the HYFM25's 2-core shielded cable, which runs separately from the 7-core. Strain-relief both cables at the wall entry. Leave outputs 4–6 unused.<br>
     &bull; <strong>Polarity:</strong> Hunter 24 VAC solenoids are <strong>non-polarised</strong> — either lead to COM, either to hot. Same for master valve. Flow meter IS polarised (red = pulse, black = ground): follow HC-100-FLOW instruction card.<br>
     &bull; <strong>Optional earth rod:</strong> 1.2 m copper-bonded rod within 1 m of controller, bonded to controller GND terminal. Cheap lightning/surge insurance for exposed garden runs.<br>
-    &bull; <strong>Cable route sanity check:</strong> total run house → BOX A → BOX B → BOX C ≈ 35–40 m. 50 m roll gives margin for service loops + wall penetration slack. Do NOT try to splice mid-run in the trench — if 50 m is short, buy a 2nd roll and splice inside a box.
+    &bull; <strong>Cable route sanity check:</strong> total run house → BOX A → BOX B → BOX C ≈ 35–40 m. 50 m roll gives margin for service loops + wall penetration slack. Do NOT try to splice mid-run in the trench — if 50 m is short, buy a 2nd roll and splice inside a box.<br>
+    <br>
+    &bull; <strong style="color:#C62828;">Pump power control (CRITICAL — pump has no built-in pressure switch):</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;The Grundfos SB 3-45AW has <strong>only a float switch (low-water cutoff) and a flow switch (dry-run protection)</strong>. It does <strong>not</strong> have a pressure switch — it will run continuously whenever 230 V is applied. A <strong>pump start relay (PSR)</strong> is mandatory between the wall socket and the pump, switched by the Hunter Pro-HC controller's P/MV terminal.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Hardware:</strong> Hunter PSR-22 (24 VAC coil, NEMA 3R enclosure, 230 V / 3 HP rated) — UK stockists: Irrigation UK, Irrigation Online. ~£80.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Install layout (plug-and-play — no Part P):</strong>
+    <pre style="background:#f5f5f5;border-left:3px solid #C62828;padding:10px;font-size:11px;margin:8px 0;">
+    [Wall socket] ──13A plug──▶ [PSR enclosure] ──13A socket──▶ [Pump]
+                                       ▲
+                                       │  24 VAC (2 wires)
+                                       │
+                                  [Hunter Pro-HC]
+                                  P/MV ─── A1 (coil)
+                                  C    ─── A2 (coil)
+    </pre>
+    &nbsp;&nbsp;&nbsp;&nbsp;Mount the PSR enclosure <strong>directly next to the Hunter controller</strong> — the 24 VAC coil run is then ~10 cm of bell wire. The PSR's 13 A flying lead plugs into the same wall socket that feeds the controller (twin-outlet adapter if needed). The pump's existing factory plug goes into a panel-mount 13 A socket on the PSR enclosure.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Cycle behaviour:</strong> Hunter starts schedule → energises P/MV → PSR coil closes → pump receives 230 V and starts. Schedule ends → P/MV drops → PSR opens → pump stops within ~1 s. Master valve PGV-101 (also on P/MV) closes simultaneously as secondary safety.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Belt-and-braces manual kill:</strong> the wall socket switch remains the master cut — flipping it off guarantees the pump cannot run regardless of controller state. Use this for winterisation, servicing, or any "something's wrong" moment.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Do NOT add a Grundfos PM1/PM2 pressure manager.</strong> PM1/PM2 is for pumps that have no other on/off control (JP/CM/SQ series) and would fight the PSR if installed in series — causes pump hunting and contact wear.
   </div>
 
 </div><!-- end diagram-wrap -->
