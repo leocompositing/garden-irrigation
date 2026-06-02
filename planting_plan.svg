@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1050" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <style>
+    .t-title { font-size: 22px; font-weight: 700; fill: #4A148C; }
+    .t-sub   { font-size: 12.5px; fill: #555; }
+    .wall    { fill: #b07a52; stroke: #8a5a36; stroke-width: 1; }
+    .wall-lbl{ font-size: 11px; fill: #7a5230; font-weight: 600; }
+    .lawn    { fill: #7cb342; }
+    .lawn-lbl{ font-size: 15px; fill: #ffffff; font-weight: 700; letter-spacing: 2px; text-anchor: middle; }
+    .stone   { fill: #d9d2c5; }
+    .soil    { fill: #efe6da; stroke: #d8cab6; stroke-width: 1.5; }
+    .deck    { fill: #c9a978; }
+    .deck-ln { stroke: #b3946a; stroke-width: 1.4; }
+    .deck-lbl{ font-size: 11px; fill: #7a5e3a; font-weight: 600; text-anchor: middle; }
+    .num   { fill: #fff; font-weight: 700; font-size: 12px; text-anchor: middle; dominant-baseline: central; }
+    .eg    { fill: #2e7d4f; stroke: #1b5e20; stroke-width: 1.5; }
+    .per   { fill: #8e44c4; stroke: #5e2b86; stroke-width: 1.5; }
+    .plum  { fill: #6a3d8f; stroke: #3f2456; stroke-width: 1.5; }
+    .silv  { fill: #9fb1b8; stroke: #6b7d83; stroke-width: 1.5; }
+    .dec   { fill: #6aa84f; stroke: #ffffff; stroke-width: 2; stroke-dasharray: 3 2.5; }
+    .lil   { fill: #b39ddb; stroke: #7e57c2; stroke-width: 1.5; }
+    .badge { stroke: #fff; stroke-width: 1.5; }
+    .badge-t { fill: #fff; font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    .grit  { font-size: 11px; fill: #00695c; font-weight: 700; }
+    .lg-h  { font-size: 13px; font-weight: 700; fill: #4A148C; }
+    .lg    { font-size: 11.5px; fill: #222; }
+    .lg-tox{ font-size: 11.5px; fill: #b71c1c; font-weight: 600; }
+    .key   { font-size: 11.5px; fill: #222; }
+    .panel { fill: #ffffff; stroke: #d9cbe4; stroke-width: 1; }
+  </style>
+
+  <rect x="0" y="0" width="1000" height="1050" fill="#faf5fc"/>
+
+  <!-- title -->
+  <text x="28" y="38" class="t-title">123 Downs — Oval Border Planting Plan</text>
+  <text x="28" y="58" class="t-sub">~18 m² curved border around the oval lawn · plan view (schematic, not to scale) · drifts numbered, see legend below &amp; planting_plan.html</text>
+
+  <!-- ===================== PLAN ===================== -->
+
+  <!-- deck (NW / house side, bottom) -->
+  <polygon class="deck" points="0,720 1000,745 1000,792 0,792"/>
+  <g class="deck-ln">
+    <line x1="120" y1="724" x2="120" y2="792"/>
+    <line x1="260" y1="727" x2="260" y2="792"/>
+    <line x1="400" y1="730" x2="400" y2="792"/>
+    <line x1="540" y1="734" x2="540" y2="792"/>
+    <line x1="680" y1="737" x2="680" y2="792"/>
+    <line x1="820" y1="740" x2="820" y2="792"/>
+  </g>
+  <text x="500" y="775" class="deck-lbl">COMPOSITE DECK  ·  NW / house side</text>
+
+  <!-- boundary walls -->
+  <rect class="wall" x="96" y="250" width="22" height="412" rx="3"/>
+  <text class="wall-lbl" x="88" y="456" transform="rotate(-90 88 456)" text-anchor="middle">BRICK BOUNDARY WALL · NE</text>
+
+  <rect class="wall" x="248" y="230" width="474" height="20" rx="4"/>
+  <text class="wall-lbl" x="485" y="224" text-anchor="middle">RETAINING WALL · SE (back)</text>
+
+  <path class="wall" d="M846,296 C 895,358 900,470 853,560 L 904,576 C 951,474 946,352 897,286 Z"/>
+  <text class="wall-lbl" x="905" y="430" transform="rotate(90 905 430)" text-anchor="middle">CURVED RETAINING WALL + SHED · SW</text>
+
+  <!-- soil (border) blob -->
+  <path class="soil" d="M130,690
+    C 105,560 110,400 165,300
+    C 200,255 250,245 320,242
+    C 450,235 600,235 700,250
+    C 770,262 825,300 850,380
+    C 868,440 850,520 800,575
+    C 760,615 700,635 640,645
+    C 520,662 360,665 270,665
+    C 200,665 150,660 130,690 Z"/>
+
+  <!-- zone halos -->
+  <ellipse cx="490" cy="300" rx="250" ry="56" fill="#6a1b9a" opacity="0.07"/>
+  <ellipse cx="205" cy="482" rx="74" ry="158" fill="#c0392b" opacity="0.06"/>
+  <ellipse cx="800" cy="470" rx="72" ry="150" fill="#1565c0" opacity="0.06"/>
+  <ellipse cx="450" cy="628" rx="250" ry="60" fill="#ad1457" opacity="0.06"/>
+
+  <!-- lawn -->
+  <ellipse class="stone" cx="472" cy="450" rx="220" ry="180"/>
+  <ellipse class="lawn"  cx="472" cy="450" rx="206" ry="166"/>
+  <text x="472" y="446" class="lawn-lbl">OVAL</text>
+  <text x="472" y="466" class="lawn-lbl">LAWN</text>
+
+  <!-- zone badges -->
+  <circle class="badge" cx="255" cy="274" r="15" fill="#6a1b9a"/><text class="badge-t" x="255" y="274">A</text>
+  <circle class="badge" cx="166" cy="452" r="15" fill="#c0392b"/><text class="badge-t" x="166" y="452">B</text>
+  <circle class="badge" cx="836" cy="452" r="15" fill="#1565c0"/><text class="badge-t" x="836" y="452">C</text>
+  <circle class="badge" cx="470" cy="684" r="15" fill="#ad1457"/><text class="badge-t" x="470" y="684">D</text>
+
+  <!-- ===== ZONE A (top) ===== -->
+  <!-- climber along back wall -->
+  <path d="M398,250 q15,-9 30,0 t30,0 t30,0 t30,0 t30,0" fill="none" stroke="#2e7d4f" stroke-width="3"/>
+  <circle class="eg"   cx="480" cy="252" r="16"/><text class="num" x="480" y="252">1</text>
+  <circle class="eg"   cx="300" cy="300" r="16"/><text class="num" x="300" y="300">2</text>
+  <circle class="plum" cx="370" cy="318" r="15"/><text class="num" x="370" y="318">3</text>
+  <circle class="dec"  cx="468" cy="302" r="18"/><text class="num" x="468" y="302">4</text>
+  <circle class="lil"  cx="588" cy="300" r="18"/><text class="num" x="588" y="300">5</text>
+  <circle class="per"  cx="676" cy="314" r="15"/><text class="num" x="676" y="314">6</text>
+
+  <!-- ===== ZONE B (left) ===== -->
+  <circle class="eg"   cx="216" cy="352" r="16"/><text class="num" x="216" y="352">7</text>
+  <circle class="eg"   cx="200" cy="408" r="18"/><text class="num" x="200" y="408">8</text>
+  <circle class="per"  cx="214" cy="462" r="16"/><text class="num" x="214" y="462">9</text>
+  <circle class="silv" cx="196" cy="516" r="16"/><text class="num" x="196" y="516">10</text>
+  <circle class="eg"   cx="212" cy="566" r="18"/><text class="num" x="212" y="566">11</text>
+  <circle class="per"  cx="244" cy="610" r="15"/><text class="num" x="244" y="610">12</text>
+
+  <!-- ===== ZONE C (right) ===== -->
+  <circle class="dec"  cx="792" cy="354" r="18"/><text class="num" x="792" y="354">13</text>
+  <circle class="dec"  cx="806" cy="410" r="18"/><text class="num" x="806" y="410">14</text>
+  <circle class="eg"   cx="792" cy="464" r="16"/><text class="num" x="792" y="464">15</text>
+  <circle class="plum" cx="812" cy="516" r="15"/><text class="num" x="812" y="516">16</text>
+  <circle cx="792" cy="566" r="15" fill="#3d2a4d" stroke="#211528" stroke-width="1.5"/><text class="num" x="792" y="566">17</text>
+
+  <!-- ===== ZONE D (front lobe) ===== -->
+  <circle class="dec"  cx="300" cy="600" r="18"/><text class="num" x="300" y="600">18</text>
+  <circle cx="256" cy="646" r="18" fill="#8e6fae" stroke="#ffffff" stroke-width="2" stroke-dasharray="3 2.5"/><text class="num" x="256" y="646">19</text>
+  <circle class="per"  cx="370" cy="622" r="16"/><text class="num" x="370" y="622">20</text><text class="grit" x="388" y="610">&#9671;</text>
+  <circle class="per"  cx="440" cy="650" r="15"/><text class="num" x="440" y="650">21</text><text class="grit" x="456" y="639">&#9671;</text>
+  <circle class="per"  cx="498" cy="614" r="16"/><text class="num" x="498" y="614">22</text><text class="grit" x="516" y="602">&#9671;</text>
+  <circle cx="554" cy="644" r="20" fill="none" stroke="#d50000" stroke-width="2.5"/>
+  <circle class="per"  cx="554" cy="644" r="15"/><text class="num" x="554" y="644">23</text>
+  <circle class="per"  cx="566" cy="602" r="15"/><text class="num" x="566" y="602">24</text>
+  <circle class="per"  cx="630" cy="624" r="15"/><text class="num" x="630" y="624">25</text>
+  <circle class="eg"   cx="652" cy="592" r="16"/><text class="num" x="652" y="592">26</text>
+  <circle class="eg"   cx="612" cy="652" r="16"/><text class="num" x="612" y="652">27</text>
+  <circle class="plum" cx="346" cy="660" r="15"/><text class="num" x="346" y="660">28</text>
+
+  <!-- ===================== COMPASS ===================== -->
+  <g transform="translate(915,98)">
+    <circle r="46" fill="#1a1a1a"/>
+    <circle r="46" fill="none" stroke="#6a1b9a" stroke-width="2"/>
+    <!-- N points lower-left (camera view 146° SE = top of plan) -->
+    <polygon points="-26,26 0,0 -7,33" fill="#e53935"/>
+    <polygon points="26,-26 0,0 7,-33" fill="#cfcfcf"/>
+    <text x="-30" y="40" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">N</text>
+    <text x="30" y="-26" fill="#bbb" font-size="11" text-anchor="middle">S</text>
+  </g>
+  <text x="915" y="160" class="t-sub" text-anchor="middle">view 146° SE = top of plan</text>
+
+  <!-- ===================== LEGEND ===================== -->
+  <rect class="panel" x="20" y="806" width="960" height="232" rx="8"/>
+
+  <!-- role key strip -->
+  <text x="34" y="828" class="lg-h">Symbol key</text>
+  <circle class="eg"  cx="120" cy="824" r="9"/><text x="134" y="828" class="key">Evergreen</text>
+  <circle class="per" cx="232" cy="824" r="9"/><text x="246" y="828" class="key">Flowering perennial</text>
+  <circle class="plum" cx="400" cy="824" r="9"/><text x="414" y="828" class="key">Dark / plum foliage (evergreen)</text>
+  <circle class="silv" cx="628" cy="824" r="9"/><text x="642" y="828" class="key">Silver foliage</text>
+  <circle class="dec" cx="746" cy="824" r="9"/><text x="760" y="828" class="key">Deciduous (dashed)</text>
+  <text x="34" y="848" class="key"><tspan fill="#00695c" font-weight="700">&#9671;</tspan> = raise on grit (drainage-sensitive)</text>
+  <text x="260" y="848" class="key"><tspan fill="#d50000" font-weight="700">red ring</tspan> = pet-toxicity flag</text>
+  <text x="470" y="848" class="key"><tspan fill="#2e7d4f" font-weight="700">&#8767;&#8767;</tspan> = climber on wall</text>
+  <line x1="34" y1="858" x2="946" y2="858" stroke="#e3d6ef" stroke-width="1"/>
+
+  <!-- column 1: A + B -->
+  <text x="34" y="878" class="lg-h">Zone A — NW back wall (part shade)</text>
+  <text x="34" y="896" class="lg">1  Clematis armandii — evergreen climber</text>
+  <text x="34" y="912" class="lg">2  Sarcococca — evergreen, winter scent</text>
+  <text x="34" y="928" class="lg">3  Heuchera &#215;3 — plum foliage (EG)</text>
+  <text x="34" y="944" class="lg">4  Deutzia 'Mont Rose' — deciduous</text>
+  <text x="34" y="960" class="lg">5  Hydrangea (lilac) — deciduous</text>
+  <text x="34" y="976" class="lg">6  Anemone 'Praecox' &#215;3 — perennial</text>
+  <text x="34" y="998" class="lg-h">Zone B — SW hot / dry</text>
+  <text x="34" y="1016" class="lg">7  Euphorbia &#215;2 — EG (sap irritant)</text>
+  <text x="34" y="1032" class="lg">8  Lavender 'Hidcote' &#215;5 — EG</text>
+
+  <!-- column 2: B cont + C -->
+  <text x="330" y="878" class="lg-h">Zone B (cont.)</text>
+  <text x="330" y="896" class="lg">9  Salvia 'Caradonna' &#215;5 — perennial</text>
+  <text x="330" y="912" class="lg">10  Convolvulus &#215;2 — silver EG</text>
+  <text x="330" y="928" class="lg">11  Cistus &#215;1 — evergreen</text>
+  <text x="330" y="944" class="lg">12  Geranium 'Rozanne' &#215;3 — perennial</text>
+  <text x="330" y="966" class="lg-h">Zone C — NE cool / moist</text>
+  <text x="330" y="984" class="lg">13  Cornus 'Magic Flame' — winter stems</text>
+  <text x="330" y="1000" class="lg">14  Hydrangea paniculata — deciduous</text>
+  <text x="330" y="1016" class="lg">15  Bergenia 'Sunningdale' &#215;5 — EG</text>
+  <text x="330" y="1032" class="lg">16  Heuchera &#215;3 — plum (EG)</text>
+
+  <!-- column 3: C cont + D -->
+  <text x="630" y="878" class="lg-h">Zone C (cont.)</text>
+  <text x="630" y="896" class="lg">17  Ophiopogon &#215;7 — black grass (EG)</text>
+  <text x="630" y="918" class="lg-h">Zone D — full-sun showpiece</text>
+  <text x="630" y="936" class="lg">18  Rose 'Zephirine D.' — thornless, decid.</text>
+  <text x="630" y="952" class="lg">19  Weigela 'F. Purpureis' — plum leaf, decid.</text>
+  <text x="630" y="968" class="lg">20  Peony &#215;2 — perennial &#9671;grit</text>
+  <text x="630" y="984" class="lg">21  Sweet William &#215;5 — &#9671;grit</text>
+  <text x="630" y="1000" class="lg">22  Echinacea &#215;5 — perennial &#9671;grit</text>
+  <text x="630" y="1016" class="lg-tox">23  Daylily &#215;3 — &#9888; toxic to cats (swap?)</text>
+  <text x="630" y="1032" class="lg">24  Phlox &#215;3  ·  25 Aster &#215;3  ·  26 Hebe &#215;3  ·  27 Lav &#215;3  ·  28 Heuchera &#215;3</text>
+
+</svg>

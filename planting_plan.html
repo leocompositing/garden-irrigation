@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planting Plan — Oval Border · 123 Downs</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    background: #faf5fc;
+    margin: 0;
+    padding: 24px 16px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; background: white; padding: 32px 36px; border-radius: 12px; box-shadow: 0 2px 12px rgba(106,27,154,0.10); }
+  h1 { font-size: 26px; color: #6A1B9A; margin: 0 0 4px 0; letter-spacing: -0.3px; }
+  h2 { font-size: 19px; color: #6A1B9A; margin: 28px 0 10px 0; border-bottom: 2px solid #6A1B9A; padding-bottom: 4px; }
+  h3 { font-size: 15px; color: #1a1a1a; margin: 18px 0 6px 0; }
+  .sub { color: #666; font-size: 14px; margin: 0 0 8px 0; }
+  .crumb { display: inline-block; margin-bottom: 18px; font-size: 13px; color: #6A1B9A; text-decoration: none; }
+  .crumb:hover { text-decoration: underline; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px 0; font-size: 13px; }
+  th { background: #6A1B9A; color: white; padding: 7px 9px; text-align: left; border: 1px solid #4A148C; font-weight: 600; }
+  td { padding: 6px 9px; border: 1px solid #d9cbe4; vertical-align: top; }
+  tr:nth-child(even) td { background: #faf5fc; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.ctr { text-align: center; }
+  ul, ol { margin: 6px 0 10px 0; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  strong { color: #4A148C; }
+  .box { border-left: 4px solid #F57F17; background: #FFF8E1; padding: 10px 14px; margin: 12px 0; font-size: 13.5px; border-radius: 0 6px 6px 0; }
+  .box-red { border-left: 4px solid #C62828; background: #FFEBEE; padding: 10px 14px; margin: 12px 0; font-size: 13.5px; border-radius: 0 6px 6px 0; }
+  .box-green { border-left: 4px solid #2E7D32; background: #E8F5E9; padding: 10px 14px; margin: 12px 0; font-size: 13.5px; border-radius: 0 6px 6px 0; }
+  .box-purple { border-left: 4px solid #6A1B9A; background: #F3E5F5; padding: 10px 14px; margin: 12px 0; font-size: 13.5px; border-radius: 0 6px 6px 0; }
+  .zone-card { background: #fcfafd; border: 1px solid #e4d4ee; border-radius: 8px; padding: 14px 18px; margin: 12px 0 18px 0; }
+  .zone-header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+  .zone-tag { background: #6A1B9A; color: white; padding: 2px 10px; border-radius: 14px; font-size: 12px; font-weight: 600; }
+  .zone-goal { color: #555; font-size: 13px; }
+  .evg { display: inline-block; padding: 1px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .evg-ok { background: #E8F5E9; color: #1B5E20; border: 1px solid #A5D6A7; }
+  .evg-watch { background: #FFF8E1; color: #8a5a00; border: 1px solid #FFE082; }
+  /* calendar */
+  .cal td, .cal th { text-align: center; padding: 4px 3px; font-size: 11.5px; }
+  .cal td.name { text-align: left; white-space: nowrap; font-size: 12px; padding-left: 8px; }
+  .cal .fl { background: #8E24AA; }              /* flower interest */
+  .cal .fo { background: #E1BEE7; }              /* foliage / structure interest */
+  .cal .st { background: #C5CAE9; }              /* winter stem colour */
+  .cal .checkrow td { background: #F3E5F5; font-weight: 700; color: #4A148C; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #555; margin: 6px 0 4px 0; align-items: center; }
+  .legend span.key { display: inline-block; width: 16px; height: 12px; border-radius: 2px; margin-right: 5px; vertical-align: middle; border: 1px solid #bbb; }
+  .footer { margin-top: 30px; padding-top: 14px; border-top: 1px solid #ddd; font-size: 12px; color: #888; text-align: center; }
+  code { background: #f1ecf5; padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+  .tox { color: #C62828; font-weight: 700; }
+  @media (max-width: 600px) {
+    .wrap { padding: 20px 16px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 17px; }
+    table { font-size: 12px; }
+    th, td { padding: 5px 6px; }
+    .cal td, .cal th { padding: 3px 1px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="crumb" href="index.html">← Back to project</a>
+
+  <h1>Planting Plan — Oval Border</h1>
+  <p class="sub">Curved ring border around the oval lawn · ~18 m² · Coulsdon, Surrey (51°18′N, RHS H5 / USDA 8b) · neutral–slightly alkaline London clay over chalk</p>
+  <p><a class="crumb" href="planting_plan.svg" style="margin-bottom:0;">🗺 Open the plan-view layout (SVG) →</a></p>
+
+  <h2>Context &amp; brief</h2>
+  <p>The curved border wraps the oval lawn (lawn stays as grass). The scheme is <strong>purple-led</strong> — deep violet, mauve, lilac, plum, with silver-purple and burgundy foliage, supported by white and soft pink. <strong>No yellow/orange as feature colours.</strong> Target is <strong>60–70% evergreen / 30–40% flowering by planted area in every zone</strong>, with staggered colour so no month goes bare. Pets use the garden, so mildly-toxic plants are <strong>kept but flagged</strong> (see the flag/reject list at the foot). Drainage-sensitive picks (sweet william, coneflower, peony) sit in the best-drained Zone D, raised slightly on horticultural grit.</p>
+
+  <h2>The four sun zones (from the 146° SE site photo)</h2>
+  <p>Garden long axis runs NW (deck) → SE (back wall). That gives the ring four aspects:</p>
+  <table>
+    <tr><th>Zone</th><th>Where in the photo</th><th>Aspect</th><th>Light &amp; soil character</th><th>~Area</th></tr>
+    <tr><td><strong>A</strong> — Back strip</td><td>top, along SE brick wall</td><td>NW-facing</td><td>Part sun (PM/evening), sheltered, warm wall behind</td><td class="ctr">~4 m²</td></tr>
+    <tr><td><strong>B</strong> — Left strip</td><td>left edge, by neighbour's hedge</td><td>SW-facing</td><td>Hot afternoon sun, drought-prone, hedge root competition</td><td class="ctr">~5 m²</td></tr>
+    <tr><td><strong>C</strong> — Right strip</td><td>right edge, retaining wall + shed</td><td>NE-facing</td><td>Morning sun only, cool/moist, shaded midday on</td><td class="ctr">~4 m²</td></tr>
+    <tr><td><strong>D</strong> — Front lobe</td><td>wide bulge near the deck</td><td>SE/S-facing</td><td>Full sun all day, best drainage — the showpiece</td><td class="ctr">~5 m²</td></tr>
+  </table>
+
+  <!-- ZONE A -->
+  <h2>Zone A — NW back wall · part shade, sheltered</h2>
+  <div class="zone-card">
+    <div class="zone-header"><span class="zone-tag">Zone A</span><strong>Warm sheltered wall, afternoon/evening light</strong><span class="zone-goal">Climber-led, woodland-edge feel.</span></div>
+    <table>
+      <tr><th>Plant</th><th>Common</th><th>Type</th><th>H × W (mature)</th><th>Sun</th><th>Flowers</th><th>Colour</th><th>Qty</th><th>Spacing</th><th>Why here</th></tr>
+      <tr><td><em>Clematis armandii</em></td><td>Evergreen clematis</td><td>Evergreen climber</td><td>4–5 m × 3 m</td><td>Part sun</td><td>Feb–Mar</td><td>White→soft pink</td><td class="ctr">1</td><td>on wall, 3 m wires</td><td>Primary climber — clothes the warm brick, earliest flower of the year</td></tr>
+      <tr><td><em>Hydrangea macrophylla</em></td><td>Mophead hydrangea</td><td>Deciduous shrub</td><td>1.2 × 1.2 m</td><td>Part shade</td><td>Jul–Sep</td><td>Lilac/mauve (kept — see note)</td><td class="ctr">1</td><td>—</td><td>Loves the shelter; long summer mass. Lilac is the desired colour — hold it with ericaceous/colourant on this soil. <span class="tox">mildly toxic — flag</span></td></tr>
+      <tr><td><em>Anemone hupehensis</em> 'Praecox'</td><td>Japanese anemone</td><td>Herb. perennial</td><td>0.7 × 0.4 m</td><td>Part shade</td><td>Aug–Oct</td><td>Lilac-pink</td><td class="ctr">3</td><td>40 cm</td><td>Carries colour into autumn in shade. <span class="tox">sap irritant — flag</span></td></tr>
+      <tr><td><em>Deutzia × hybrida</em> 'Mont Rose'</td><td>Deutzia</td><td>Deciduous shrub</td><td>1.2 × 1.2 m</td><td>Part sun</td><td>May–Jun</td><td>Pink-mauve</td><td class="ctr">1</td><td>—</td><td>Early-summer flush before hydrangea</td></tr>
+      <tr><td><em>Heuchera</em> 'Plum Pudding'</td><td>Coral bells</td><td>Evergreen perennial</td><td>0.4 × 0.4 m</td><td>Part shade</td><td>Jun (minor)</td><td>Plum-burgundy foliage</td><td class="ctr">3</td><td>35 cm</td><td>Evergreen plum foliage holds all winter</td></tr>
+      <tr><td><em>Sarcococca confusa</em></td><td>Sweet box</td><td>Evergreen shrub</td><td>1 × 1 m</td><td>Shade</td><td>Jan–Feb</td><td>Glossy green / scent</td><td class="ctr">1</td><td>—</td><td>Fills the deep-winter scent gap; black berries</td></tr>
+    </table>
+    <p><span class="evg evg-ok">Evergreen ≈ 65%</span> — Clematis armandii + Heuchera ×3 + Sarcococca (evergreen) vs Hydrangea, Deutzia, Anemone (deciduous).</p>
+  </div>
+
+  <!-- ZONE B -->
+  <h2>Zone B — SW hot &amp; dry · drought, hedge competition</h2>
+  <div class="zone-card">
+    <div class="zone-header"><span class="zone-tag">Zone B</span><strong>Mediterranean palette</strong><span class="zone-goal">Tough, silver + violet, no irrigation reliance.</span></div>
+    <table>
+      <tr><th>Plant</th><th>Common</th><th>Type</th><th>H × W (mature)</th><th>Sun</th><th>Flowers</th><th>Colour</th><th>Qty</th><th>Spacing</th><th>Why here</th></tr>
+      <tr><td><em>Lavandula angustifolia</em> 'Hidcote'</td><td>English lavender</td><td>Evergreen sub-shrub</td><td>0.6 × 0.6 m</td><td>Full sun</td><td>Jun–Aug</td><td>Deep violet</td><td class="ctr">5</td><td>45 cm drift</td><td>Drought-proof violet backbone; evergreen grey foliage</td></tr>
+      <tr><td><em>Salvia nemorosa</em> 'Caradonna'</td><td>Wood sage</td><td>Herb. perennial</td><td>0.6 × 0.4 m</td><td>Full sun</td><td>Jun + Sep</td><td>Deep violet spikes, black stems</td><td class="ctr">5</td><td>40 cm</td><td>Signature purple; reblooms if cut back</td></tr>
+      <tr><td><em>Euphorbia characias</em></td><td>Mediterranean spurge</td><td>Evergreen perennial</td><td>1 × 1 m</td><td>Full sun</td><td>Mar–Jun</td><td>Structural (chartreuse — minor accent)</td><td class="ctr">2</td><td>60 cm</td><td>Architectural evergreen, very drought-tolerant. <span class="tox">milky sap irritant — flag</span></td></tr>
+      <tr><td><em>Convolvulus cneorum</em></td><td>Silverbush</td><td>Evergreen shrub</td><td>0.6 × 0.9 m</td><td>Full sun</td><td>May–Sep</td><td>Silver leaf, white/pink-bud flower</td><td class="ctr">2</td><td>50 cm</td><td>Silver-foliage shrub for the brief — see reject list re: Brachyglottis</td></tr>
+      <tr><td><em>Geranium</em> 'Rozanne'</td><td>Cranesbill</td><td>Semi-evergreen perennial</td><td>0.5 × 0.8 m</td><td>Full sun</td><td>Jun–Oct</td><td>Violet-blue</td><td class="ctr">3</td><td>50 cm</td><td>Marathon flowerer; weaves between shrubs. <span class="tox">(true hardy Geranium — pet-safe)</span></td></tr>
+      <tr><td><em>Cistus</em> × purpureus</td><td>Purple rock rose</td><td>Evergreen shrub</td><td>1 × 1 m</td><td>Full sun</td><td>Jun–Jul</td><td>Magenta-purple, dark blotch</td><td class="ctr">1</td><td>—</td><td>Evergreen structure that thrives on poor dry soil</td></tr>
+    </table>
+    <p><span class="evg evg-ok">Evergreen ≈ 68%</span> — Lavender ×5 + Euphorbia ×2 + Convolvulus ×2 + Cistus + semi-evergreen Geranium vs Salvia (herbaceous).</p>
+  </div>
+
+  <!-- ZONE C -->
+  <h2>Zone C — NE cool &amp; moist · morning sun only</h2>
+  <div class="zone-card">
+    <div class="zone-header"><span class="zone-tag">Zone C</span><strong>Shade-tolerant, winter interest</strong><span class="zone-goal">The zone most at risk of a winter dead patch — built around stems + evergreen foliage.</span></div>
+    <table>
+      <tr><th>Plant</th><th>Common</th><th>Type</th><th>H × W (mature)</th><th>Sun</th><th>Flowers</th><th>Colour</th><th>Qty</th><th>Spacing</th><th>Why here</th></tr>
+      <tr><td><em>Bergenia</em> 'Sunningdale'</td><td>Elephant's ears</td><td>Evergreen perennial</td><td>0.45 × 0.6 m</td><td>Part shade</td><td>Mar–Apr</td><td>Magenta-pink; bronze-red winter leaf</td><td class="ctr">5</td><td>45 cm</td><td>Evergreen groundcover that colours red in winter cold</td></tr>
+      <tr><td><em>Cornus sanguinea</em> 'Magic Flame'</td><td>Dogwood</td><td>Deciduous shrub</td><td>1.5 × 1.5 m</td><td>Part shade</td><td>n/a (stems)</td><td>Winter stems (subtle — see note)</td><td class="ctr">1</td><td>—</td><td>Bare winter stems light up Dec–Mar when this cool corner is otherwise dead</td></tr>
+      <tr><td><em>Hydrangea paniculata</em></td><td>Panicle hydrangea</td><td>Deciduous shrub</td><td>1.5 × 1.5 m</td><td>Part shade</td><td>Jul–Oct</td><td>White→pink-blush</td><td class="ctr">1</td><td>—</td><td>Tolerates the shade better than mophead; long fade to pink. <span class="tox">mildly toxic — flag</span></td></tr>
+      <tr><td><em>Heuchera</em> 'Palace Purple'</td><td>Coral bells</td><td>Evergreen perennial</td><td>0.4 × 0.4 m</td><td>Part shade</td><td>Jun (minor)</td><td>Burgundy foliage</td><td class="ctr">3</td><td>35 cm</td><td>Evergreen purple foliage for the front edge</td></tr>
+      <tr><td><em>Ophiopogon planiscapus</em> 'Nigrescens'</td><td>Black mondo grass</td><td>Evergreen grass</td><td>0.2 × 0.3 m</td><td>Part shade</td><td>Jul (minor)</td><td>Black-purple blades</td><td class="ctr">7</td><td>25 cm</td><td>Near-black evergreen edging — strongest "purple" foliage in the scheme</td></tr>
+    </table>
+    <p><span class="evg evg-ok">Evergreen ≈ 65%</span> — Bergenia ×5 + Heuchera ×3 + Ophiopogon ×7 vs Cornus + Hydrangea (deciduous).</p>
+  </div>
+
+  <!-- ZONE D -->
+  <h2>Zone D — full-sun showpiece · best drainage</h2>
+  <div class="zone-card">
+    <div class="zone-header"><span class="zone-tag">Zone D</span><strong>The front lobe — open to the southern arc all day</strong><span class="zone-goal">Drainage-sensitive favourites live here, raised on grit. Herbaceous-heavy, so evergreen fillers carry winter.</span></div>
+    <table>
+      <tr><th>Plant</th><th>Common</th><th>Type</th><th>H × W (mature)</th><th>Sun</th><th>Flowers</th><th>Colour</th><th>Qty</th><th>Spacing</th><th>Why here</th></tr>
+      <tr><td><em>Rosa</em> 'Zéphirine Drouhin'</td><td>Thornless rose</td><td>Deciduous shrub/climber</td><td>2 × 1.5 m</td><td>Full sun</td><td>Jun–Sep (repeat)</td><td>Deep cerise-pink, scented</td><td class="ctr">1</td><td>—</td><td>Thornless as requested; long repeat-flowering showpiece</td></tr>
+      <tr><td><em>Paeonia lactiflora</em></td><td>Peony</td><td>Herb. perennial</td><td>0.9 × 0.9 m</td><td>Full sun</td><td>May–Jun</td><td>Plum / soft pink</td><td class="ctr">2</td><td>70 cm</td><td>Needs sharp drainage — grit here. <span class="tox">mildly toxic — flag</span></td></tr>
+      <tr><td><em>Echinacea purpurea</em></td><td>Coneflower</td><td>Herb. perennial</td><td>0.9 × 0.4 m</td><td>Full sun</td><td>Jul–Sep</td><td>Purple-pink</td><td class="ctr">5</td><td>40 cm</td><td>Drainage-sensitive — grit. Late-summer; seedheads for winter</td></tr>
+      <tr><td><em>Dianthus barbatus</em></td><td>Sweet William</td><td>Short-lived perennial</td><td>0.5 × 0.3 m</td><td>Full sun</td><td>May–Jul</td><td>Crimson-purple / white</td><td class="ctr">5</td><td>30 cm</td><td>Drainage-sensitive — grit. Scented early-summer. <span class="tox">mildly toxic — flag</span></td></tr>
+      <tr><td><em>Phlox paniculata</em> 'Blue Paradise'</td><td>Border phlox</td><td>Herb. perennial</td><td>1 × 0.5 m</td><td>Full sun</td><td>Jul–Sep</td><td>Violet-blue</td><td class="ctr">3</td><td>45 cm</td><td>Scented violet column in high summer</td></tr>
+      <tr><td><em>Hemerocallis</em> (purple cv.)</td><td>Daylily</td><td>Herb. perennial</td><td>0.6 × 0.6 m</td><td>Full sun</td><td>Jun–Aug</td><td>Purple</td><td class="ctr">3</td><td>50 cm</td><td><span class="tox">⚠ SEVERELY toxic to CATS — see reject list, swap recommended</span></td></tr>
+      <tr><td><em>Aster</em> 'Ada Ballard'</td><td>Michaelmas daisy</td><td>Herb. perennial</td><td>1 × 0.5 m</td><td>Full sun</td><td>Sep–Oct</td><td>Lavender-blue</td><td class="ctr">3</td><td>45 cm</td><td>Closes the season — the autumn baton. <span class="tox">mildly toxic — flag</span></td></tr>
+      <tr><td><em>Weigela florida</em> 'Foliis Purpureis'</td><td>Purple-leaf weigela</td><td>Deciduous shrub</td><td>1 × 1.2 m</td><td>Full sun</td><td>May–Jun</td><td>Pink flower + purple foliage</td><td class="ctr">1</td><td>—</td><td>Purple foliage all season; spring flower</td></tr>
+      <tr><td><em>Hebe</em> 'Caledonia'</td><td>Hebe</td><td>Evergreen shrub</td><td>0.6 × 0.6 m</td><td>Full sun</td><td>Jun–Sep</td><td>Violet, purple-tinted leaf</td><td class="ctr">3</td><td>50 cm</td><td>Evergreen filler — winter structure in a herbaceous zone</td></tr>
+      <tr><td><em>Lavandula angustifolia</em> 'Hidcote'</td><td>English lavender</td><td>Evergreen sub-shrub</td><td>0.6 × 0.6 m</td><td>Full sun</td><td>Jun–Aug</td><td>Deep violet</td><td class="ctr">3</td><td>45 cm</td><td>Evergreen edging mass to hold the 60% line + ties to Zone B</td></tr>
+      <tr><td><em>Heuchera</em> 'Plum Pudding'</td><td>Coral bells</td><td>Evergreen perennial</td><td>0.4 × 0.4 m</td><td>Full sun</td><td>Jun (minor)</td><td>Plum foliage</td><td class="ctr">3</td><td>35 cm</td><td>Evergreen front-edge plum foliage</td></tr>
+    </table>
+    <p><span class="evg evg-watch">Evergreen ≈ 60% (tightest zone)</span> — Hebe ×3 + Lavender ×3 + Heuchera ×3 (9 evergreen plants, large footprint) vs the herbaceous flush. <strong>Hold this line:</strong> if the herbaceous plants are bulked up, add one more Hebe or Lavender to stay ≥60%.</p>
+  </div>
+
+  <h2>12-month colour calendar</h2>
+  <div class="legend">
+    <span><span class="key" style="background:#8E24AA"></span>Flower</span>
+    <span><span class="key" style="background:#E1BEE7"></span>Foliage / evergreen structure</span>
+    <span><span class="key" style="background:#C5CAE9"></span>Winter stems</span>
+  </div>
+  <table class="cal">
+    <tr><th class="name">Plant (zone)</th><th>J</th><th>F</th><th>M</th><th>A</th><th>M</th><th>J</th><th>J</th><th>A</th><th>S</th><th>O</th><th>N</th><th>D</th></tr>
+    <tr><td class="name">Clematis armandii (A)</td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Sarcococca (A)</td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Heuchera (A/C/D)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Deutzia 'Mont Rose' (A)</td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Hydrangea (A/C)</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td></tr>
+    <tr><td class="name">Anemone 'Praecox' (A)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td></tr>
+    <tr><td class="name">Lavandula 'Hidcote' (B/D)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Euphorbia characias (B)</td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Convolvulus cneorum (B)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Salvia 'Caradonna' (B)</td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fl"></td><td class="fo"></td><td></td><td></td></tr>
+    <tr><td class="name">Geranium 'Rozanne' (B)</td><td></td><td></td><td></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td></tr>
+    <tr><td class="name">Cistus × purpureus (B)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Bergenia 'Sunningdale' (C)</td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Cornus 'Magic Flame' (C)</td><td class="st"></td><td class="st"></td><td class="st"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="st"></td><td class="st"></td></tr>
+    <tr><td class="name">Ophiopogon nigrescens (C)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Weigela 'Foliis Purpureis' (D)</td><td></td><td></td><td></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td></td><td></td></tr>
+    <tr><td class="name">Peony (D)</td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Sweet William (D)</td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Rose 'Zéphirine Drouhin' (D)</td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Hebe 'Caledonia' (D)</td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td class="fo"></td></tr>
+    <tr><td class="name">Echinacea (D)</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td class="fo"></td><td class="fo"></td><td></td></tr>
+    <tr><td class="name">Phlox 'Blue Paradise' (D)</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td class="fl"></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Aster 'Ada Ballard' (D)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="fl"></td><td class="fl"></td><td></td><td></td></tr>
+    <tr class="checkrow"><td class="name">Zones lit each month →</td><td>3</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>3</td><td>3</td></tr>
+  </table>
+  <div class="box-green"><strong>No dead month.</strong> Every month has interest in at least 3 of the 4 zones. The hardest stretch — Jan/Feb — is carried by Sarcococca flower + scent (A), Clematis armandii buds opening Feb (A), evergreen Lavender/Euphorbia/Cistus/Hebe foliage (B/D), Bergenia's bronze winter leaf + Cornus stems (C).</div>
+
+  <h2>Evergreen balance — running tally per zone</h2>
+  <table>
+    <tr><th>Zone</th><th>Evergreen (structure)</th><th>Deciduous / herbaceous (seasonal)</th><th>Evergreen share</th><th>Target 60–70%</th></tr>
+    <tr><td><strong>A</strong></td><td>Clematis armandii, Heuchera ×3, Sarcococca</td><td>Hydrangea, Deutzia, Anemone ×3</td><td class="ctr">~65%</td><td class="ctr"><span class="evg evg-ok">on target</span></td></tr>
+    <tr><td><strong>B</strong></td><td>Lavender ×5, Euphorbia ×2, Convolvulus ×2, Cistus, (Geranium semi-evg)</td><td>Salvia ×5</td><td class="ctr">~68%</td><td class="ctr"><span class="evg evg-ok">on target</span></td></tr>
+    <tr><td><strong>C</strong></td><td>Bergenia ×5, Heuchera ×3, Ophiopogon ×7</td><td>Cornus, Hydrangea</td><td class="ctr">~65%</td><td class="ctr"><span class="evg evg-ok">on target</span></td></tr>
+    <tr><td><strong>D</strong></td><td>Hebe ×3, Lavender ×3, Heuchera ×3</td><td>Rose, Peony ×2, Echinacea ×5, Sweet William ×5, Phlox ×3, Daylily ×3, Aster ×3, Weigela</td><td class="ctr">~60%</td><td class="ctr"><span class="evg evg-watch">tightest — hold the line</span></td></tr>
+  </table>
+
+  <h2>Climber placement</h2>
+  <ul>
+    <li><strong>Primary — Zone A warm brick wall (NW, sheltered):</strong> <em>Clematis armandii</em>. Evergreen, hardiest of the evergreen climbers, earliest flower (Feb–Mar), copes with the part-shade aspect. This is the one to plant.</li>
+    <li><strong>Optional sun-lover — hottest wall (Zone B/D, SW/S):</strong> <em>Trachelospermum jasminoides</em> (star jasmine) if you want summer scent. It needs more heat and sun than Zone A offers and is slightly more tender, so only on the warmest, most sheltered run. Evergreen, white summer flowers.</li>
+    <li>Avoid <em>winter jasmine</em> (<em>Jasminum nudiflorum</em>) — yellow flowers, off-palette.</li>
+  </ul>
+
+  <h2>Swap list — purple-palette alternatives</h2>
+  <table>
+    <tr><th>Favourite</th><th>Alt 1</th><th>Alt 2</th><th>Alt 3</th></tr>
+    <tr><td>Hydrangea macrophylla</td><td>H. macrophylla 'Bodensee' (deeper blue/purple on this soil)</td><td>H. serrata 'Bluebird'</td><td>H. paniculata 'Wim's Red' (white→plum)</td></tr>
+    <tr><td>Thornless rose</td><td>Rosa 'Mortimer Sackler' (near-thornless, pink)</td><td>Rosa 'Reine des Violettes' (thornless, violet)</td><td>Rosa 'Veilchenblau' (thornless rambler, violet)</td></tr>
+    <tr><td>Perennial geranium</td><td>Geranium 'Orion' (violet-blue)</td><td>G. pratense 'Mrs Kendall Clark' (lilac)</td><td>G. 'Brookside' (deep blue-violet)</td></tr>
+    <tr><td>Phlox</td><td>Phlox 'Nicky' (magenta-purple)</td><td>Phlox 'Amethyst'</td><td>Phlox 'Blue Boy'</td></tr>
+    <tr><td>Sweet William</td><td>Dianthus 'Sooty' (dark)</td><td>Dianthus carthusianorum (wiry magenta)</td><td>Lychnis coronaria (magenta, silver leaf)</td></tr>
+    <tr><td>Echinacea</td><td>Echinacea 'Magnus'</td><td>Echinacea pallida</td><td>Verbena bonariensis (airy violet, sharp drainage)</td></tr>
+    <tr><td>Daylily <span class="tox">(cat-toxic)</span></td><td><strong>Agapanthus 'Northern Star' (deep blue — pet-safe-ish, strappy substitute)</strong></td><td>Liriope muscari (violet, evergreen, shade-OK)</td><td>Geranium 'Rozanne' (already in B)</td></tr>
+    <tr><td>Peony</td><td>Paeonia 'Buckeye Belle' (deep maroon)</td><td>Paeonia 'Karl Rosenfield'</td><td>Astrantia 'Claret' (plum, no drainage fuss)</td></tr>
+    <tr><td>Aster 'Ada Ballard'</td><td>Aster 'Violet Queen'</td><td>Symphyotrichum 'Little Carlow' (lavender-blue)</td><td>Aster 'Mönch'</td></tr>
+    <tr><td>Euphorbia</td><td>Euphorbia 'Purpurea' (purple-tinted)</td><td>Perovskia 'Blue Spire' (silver stem, violet)</td><td>Nepeta 'Walker's Low' (mauve, pet-safe)</td></tr>
+    <tr><td>Evergreen clematis</td><td>Clematis 'Apple Blossom'</td><td>Trachelospermum jasminoides</td><td>Clematis cirrhosa 'Freckles' (winter-flowering)</td></tr>
+    <tr><td>Weigela 'Foliis Purpureis'</td><td>Cotinus 'Royal Purple' (if space)</td><td>Physocarpus 'Diabolo' (dark plum foliage)</td><td>Berberis 'Rose Glow' (purple — but thorny)</td></tr>
+    <tr><td>Bergenia 'Sunningdale'</td><td>Bergenia 'Overture' (red-purple)</td><td>Bergenia 'Eric Smith'</td><td>Epimedium (shade, lilac)</td></tr>
+    <tr><td>Cornus 'Magic Flame'</td><td>Cornus alba 'Kesselringii' (dark purple-black stems)</td><td>Cornus alba 'Sibirica' (red)</td><td>Cornus 'Midwinter Fire'</td></tr>
+    <tr><td>Lavandula 'Hidcote'</td><td>Lavandula 'Imperial Gem' (deeper violet)</td><td>Lavandula × intermedia 'Grosso'</td><td>Salvia 'Caradonna' (already in B)</td></tr>
+    <tr><td>Silver shrub</td><td><strong>Convolvulus cneorum (chosen)</strong></td><td>Senecio cineraria 'Silver Dust'</td><td>Brachyglottis 'Sunshine' — only if yellow daisies sheared</td></tr>
+  </table>
+
+  <h2>Sourcing, quantities &amp; order sheet</h2>
+  <p>Supplier-neutral order sheet — numbers match the <a href="planting_plan.svg">plan-view SVG</a>. The <strong>Buy as</strong> column is the cheapest sensible size: drifts of perennials go in as <strong>9 cm plugs / 1 L</strong> and knit within a season; shrubs need only <strong>2 L</strong>; peony and rose are cheapest as <strong>bare-root</strong> in autumn/winter. Fill the price columns from your chosen nursery.</p>
+  <div class="box-purple"><strong>Cost logic:</strong> 9 cm plugs are roughly a quarter the price of a 3 L pot and catch up within one growing season for herbaceous perennials — so the big-quantity rows (Salvia ×5, Bergenia ×5, Ophiopogon ×7, Echinacea ×5, Sweet William ×5) are where ordering small saves the most. Sweet William can even be raised from seed. Buy bare-root peony tubers and a bare-root rose in the dormant season.</p>
+
+  <table>
+    <tr><th>#</th><th>Plant</th><th>Buy as (cheapest sensible)</th><th>Qty</th><th>Unit £</th><th>Line £</th></tr>
+    <tr><td colspan="6" style="background:#F3E5F5;"><strong>Zone A — NW back wall</strong></td></tr>
+    <tr><td class="ctr">1</td><td><em>Clematis armandii</em></td><td>2–3 L climber</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">2</td><td><em>Sarcococca confusa</em></td><td>2 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">3</td><td><em>Heuchera</em> 'Plum Pudding'</td><td>9 cm / 1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">4</td><td><em>Deutzia</em> 'Mont Rose'</td><td>2 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">5</td><td><em>Hydrangea macrophylla</em> (lilac)</td><td>3 L + ericaceous</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">6</td><td><em>Anemone hupehensis</em> 'Praecox'</td><td>1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td colspan="3"><strong>Zone A subtotal</strong></td><td class="num"><strong>10</strong></td><td class="num"></td><td class="num"></td></tr>
+
+    <tr><td colspan="6" style="background:#F3E5F5;"><strong>Zone B — SW hot / dry</strong></td></tr>
+    <tr><td class="ctr">7</td><td><em>Euphorbia characias</em></td><td>2 L</td><td class="num">2</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">8</td><td><em>Lavandula</em> 'Hidcote'</td><td>2 L</td><td class="num">5</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">9</td><td><em>Salvia nemorosa</em> 'Caradonna'</td><td>9 cm / 1 L</td><td class="num">5</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">10</td><td><em>Convolvulus cneorum</em></td><td>2 L</td><td class="num">2</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">11</td><td><em>Cistus</em> × <em>purpureus</em></td><td>2 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">12</td><td><em>Geranium</em> 'Rozanne'</td><td>1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td colspan="3"><strong>Zone B subtotal</strong></td><td class="num"><strong>18</strong></td><td class="num"></td><td class="num"></td></tr>
+
+    <tr><td colspan="6" style="background:#F3E5F5;"><strong>Zone C — NE cool / moist</strong></td></tr>
+    <tr><td class="ctr">13</td><td><em>Cornus sanguinea</em> 'Magic Flame'</td><td>2 L / bare-root</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">14</td><td><em>Hydrangea paniculata</em></td><td>3 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">15</td><td><em>Bergenia</em> 'Sunningdale'</td><td>9 cm / 1 L</td><td class="num">5</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">16</td><td><em>Heuchera</em> 'Palace Purple'</td><td>9 cm / 1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">17</td><td><em>Ophiopogon planiscapus</em> 'Nigrescens'</td><td>9 cm</td><td class="num">7</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td colspan="3"><strong>Zone C subtotal</strong></td><td class="num"><strong>17</strong></td><td class="num"></td><td class="num"></td></tr>
+
+    <tr><td colspan="6" style="background:#F3E5F5;"><strong>Zone D — full-sun showpiece</strong></td></tr>
+    <tr><td class="ctr">18</td><td><em>Rosa</em> 'Zéphirine Drouhin'</td><td>bare-root / 4 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">19</td><td><em>Weigela florida</em> 'Foliis Purpureis'</td><td>2 L</td><td class="num">1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">20</td><td><em>Paeonia lactiflora</em></td><td>bare-root tuber + grit</td><td class="num">2</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">21</td><td><em>Dianthus barbatus</em> (Sweet William)</td><td>9 cm / seed + grit</td><td class="num">5</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">22</td><td><em>Echinacea purpurea</em></td><td>9 cm / 1 L + grit</td><td class="num">5</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">23</td><td><em>Hemerocallis</em> (daylily) <span class="tox">⚠ cat-toxic — swap?</span></td><td>1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">24</td><td><em>Phlox paniculata</em> 'Blue Paradise'</td><td>1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">25</td><td><em>Aster</em> 'Ada Ballard'</td><td>9 cm / 1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">26</td><td><em>Hebe</em> 'Caledonia'</td><td>2 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">27</td><td><em>Lavandula</em> 'Hidcote'</td><td>2 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td class="ctr">28</td><td><em>Heuchera</em> 'Plum Pudding'</td><td>9 cm / 1 L</td><td class="num">3</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td colspan="3"><strong>Zone D subtotal</strong></td><td class="num"><strong>32</strong></td><td class="num"></td><td class="num"></td></tr>
+
+    <tr><td colspan="3" style="background:#6A1B9A;color:#fff;"><strong>PLANTS — GRAND TOTAL</strong></td><td class="num" style="background:#6A1B9A;color:#fff;"><strong>77</strong></td><td class="num" style="background:#6A1B9A;color:#fff;"></td><td class="num" style="background:#6A1B9A;color:#fff;"></td></tr>
+  </table>
+
+  <h3>Sundries / ground prep</h3>
+  <table>
+    <tr><th>Item</th><th>For</th><th>Est. qty</th><th>Unit £</th><th>Line £</th></tr>
+    <tr><td>Horticultural grit (20 kg)</td><td>Zone D raised pockets (20, 21, 22) + Zone B free-draining</td><td class="num">3–4 bags</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Ericaceous compost (40 L)</td><td>Hydrangea #5 pocket (hold the lilac)</td><td class="num">1 bag</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Hydrangea colourant (aluminium sulphate)</td><td>Annual feed for #5 to keep lilac</td><td class="num">1 tub</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Peat-free soil improver / compost (50 L)</td><td>Dig through whole border (clay)</td><td class="num">4–6 bags</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Bark mulch (60 L)</td><td>Mulch border after planting (~18 m² @ 50 mm)</td><td class="num">8–10 bags</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Mycorrhizal / bonemeal</td><td>Root establishment, shrubs &amp; rose</td><td class="num">1 pack</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td colspan="2"><strong>Sundries subtotal</strong></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+  </table>
+  <div class="box"><strong>To finish the price-up:</strong> fill Unit £ and Line £ from your nursery, sum each subtotal, then Plants total + Sundries total = project total. If a cat uses the garden, swap #23 (daylily) before ordering — see below.</div>
+
+  <h2>Flag &amp; reject list</h2>
+  <div class="box-red">
+    <strong>⚠ Pet toxicity — flagged, not removed (your call to keep):</strong>
+    <ul>
+      <li><strong class="tox">Daylily (Hemerocallis)</strong> — <strong>SEVERELY toxic to cats</strong> (kidney failure from tiny amounts, including pollen/water). This is in a different league to the "mild" flags. <strong>Strong recommendation: swap for Agapanthus 'Northern Star' or Liriope muscari</strong> (see swap list) if a cat uses the garden.</li>
+      <li><strong>Hydrangea</strong> (A, C) — mildly toxic (cyanogenic) if leaves/buds chewed.</li>
+      <li><strong>Euphorbia characias</strong> (B) — milky sap is a skin/eye irritant and toxic if ingested; wear gloves to prune.</li>
+      <li><strong>Peony</strong> (D) — mild GI upset if eaten in quantity.</li>
+      <li><strong>Japanese anemone</strong> (A) — sap irritant.</li>
+      <li><strong>Aster, Sweet William, Clematis</strong> — mild GI/skin irritants.</li>
+      <li><em>Pet-safe favourites for reassurance:</em> hardy Geranium, Lavender, Salvia, Bergenia, Heuchera, Rose, Phlox, Weigela, Deutzia, Cornus.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <strong>Site / palette rejects &amp; substitutions:</strong>
+    <ul>
+      <li><strong>Cotoneaster lacteus — dropped from the border.</strong> It reaches <strong>~4 m × 4 m</strong> and is grown as a hedge/screen; it would swamp an 18 m² ornamental ring and the white-undersided leaf isn't a purple-palette feature. The boundary walls already do the screening job. <em>If you want it,</em> use a single clipped standard as a backdrop accent against the SE wall only — not as a hedge in the bed.</li>
+      <li><strong>Brachyglottis 'Sunshine' — substituted.</strong> Its yellow daisies break the no-yellow rule; you'd be shearing flowers off all summer. Replaced with <strong>Convolvulus cneorum</strong> (silver evergreen, white/pink-budded). Senecio cineraria 'Silver Dust' is the fallback.</li>
+      <li><strong>"Sage" confirmed as ornamental</strong> <em>Salvia nemorosa</em> 'Caradonna' (Zone B), not culinary sage.</li>
+    </ul>
+  </div>
+
+  <div class="box-purple"><strong>Soil &amp; drainage note:</strong> on London clay over chalk, dig in horticultural grit + compost across the whole border, and especially <strong>raise Zone D's planting positions for peony, echinacea and sweet william</strong> (add a 30–40% grit mix). Lavender, Cistus, Convolvulus and Euphorbia in Zone B also want grit — they rot in winter wet far sooner than they die of drought. Hydrangea blue/mauve colour depends on acidity: on this alkaline soil it leans pink. <strong>Decision: keep the hydrangea and hold the lilac</strong> — plant it in an ericaceous-amended pocket and feed annually with a hydrangea colourant (aluminium sulphate) from early spring; rainwater, not tap, in summer. Expect it to drift pinker if the feeding lapses.</div>
+
+  <div class="footer">123 Downs Garden Project · Private docs · Leo Costa</div>
+
+</div>
+</body>
+</html>
