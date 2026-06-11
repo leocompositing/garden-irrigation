@@ -59,7 +59,7 @@
   <p class="sub">Hydrawise HC Pro · Zones 1 &amp; 3 · Late May / early June 2026 · 28-day window</p>
 
   <h2>Context</h2>
-  <p>Rolled turf going down across both lawn zones. New turf needs a totally different programme to mature lawn — frequent shallow watering for the first 2 weeks, tapering over 4 weeks before switching to normal Smart Watering. This document is the schedule to enter into the Hydrawise app.</p>
+  <p>Rolled turf going down across both lawn zones. New turf needs a totally different programme to mature lawn — frequent shallow watering for the first 2 weeks, tapering over 4 weeks before switching to normal weather-adjusted watering (Virtual Solar Sync). This document is the schedule to enter into the Hydrawise app.</p>
 
   <table>
     <tr><th>Zone</th><th>Role</th><th>Heads</th><th>Flow</th><th>Precip</th><th>Area</th></tr>
@@ -89,7 +89,7 @@
   <div class="box"><strong>Zone 1's open middle is the limiting area</strong> (highest ET). The tree-shaded SE strip is the <strong>over-watering risk</strong> — same valve, same run time, half the evaporation. Watch it closely (fungal disease, moss, slow drainage). Long-term you may want to dial back the radius on heads 11/13/14.</div>
 
   <h2>Watering rules during establishment</h2>
-  <div class="box-red"><strong>Do NOT enable Smart Watering / Predictive</strong> during the 28-day establishment. ET-based scheduling assumes established roots and will under-water turf. Use <strong>Time-Based</strong> mode, with the rainfall weather trigger as the only automatic skip (see Rain handling below).</div>
+  <div class="box-red"><strong>Do NOT use Virtual Solar Sync (or any weather-scaled mode)</strong> during the 28-day establishment — weather-based scaling assumes established roots and will shrink or skip cycles fresh turf needs. All four programmes are plain <strong>Time-Based</strong>, with the rainfall weather trigger as the only automatic skip (see Rain handling below).</div>
 
   <ul>
     <li><strong>Day 0 (laying day) — manual soak:</strong> immediately after the last roll, run <strong>Zone 1: 2 × 45 min with 30 min between</strong> (~11 mm), <strong>Zone 3: 2 × 15 min with 30 min between</strong> (~10 mm). Then lift corners at 3 points per zone — soil under the rolls must be wet 50 mm down. If not, run one more cycle on that zone (Zone 1: 45 min, Zone 3: 15 min). Zone 1's low 7.4 mm/h rate means long runs are safe; Zone 3's ~21 mm/h is not — never exceed 15 min per cycle there.</li>
@@ -104,8 +104,8 @@
         <li>"Adjust watering — water longer when hot" — <strong>OFF</strong> ⚠️ (auto-extended runs break Zone 3's 15-min cycle cap)</li>
         <li>"Adjust watering — water more often when hot" — <strong>OFF</strong> (in a heatwave, add the 12:30 cycle manually instead)</li>
       </ul>
-      For a prolonged soggy spell that never trips the trigger, walk the lawn — if soil under the rolls is squelchy, hit Suspend for 24 h. Skip because the ground <em>is</em> wet, never because rain is forecast. Revisit the temperature toggles after the Day-29 switch to Smart Watering.</li>
-    <li><strong>Set up all four phases now using Grow In Program</strong> (program → Advanced Settings → Grow In Program): create the four programs ("P1 Saturation", "P2 Root chase", "P3 Taper", "P4 Transition"), toggle off "Start immediately" / "Stop never" on each, and set date windows counting from lay day — P1: lay day → +7, P2: +8 → +14, P3: +15 → +21, P4: +22 → +28. Each program expires as the next starts, no app visits needed at boundaries. Phase 1 needs two Program Start Times (05:30 + 17:30) with both zones attached. Two things stay manual: if the day-14 tug test fails, push P2 stop / P3 start back 3–4 days; and the Day-29 switch to Smart Watering is a mode change you make by hand. Leave Monthly Adjustments at 100% for every month — establishment run times must not be scaled.</li>
+      For a prolonged soggy spell that never trips the trigger, walk the lawn — if soil under the rolls is squelchy, hit Suspend for 24 h. Skip because the ground <em>is</em> wet, never because rain is forecast. The temperature/"hot" toggles stay OFF even after Day 29 — Virtual Solar Sync does its own heat scaling.</li>
+    <li><strong>Set up all four phases now using Grow In Program</strong> (program → Advanced Settings → Grow In Program): create the four programs ("P1 Saturation", "P2 Root chase", "P3 Taper", "P4 Transition"), toggle off "Start immediately" / "Stop never" on each, and set date windows counting from lay day — P1: lay day → +7, P2: +8 → +14, P3: +15 → +21, P4: +22 → +28. Each program expires as the next starts, no app visits needed at boundaries. Phase 1 needs two Program Start Times (05:30 + 17:30) with both zones attached. Two things stay manual: if the day-14 tug test fails, push P2 stop / P3 start back 3–4 days; and the Day-29 switch to the Virtual Solar Sync programme is a change you make by hand. Leave Monthly Adjustments at 100% for every month — establishment run times must not be scaled.</li>
   </ul>
 
   <h2>Programme — Time-Based schedule on HC Pro</h2>
@@ -174,21 +174,19 @@
     <p style="font-size: 13px; color: #555; margin: 6px 0 0 0;">First mow can happen mid-Phase 4 if grass is 65+ mm. Mower high — never remove more than 1/3 of blade.</p>
   </div>
 
-  <h2>Day 29+ · Switch to Smart Watering</h2>
-  <p>Reconfigure both zones in Hydrawise for established-lawn auto-scheduling:</p>
+  <h2>Day 29+ · Switch to Virtual Solar Sync</h2>
+  <p>Lawn is established — replace the four Grow In programmes with one weather-adjusted programme. <em>Note: full Smart (ET) Watering needs Hydrawise's paid Enthusiast plan; on the free Home plan the weather-adjusted option is <strong>Virtual Solar Sync</strong>, which treats your entered run time as the peak-summer requirement and scales the minutes down daily from weather data. It's the right tool here.</em></p>
   <table>
-    <tr><th>Setting</th><th>Zone 1</th><th>Zone 3</th></tr>
-    <tr><td>Mode</td><td>Smart Watering (Predictive)</td><td>Smart Watering (Predictive)</td></tr>
-    <tr><td>Head type</td><td>Rotary nozzle (MP Rotator)</td><td>Rotary nozzle (MP Rotator)</td></tr>
-    <tr><td>Precipitation rate</td><td><strong>7.4 mm/h</strong></td><td><strong>20.7 mm/h</strong></td></tr>
-    <tr><td>Soil</td><td>Loam</td><td>Loam</td></tr>
-    <tr><td>Slope</td><td>Flat (0–5%)</td><td>Flat (0–5%)</td></tr>
-    <tr><td>Sun</td><td>Full sun</td><td>Full sun (house shelters evening)</td></tr>
-    <tr><td>Plant</td><td>Cool-season grass, root depth 100 mm</td><td>Same</td></tr>
-    <tr><td>Cycle &amp; Soak</td><td>20 min / 30 min</td><td>10 min / 30 min</td></tr>
-    <tr><td>Start time</td><td>04:30</td><td>05:30</td></tr>
+    <tr><th>Setting</th><th>Value</th></tr>
+    <tr><td>Programme type</td><td><strong>Virtual Solar Sync</strong> (one programme, both zones attached)</td></tr>
+    <tr><td>Days</td><td>Mon / Wed / Fri</td></tr>
+    <tr><td>Start time</td><td>04:30 (Zone 3 follows Zone 1)</td></tr>
+    <tr><td>Zone 1 baseline run</td><td><strong>70 min</strong> (≈ 8.5 mm/session at 7.4 mm/h → ~25 mm/wk at peak)</td></tr>
+    <tr><td>Zone 3 baseline run</td><td><strong>25 min</strong> (≈ 8.5 mm/session at 20.7 mm/h; C&amp;S splits into 10-min cycles)</td></tr>
+    <tr><td>Cycle &amp; Soak (zone setting, already on)</td><td>Zone 1: 20/30 · Zone 3: 10/30</td></tr>
+    <tr><td>Weather triggers</td><td>Rainfall triggers stay ON; keep both "adjust when hot" toggles OFF — VSS already scales for heat, the trigger would double-adjust</td></tr>
   </table>
-  <div class="box-green"><strong>Expected steady-state in peak summer:</strong> Zone 1 ~3 × 60–70 min/week, Zone 3 ~3 × 20–25 min/week (each split into 10-min cycles by Cycle &amp; Soak). Auto-scales through the season.</div>
+  <div class="box-green"><strong>Expected at peak summer:</strong> sessions run at/near their full baselines (~25 mm/wk Zone 1, ~20–25 mm/wk Zone 3), shrinking automatically in cooler weather. <strong>One manual habit:</strong> VSS scales duration but never frequency — if scaling sits below ~50% for a week+ (spring/autumn), drop the programme to 2 days/week so each session stays deep. Suspend &amp; winterise Nov–Mar.</div>
 
   <h2>Verification checklist</h2>
   <ol>
@@ -197,8 +195,8 @@
     <li><strong>Day 7:</strong> Check for fungal disease (slimy patches, fairy rings, mushrooms) — over-watering risk. <strong>Pay special attention to the tree-shaded SE 6 m of Zone 1</strong> and the house-side strip of Zone 3, which dry far slower. If you see disease in the Zone 1 shaded strip, remediate in this order: (a) physically dial down the radius/arc on heads #1, #6, #7 (the two MP1000-90s + the 4.7 m MP2000-90 by the tree corner); (b) swap their PRS40 cartridges for PRS30 (2.1 bar — cuts flow ~10–15%, no digging); (c) shorten Zone 1's overall sessions by 5 min.</li>
     <li><strong>Day 14:</strong> Tug test (above) — decides Phase 3 entry.</li>
     <li><strong>Day 21:</strong> First mow check — grass at 60–70 mm, mow to 45 mm max.</li>
-    <li><strong>Day 28:</strong> Final walk for dry/yellow patches. If any, nudge MP Rotator radius screws rather than extending the programme. Then flip to Smart Watering.</li>
-    <li><strong>Week 6 (Day 42):</strong> Check Hydrawise Reports — Smart Watering should be applying ~25 mm/week to Zone 1, ~20 mm/week to Zone 3.</li>
+    <li><strong>Day 28:</strong> Final walk for dry/yellow patches. If any, nudge MP Rotator radius screws rather than extending the programme. Then switch to the Virtual Solar Sync programme.</li>
+    <li><strong>Week 6 (Day 42):</strong> Check Hydrawise Reports — the VSS programme should be applying ~25 mm/week to Zone 1, ~20–25 mm/week to Zone 3 in warm weather (less if it's been cool or wet — that's it working, not failing).</li>
   </ol>
 
   <div class="footer">123 Downs Garden Project · Private docs · Leo Costa</div>
