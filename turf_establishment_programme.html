@@ -63,9 +63,11 @@
 
   <table>
     <tr><th>Zone</th><th>Role</th><th>Heads</th><th>Flow</th><th>Precip</th><th>Area</th></tr>
-    <tr><td><strong>Zone 1</strong> — Top lawn</td><td>Far (SE) end, full sun</td><td>8</td><td>14.24 L/min</td><td>7.3 mm/h</td><td>116.4 m²</td></tr>
-    <tr><td><strong>Zone 3</strong> — Bottom lawn</td><td>Near house (NW), sheltered</td><td>6</td><td>5.86 L/min</td><td>11.7 mm/h</td><td>29.9 m²</td></tr>
+    <tr><td><strong>Zone 1</strong> — Top lawn</td><td>Far (SE) end, full sun</td><td>8</td><td>14.23 L/min</td><td>7.4 mm/h</td><td>115 m²</td></tr>
+    <tr><td><strong>Zone 3</strong> — Bottom lawn</td><td>Near house (NW), sheltered</td><td>7</td><td>10.92 L/min</td><td>20.7 mm/h</td><td>31.6 m²</td></tr>
   </table>
+
+  <div class="box-blue"><strong>Zone 3 revised (June 2026):</strong> a 7th head was added and the nozzle mix changed to 2 × MP815-90 + 5 × MP800SR-90 (both in Hunter's matched ~20 mm/h high-precip family — fine to mix). Flow is now 10.92 L/min over the redrawn 31.6 m² lawn → application rate <strong>20.7 mm/h</strong> (10.92 × 60 ÷ 31.6), up from the old 11.7 mm/h, so all Zone 3 run times below are roughly <strong>half</strong> the original programme. ⚠️ At ~21 mm/h Zone 3 now exceeds loam's infiltration rate (~13 mm/h): keep any single Zone 3 cycle to <strong>≤ 15 min</strong> or it will pool.</div>
 
   <h2>Site orientation</h2>
   <p>Per the IRRISketch compass (144° SE) and the sun chart: view direction from the back of the house is <strong>144° SE</strong>. House sits at the NW end of the property; garden extends SE.</p>
@@ -73,7 +75,7 @@
   <ul>
     <li><strong>Zone 3</strong> (bottom lawn) is the lower tier nearest the house, NW end.</li>
     <li><strong>Zone 1</strong> (top lawn) is the upper tier furthest from house, SE end, beyond the retaining wall. <strong>16.2 m long × ~7.2 m wide.</strong></li>
-    <li><strong>Trees at the SE far end</strong> shade the last <strong>6 m of Zone 1</strong> (~43 m² of 116 m², ~37% of area). Heads in that strip are consumers <strong>11, 13, 14</strong> in the IRRISketch sprinkler table (MP1000-90s and the MP2000-90 at the top of the map).</li>
+    <li><strong>Trees at the SE far end</strong> shade the last <strong>6 m of Zone 1</strong> (~43 m² of 115 m², ~37% of area). Heads in that strip are <strong>#1, #6, #7</strong> in the single-zone IRRISketch sprinkler table — the two MP1000-90s plus the reduced 4.7 m MP2000-90 by the tree corner.</li>
   </ul>
 
   <h3>Sun behaviour — May/June at 51°18′N (rise 04:57 ENE / set 20:58 WNW, ~16 h daylight)</h3>
@@ -87,13 +89,14 @@
   <div class="box"><strong>Zone 1's open middle is the limiting area</strong> (highest ET). The tree-shaded SE strip is the <strong>over-watering risk</strong> — same valve, same run time, half the evaporation. Watch it closely (fungal disease, moss, slow drainage). Long-term you may want to dial back the radius on heads 11/13/14.</div>
 
   <h2>Watering rules during establishment</h2>
-  <div class="box-red"><strong>Do NOT enable Smart Watering / Predictive</strong> during the 28-day establishment. ET-based scheduling assumes established roots and will under-water turf. Use <strong>Time-Based</strong> with rain sensor only.</div>
+  <div class="box-red"><strong>Do NOT enable Smart Watering / Predictive</strong> during the 28-day establishment. ET-based scheduling assumes established roots and will under-water turf. Use <strong>Time-Based</strong> mode, with the rainfall weather trigger as the only automatic skip (see Rain handling below).</div>
 
   <ul>
-    <li><strong>Day 0 (laying day) — manual soak:</strong> immediately after the last roll, run <strong>Zone 1: 3 × 20 min with 30 min between</strong> (~22 mm), <strong>Zone 3: 3 × 15 min with 30 min between</strong> (~26 mm). Walk it — soil under the rolls should be wet 50 mm down.</li>
+    <li><strong>Day 0 (laying day) — manual soak:</strong> immediately after the last roll, run <strong>Zone 1: 2 × 45 min with 30 min between</strong> (~11 mm), <strong>Zone 3: 2 × 15 min with 30 min between</strong> (~10 mm). Then lift corners at 3 points per zone — soil under the rolls must be wet 50 mm down. If not, run one more cycle on that zone (Zone 1: 45 min, Zone 3: 15 min). Zone 1's low 7.4 mm/h rate means long runs are safe; Zone 3's ~21 mm/h is not — never exceed 15 min per cycle there.</li>
     <li><strong>No foot traffic</strong> for the full 14 days.</li>
     <li><strong>First mow</strong> only when grass reaches ~65 mm and roots resist a gentle tug.</li>
-    <li><strong>Rain sensor:</strong> keep enabled — skip a cycle only if &gt;5 mm rain fell in the last 12 h. Don't trust the forecast.</li>
+    <li><strong>Rain handling (no physical rain sensor installed):</strong> use Hydrawise's software weather triggers — in the app, select the nearest weather station, then set <em>"suspend watering if rainfall exceeds 5 mm"</em> (actual measured rainfall). Do <strong>not</strong> use the "chance of rain %" forecast trigger during establishment — light drizzle or a missed forecast doesn't replace a cycle for fresh turf. For a proper downpour, hit Suspend manually in the app.</li>
+    <li><strong>Set up all four phases now</strong> as named Preconfigured Schedules in Hydrawise (Zones &amp; Schedules → create schedule: "P1 Saturation", "P2 Root chase", "P3 Taper", "P4 Transition"). Hydrawise can't switch schedules on a future date, so at each phase boundary (day 8, day ~15 after the tug test, day 22, day 29) reassign the zones to the next schedule — ~30 seconds in the app. Phase 1 needs two Program Start Times (05:30 + 17:30) with both zones attached to each.</li>
   </ul>
 
   <h2>Programme — Time-Based schedule on HC Pro</h2>
@@ -108,11 +111,11 @@
     <table>
       <tr><th>Zone</th><th>Start</th><th>Run</th><th>Days</th><th>Daily applied</th></tr>
       <tr><td>Zone 1</td><td class="ctr">05:30</td><td class="ctr">25 min</td><td class="ctr">every day</td><td class="ctr">—</td></tr>
-      <tr><td>Zone 3</td><td class="ctr">06:00</td><td class="ctr">25 min</td><td class="ctr">every day</td><td class="ctr">—</td></tr>
-      <tr><td>Zone 1</td><td class="ctr">17:30</td><td class="ctr">25 min</td><td class="ctr">every day</td><td class="ctr"><strong>~12 mm/day</strong></td></tr>
-      <tr><td>Zone 3</td><td class="ctr">18:00</td><td class="ctr">25 min</td><td class="ctr">every day</td><td class="ctr"><strong>~10 mm/day</strong></td></tr>
+      <tr><td>Zone 3</td><td class="ctr">06:00</td><td class="ctr">10 min</td><td class="ctr">every day</td><td class="ctr">—</td></tr>
+      <tr><td>Zone 1</td><td class="ctr">17:30</td><td class="ctr">25 min</td><td class="ctr">every day</td><td class="ctr"><strong>~6 mm/day</strong></td></tr>
+      <tr><td>Zone 3</td><td class="ctr">18:00</td><td class="ctr">10 min</td><td class="ctr">every day</td><td class="ctr"><strong>~7 mm/day</strong></td></tr>
     </table>
-    <div class="box"><strong>Watch for:</strong> standing water or runoff. If you see either, drop each session to 20 min and add a third cycle at 12:30. Boggy spots in deep shade (under tree, against retaining wall) are normal in Phase 1.</div>
+    <div class="box"><strong>Watch for:</strong> standing water or runoff. If you see either, drop Zone 1 sessions to 20 min / Zone 3 to 8 min and add a third cycle at 12:30. Boggy spots in deep shade (under tree, against retaining wall) are normal in Phase 1. If turf edges curl or feel crispy by mid-afternoon, add the 12:30 cycle without shortening the others.</div>
   </div>
 
   <!-- Phase 2 -->
@@ -125,7 +128,7 @@
     <table>
       <tr><th>Zone</th><th>Start</th><th>Run</th><th>Days</th><th>Daily applied</th></tr>
       <tr><td>Zone 1</td><td class="ctr">05:30</td><td class="ctr">45 min</td><td class="ctr">every day</td><td class="ctr"><strong>~5.5 mm</strong></td></tr>
-      <tr><td>Zone 3</td><td class="ctr">06:30</td><td class="ctr">30 min</td><td class="ctr">every day</td><td class="ctr"><strong>~5.8 mm</strong></td></tr>
+      <tr><td>Zone 3</td><td class="ctr">06:30</td><td class="ctr">15 min</td><td class="ctr">every day</td><td class="ctr"><strong>~5 mm</strong></td></tr>
     </table>
     <div class="box-blue"><strong>Tug test on day 14:</strong> gently lift a corner of one roll. If it resists, roots have knitted — move to Phase 3. If it lifts cleanly, stay on Phase 2 another 3–4 days.</div>
   </div>
@@ -139,10 +142,10 @@
     </div>
     <table>
       <tr><th>Zone</th><th>Start</th><th>Run</th><th>Days</th><th>Per session</th></tr>
-      <tr><td>Zone 1</td><td class="ctr">05:00</td><td class="ctr">60 min (3 × 20 min C&amp;S)</td><td class="ctr">Mon, Wed, Fri, Sun</td><td class="ctr">~7.3 mm</td></tr>
-      <tr><td>Zone 3</td><td class="ctr">06:30</td><td class="ctr">40 min</td><td class="ctr">Mon, Wed, Fri, Sun</td><td class="ctr">~7.8 mm</td></tr>
+      <tr><td>Zone 1</td><td class="ctr">05:00</td><td class="ctr">60 min (3 × 20 min C&amp;S)</td><td class="ctr">Mon, Wed, Fri, Sun</td><td class="ctr">~7.4 mm</td></tr>
+      <tr><td>Zone 3</td><td class="ctr">06:30</td><td class="ctr">20 min (2 × 10 min C&amp;S)</td><td class="ctr">Mon, Wed, Fri, Sun</td><td class="ctr">~7 mm</td></tr>
     </table>
-    <div class="box"><strong>Enable Cycle &amp; Soak on Zone 1</strong> (20 min cycle / 30 min soak) — a 60 min straight run on loam will pool. Zone 3 at 40 min is fine to run straight.</div>
+    <div class="box"><strong>Enable Cycle &amp; Soak on both zones now.</strong> Zone 1: 20 min cycle / 30 min soak — a 60 min straight run on loam will pool. Zone 3: 10 min cycle / 30 min soak — at ~21 mm/h it out-runs loam's infiltration in about 15 min.</div>
   </div>
 
   <!-- Phase 4 -->
@@ -155,7 +158,7 @@
     <table>
       <tr><th>Zone</th><th>Start</th><th>Run</th><th>Days</th><th>Per session</th></tr>
       <tr><td>Zone 1</td><td class="ctr">04:30</td><td class="ctr">70 min (3 × ~23 min C&amp;S)</td><td class="ctr">Mon, Wed, Fri</td><td class="ctr">~8.5 mm</td></tr>
-      <tr><td>Zone 3</td><td class="ctr">06:00</td><td class="ctr">45 min</td><td class="ctr">Mon, Wed, Fri</td><td class="ctr">~8.8 mm</td></tr>
+      <tr><td>Zone 3</td><td class="ctr">06:00</td><td class="ctr">25 min (2–3 × 10 min C&amp;S)</td><td class="ctr">Mon, Wed, Fri</td><td class="ctr">~8.5 mm</td></tr>
     </table>
     <p style="font-size: 13px; color: #555; margin: 6px 0 0 0;">First mow can happen mid-Phase 4 if grass is 65+ mm. Mower high — never remove more than 1/3 of blade.</p>
   </div>
@@ -166,21 +169,21 @@
     <tr><th>Setting</th><th>Zone 1</th><th>Zone 3</th></tr>
     <tr><td>Mode</td><td>Smart Watering (Predictive)</td><td>Smart Watering (Predictive)</td></tr>
     <tr><td>Head type</td><td>Rotary nozzle (MP Rotator)</td><td>Rotary nozzle (MP Rotator)</td></tr>
-    <tr><td>Precipitation rate</td><td><strong>7.3 mm/h</strong></td><td><strong>11.7 mm/h</strong></td></tr>
+    <tr><td>Precipitation rate</td><td><strong>7.4 mm/h</strong></td><td><strong>20.7 mm/h</strong></td></tr>
     <tr><td>Soil</td><td>Loam</td><td>Loam</td></tr>
     <tr><td>Slope</td><td>Flat (0–5%)</td><td>Flat (0–5%)</td></tr>
     <tr><td>Sun</td><td>Full sun</td><td>Full sun (house shelters evening)</td></tr>
     <tr><td>Plant</td><td>Cool-season grass, root depth 100 mm</td><td>Same</td></tr>
-    <tr><td>Cycle &amp; Soak</td><td>20 min / 30 min</td><td>15 min / 30 min</td></tr>
+    <tr><td>Cycle &amp; Soak</td><td>20 min / 30 min</td><td>10 min / 30 min</td></tr>
     <tr><td>Start time</td><td>04:30</td><td>05:30</td></tr>
   </table>
-  <div class="box-green"><strong>Expected steady-state in peak summer:</strong> Zone 1 ~3 × 60–70 min/week, Zone 3 ~3 × 30–35 min/week. Auto-scales through the season.</div>
+  <div class="box-green"><strong>Expected steady-state in peak summer:</strong> Zone 1 ~3 × 60–70 min/week, Zone 3 ~3 × 20–25 min/week (each split into 10-min cycles by Cycle &amp; Soak). Auto-scales through the season.</div>
 
   <h2>Verification checklist</h2>
   <ol>
-    <li><strong>Day 0:</strong> Lift a corner of turf at 3 random points per zone — soil under the roll should be wet 50 mm down. If dry, run another 10 min on that zone.</li>
+    <li><strong>Day 0:</strong> Lift a corner of turf at 3 random points per zone — soil under the roll should be wet 50 mm down. If dry, run another cycle on that zone (Zone 1: 45 min, Zone 3: 15 min).</li>
     <li><strong>Day 3:</strong> Walk both lawns mid-morning. Turf should feel cool and damp, never crispy or curling at edges. Adjust Phase 1 sessions ±5 min if needed.</li>
-    <li><strong>Day 7:</strong> Check for fungal disease (slimy patches, fairy rings, mushrooms) — over-watering risk. <strong>Pay special attention to the tree-shaded SE 6 m of Zone 1</strong> and the house-side strip of Zone 3, which dry far slower. If you see disease in the Zone 1 shaded strip, remediate in this order: (a) physically dial down the radius/arc on heads 11, 13, 14; (b) tape over part of those nozzles; (c) shorten Zone 1's overall sessions by 5 min.</li>
+    <li><strong>Day 7:</strong> Check for fungal disease (slimy patches, fairy rings, mushrooms) — over-watering risk. <strong>Pay special attention to the tree-shaded SE 6 m of Zone 1</strong> and the house-side strip of Zone 3, which dry far slower. If you see disease in the Zone 1 shaded strip, remediate in this order: (a) physically dial down the radius/arc on heads #1, #6, #7 (the two MP1000-90s + the 4.7 m MP2000-90 by the tree corner); (b) swap their PRS40 cartridges for PRS30 (2.1 bar — cuts flow ~10–15%, no digging); (c) shorten Zone 1's overall sessions by 5 min.</li>
     <li><strong>Day 14:</strong> Tug test (above) — decides Phase 3 entry.</li>
     <li><strong>Day 21:</strong> First mow check — grass at 60–70 mm, mow to 45 mm max.</li>
     <li><strong>Day 28:</strong> Final walk for dry/yellow patches. If any, nudge MP Rotator radius screws rather than extending the programme. Then flip to Smart Watering.</li>
