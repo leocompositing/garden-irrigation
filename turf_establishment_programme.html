@@ -105,7 +105,7 @@
         <li>"Adjust watering — water more often when hot" — <strong>OFF</strong> (in a heatwave, add the 12:30 cycle manually instead)</li>
       </ul>
       For a prolonged soggy spell that never trips the trigger, walk the lawn — if soil under the rolls is squelchy, hit Suspend for 24 h. Skip because the ground <em>is</em> wet, never because rain is forecast. The temperature/"hot" toggles stay OFF even after Day 29 — Virtual Solar Sync does its own heat scaling.</li>
-    <li><strong>Set up all four phases now using Grow In Program</strong> (program → Advanced Settings → Grow In Program): create the four programs ("P1 Saturation", "P2 Root chase", "P3 Taper", "P4 Transition"), toggle off "Start immediately" / "Stop never" on each, and set date windows counting from lay day — P1: lay day → +7, P2: +8 → +14, P3: +15 → +21, P4: +22 → +28. Each program expires as the next starts, no app visits needed at boundaries. Phase 1 needs two Program Start Times (05:30 + 17:30) with both zones attached. Two things stay manual: if the day-14 tug test fails, push P2 stop / P3 start back 3–4 days; and the Day-29 switch to the Virtual Solar Sync programme is a change you make by hand. Leave Monthly Adjustments at 100% for every month — establishment run times must not be scaled.</li>
+    <li><strong>Set up all four phases now using Grow In Program</strong> (program → Advanced Settings → Grow In Program): create the four programs ("P1 Saturation", "P2 Root chase", "P3 Taper", "P4 Transition"), toggle off "Start immediately" / "Stop never" on each, and set date windows counting from lay day — P1: lay day → +7, P2: +8 → +14, P3: +15 → +21, P4: +22 → +28. Each program expires as the next starts, no app visits needed at boundaries. Phase 1 needs two Program Start Times (05:30 + 17:30) with both zones attached. Build the Day-29 Virtual Solar Sync programme now too, with its own Grow In start date of <strong>lay day + 29</strong> ("Stop never" on) — then the whole sequence, including the establishment-to-VSS handover, runs itself. Only one thing stays manual: if the day-14 tug test fails, push P2 stop / P3 start / all later dates back 3–4 days. Leave Monthly Adjustments at 100% for every month — establishment run times must not be scaled.</li>
   </ul>
 
   <h2>Programme — Time-Based schedule on HC Pro</h2>
@@ -175,7 +175,7 @@
   </div>
 
   <h2>Day 29+ · Switch to Virtual Solar Sync</h2>
-  <p>Lawn is established — replace the four Grow In programmes with one weather-adjusted programme. <em>Note: full Smart (ET) Watering needs Hydrawise's paid Enthusiast plan; on the free Home plan the weather-adjusted option is <strong>Virtual Solar Sync</strong>, which treats your entered run time as the peak-summer requirement and scales the minutes down daily from weather data. It's the right tool here.</em></p>
+  <p>Lawn is established — the four establishment programmes have expired and this programme (built up front, Grow In start date = lay day + 29) takes over. <em>Note: full Smart (ET) Watering needs Hydrawise's paid Enthusiast plan; on the free Home plan the weather-adjusted option is <strong>Virtual Solar Sync</strong>, which treats your entered run time as the peak-summer requirement and scales the minutes down daily from weather data. It's the right tool here.</em></p>
   <table>
     <tr><th>Setting</th><th>Value</th></tr>
     <tr><td>Programme type</td><td><strong>Virtual Solar Sync</strong> (one programme, both zones attached)</td></tr>
@@ -184,7 +184,7 @@
     <tr><td>Zone 1 baseline run</td><td><strong>70 min</strong> (≈ 8.5 mm/session at 7.4 mm/h → ~25 mm/wk at peak)</td></tr>
     <tr><td>Zone 3 baseline run</td><td><strong>25 min</strong> (≈ 8.5 mm/session at 20.7 mm/h; C&amp;S splits into 10-min cycles)</td></tr>
     <tr><td>Cycle &amp; Soak (zone setting, already on)</td><td>Zone 1: 20/30 · Zone 3: 10/30</td></tr>
-    <tr><td>Weather triggers</td><td>Rainfall triggers stay ON; keep both "adjust when hot" toggles OFF — VSS already scales for heat, the trigger would double-adjust</td></tr>
+    <tr><td>Weather triggers</td><td>Rainfall triggers ON; "below 20°C" stays OFF (UK shoulder seasons sit under 20°C — VSS already shortens cool-weather runs); "80%+ chance of rain" optional once established — a wrongly skipped session no longer matters; both "adjust when hot" toggles OFF — VSS already scales for heat</td></tr>
   </table>
   <div class="box-green"><strong>Expected at peak summer:</strong> sessions run at/near their full baselines (~25 mm/wk Zone 1, ~20–25 mm/wk Zone 3), shrinking automatically in cooler weather. <strong>One manual habit:</strong> VSS scales duration but never frequency — if scaling sits below ~50% for a week+ (spring/autumn), drop the programme to 2 days/week so each session stays deep. Suspend &amp; winterise Nov–Mar.</div>
 
@@ -195,7 +195,7 @@
     <li><strong>Day 7:</strong> Check for fungal disease (slimy patches, fairy rings, mushrooms) — over-watering risk. <strong>Pay special attention to the tree-shaded SE 6 m of Zone 1</strong> and the house-side strip of Zone 3, which dry far slower. If you see disease in the Zone 1 shaded strip, remediate in this order: (a) physically dial down the radius/arc on heads #1, #6, #7 (the two MP1000-90s + the 4.7 m MP2000-90 by the tree corner); (b) swap their PRS40 cartridges for PRS30 (2.1 bar — cuts flow ~10–15%, no digging); (c) shorten Zone 1's overall sessions by 5 min.</li>
     <li><strong>Day 14:</strong> Tug test (above) — decides Phase 3 entry.</li>
     <li><strong>Day 21:</strong> First mow check — grass at 60–70 mm, mow to 45 mm max.</li>
-    <li><strong>Day 28:</strong> Final walk for dry/yellow patches. If any, nudge MP Rotator radius screws rather than extending the programme. Then switch to the Virtual Solar Sync programme.</li>
+    <li><strong>Day 28:</strong> Final walk for dry/yellow patches. If any, nudge MP Rotator radius screws rather than extending the programme. The Virtual Solar Sync programme takes over automatically on day 29 (Grow In start date) — confirm in the app that its first run appears on the schedule.</li>
     <li><strong>Week 6 (Day 42):</strong> Check Hydrawise Reports — the VSS programme should be applying ~25 mm/week to Zone 1, ~20–25 mm/week to Zone 3 in warm weather (less if it's been cool or wet — that's it working, not failing).</li>
   </ol>
 
